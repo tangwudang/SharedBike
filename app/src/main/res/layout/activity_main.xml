@@ -1,33 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/banner_layout"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="240px"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="240px"
-            android:scaleType="fitXY"
-            android:src="@drawable/banner" />
-    </LinearLayout>
+        android:scaleType="centerInside"
+        android:src="@drawable/banner" />
 
-
-    <com.lishu.bike.widget.CustomGridView
+    <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/banner_layout"
         android:columnWidth="153px"
         android:horizontalSpacing="15px"
         android:numColumns="4"
@@ -35,7 +26,6 @@
         android:paddingRight="30px"
         android:stretchMode="columnWidth"
         android:verticalSpacing="15px">
+    </GridView>
 
-    </com.lishu.bike.widget.CustomGridView>
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
