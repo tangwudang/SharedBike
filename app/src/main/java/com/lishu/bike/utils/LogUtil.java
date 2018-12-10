@@ -2,7 +2,7 @@ package com.lishu.bike.utils;
 
 import android.util.Log;
 
-import com.lishu.bike.constant.AppConf;
+import com.lishu.bike.constant.AppConfig;
 
 /**
  * 日志输出 工具类
@@ -15,53 +15,53 @@ public class LogUtil {
 
 	// 下面四个是默认TAG的函数
 	public static void v(String msg) {
-		if (AppConf.LOG_LEVEL <= 1)
-			Log.v(AppConf.TAG, msg);
+		if (AppConfig.LOG_LEVEL <= 1)
+			Log.v(AppConfig.TAG, msg);
 	}
 
 	public static void d(String msg) {
-		if (AppConf.LOG_LEVEL <= 2)
-			Log.d(AppConf.TAG, msg);
+		if (AppConfig.LOG_LEVEL <= 2)
+			Log.d(AppConfig.TAG, msg);
 	}
 
 	public static void i(String msg) {
-		if (AppConf.LOG_LEVEL <= 3)
-			Log.i(AppConf.TAG, msg);
+		if (AppConfig.LOG_LEVEL <= 3)
+			Log.i(AppConfig.TAG, msg);
 	}
 
 	public static void w(String msg) {
-		if (AppConf.LOG_LEVEL <= 4)
-			Log.w(AppConf.TAG, msg);
+		if (AppConfig.LOG_LEVEL <= 4)
+			Log.w(AppConfig.TAG, msg);
 	}
 
 	public static void e(String msg) {
-		if (AppConf.LOG_LEVEL <= 5)
-			Log.e(AppConf.TAG, msg);
+		if (AppConfig.LOG_LEVEL <= 5)
+			Log.e(AppConfig.TAG, msg);
 	}
 
 	// 下面是传入自定义TAG的函数
 	public static void i(String TAG, String msg) {
-		if (AppConf.LOG_LEVEL <= 1)
+		if (AppConfig.LOG_LEVEL <= 1)
 			Log.v(TAG, msg);
 	}
 
 	public static void d(String TAG, String msg) {
-		if (AppConf.LOG_LEVEL <= 2)
+		if (AppConfig.LOG_LEVEL <= 2)
 			Log.d(TAG, msg);
 	}
 
 	public static void e(String TAG, String msg) {
-		if (AppConf.LOG_LEVEL <= 3)
+		if (AppConfig.LOG_LEVEL <= 3)
 			Log.i(TAG, msg);
 	}
 
 	public static void w(String TAG, String msg) {
-		if (AppConf.LOG_LEVEL <= 4)
+		if (AppConfig.LOG_LEVEL <= 4)
 			Log.w(TAG, msg);
 	}
 
 	public static void v(String TAG, String msg) {
-		if (AppConf.LOG_LEVEL <= 5)
+		if (AppConfig.LOG_LEVEL <= 5)
 			Log.e(TAG, msg);
 	}
 }
