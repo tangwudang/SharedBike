@@ -7,7 +7,7 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
-public class HttpLoader {
+public abstract class HttpLoader {
 
     public interface IResponseListener{
         public void onResponse(BaseModel model);

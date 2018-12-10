@@ -23,7 +23,7 @@ public class BaseModel {
     }
 
     public boolean success(){
-        if (code != null && (code.equalsIgnoreCase("0000") || code.equalsIgnoreCase("0"))){
+        if (code != null && (code.equalsIgnoreCase("000000") || code.equalsIgnoreCase("0"))){
             return true;
         }
 

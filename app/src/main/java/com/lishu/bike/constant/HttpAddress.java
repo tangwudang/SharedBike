@@ -9,92 +9,98 @@ public class HttpAddress {
     static{
         if(AppConfig.IS_DEBUG){
             //测试地址
-            //ROOT = "https://www.yunnotice.com/cloudNotice";
+            //ROOT = "http://127.0.0.1:8080/cloudNotice";
         }else{
             //现网地址
-            //ROOT = "https://60.205.251.177/cloudNotice";
+            //ROOT = "http://127.0.0.1:8080/cloudNotice";
         }
     }
 
     /**
-     * 用户信息接口
+     * 登录与设置接口
      */
-    //登录
-    public static String LOGIN = ROOT + "/outIn/userLogin.do";
-    //注册
-    public static String REGISTER = ROOT + "/outIn/userRegister.do";
-    //获取验证码
-    public static String CHECK_CODE = ROOT + "/outIn/userVerifyCode.do";
-    //忘记密码
-    public static String FORGET_PASSWORD = ROOT + "/outIn/userForgetPWD.do";
+    //用户登录
+    public static String LOGIN = ROOT + "/login";
+    //个人信息（同：通讯录详情）
+    //public static String  = ROOT + "/xxx";
     //修改密码
-    public static String UPDATE_PASSWORD = ROOT + "/outIn/userUpdatePWD.do";
-    //修改用户信息
-    public static String UPDATE_USER_INFO = ROOT + "/outIn/userUpdateInfo.do";
+    public static String CHANGE_PASSWORD = ROOT + "/changePassword";
+    //获取APP最新版本
+    public static String LATEST_VERSION = ROOT + "/latestVersion";
 
     /**
-     * 通知模块接口
+     * 电子围栏接口
      */
-    //发送通知
-    public static String SEND_NOTICE = ROOT + "/outIn/sendNotice.do";
-    //重发通知
-    public static String RESEND_NOTICE = ROOT + "/outIn/sendNoticeAgain.do";
-    //获取剩余次数
-    public static String REMAIN_COUNT = ROOT + "/outIn/userNoticeCount.do";
-    //查询公司
-    public static String QUERY_COMPANY = ROOT + "/outIn/queryCompany.do";
-    //提交通知模板
-    public static String ADD_TEMPLATE = ROOT + "/outIn/addTemplate.do";
-    //修改通知模板
-    public static String MODIFY_TEMPLATE = ROOT + "/outIn/modifyTemplate.do";
-    //删除通知模板
-    public static String DELETE_TEMPLATE = ROOT + "/outIn/deleteTemplate.do";
-    //查询模板审核状态
-    public static String QUERY_TEMPLATE_STATE = ROOT + "/outIn/templateState.do";
-    //查询通知列表
-    public static String QUERY_NOTICE = ROOT + "/outIn/queryNotices.do";
-    //查看通知详情
-    public static String VIEW_NOTICE_DETAIL = ROOT + "/outIn/noticeInfo.do";
+    //电子围栏街道信息(同：街道信息列表)
+    //public static String  = ROOT + "/XXX";
+    //电子围栏列表
+    public static String GET_FENCES = ROOT + "/getFences";
+    //电子围栏详情
+    public static String GET_FENCE_DETAIL = ROOT + "/getFenceDetail";
 
     /**
-     * 业务模块接口
+     * 通讯录接口
      */
-    //获取套餐
-    public static String GET_PACKAGES = ROOT + "/outIn/queryPackages.do";
-    //购买套餐
-    public static String BUY_PACKAGE = ROOT + "/outIn/buyPackage.do";
-    //支付宝购买套餐
-    public static String BUY_ALI = ROOT + "/outIn/buyByAlipay.do";
-    //微信购买套餐
-    public static String BUY_WX = ROOT + "/outIn/buyByWeChartInfo.do";
+    //通讯录
+    public static String ADDRESS_BOOKS = ROOT + "/addressBooks";
+    //通讯录详情
+    public static String ADDRESS_BOOK_DETAIL = ROOT + "/addressBookDetail";
 
     /**
-     * 我的模块接口
+     * 站点查询接口
      */
-    //支付宝充值
-    public static String RECHARGE_WALLET = ROOT + "/outIn/addRechargeInfo.do";
-    // 微信充值
-    public static String RECHARGE_WX = ROOT + "/outIn/addWeChartInfo.do";
-    //钱包明细
-    public static String WALLET_DETAIL = ROOT + "/outIn/queryOrderInfo.do";
-    //检查版本
-    public static String CHECK_VERSION = ROOT + "/outIn/checkVersion.do";
-    //关于我们
-    public static String ABOUT_US = ROOT + "/outIn/aboutUs.do";
-    //帮助
-    public static String HELP = ROOT + "/outIn/useHelp.do";
-    //意见反馈
-    public static String FEEDBACK = ROOT + "/outIn/addComplaint.do";
-    //用户协议说明
-    public static String USER_PROTOCOL = ROOT + "/outIn/protocolDetail.do";
-    //我的消息
-    public static String MY_MSG = ROOT + "/outIn/myClientPush.do";
-    //获取用户信息
-    public static String GET_USER_INFO = ROOT + "/outIn/userGetInfo.do";
-    //获取分享链接
-    public static String GET_SHARE = ROOT + "/outIn/clientShare.do";
+    //街道信息列表
+    public static String GET_STREETS = ROOT + "/getStreets";
+    //停车站点列表
+    public static String GET_STATIONS = ROOT + "/getStations";
+    //停车站点信息
+    public static String GET_STATION_DETAIL = ROOT + "/getStationDetail";
 
-    /*
-    * 上传图片*/
-    public static String UPLOAD = ROOT + "/outIn/upload.do";
+    /**
+     * 巡检信息接口
+     */
+    //巡检信息列表
+    public static String GET_INSPECTIONS = ROOT + "/getInspections";
+    //巡检历史详情
+    public static String GET_INSPECTIONS_DETAIL = ROOT + "/getInspectDetail";
+    //巡检上报违规类型
+    public static String GET_INSPECTIONS_TYPES = ROOT + "/getDictionaryTypes";
+    //巡检上报
+    public static String ADD_INSPECT = ROOT + "/addInspect";
+    //巡检图片上传
+    public static String ADD_INSPECT_IMAGE = ROOT + "/addInspectImage";
+
+    /**
+     * 任务单接口
+     */
+    //任务单列表
+    public static String GET_TASKS = ROOT + "/getTasks";
+    //任务单详情
+    public static String GET_TASK_DETAIL = ROOT + "/getTaskDetail";
+    //任务处理反馈
+    public static String ADD_TASK_RESPOSE = ROOT + "/addTaskResponse";
+    //任务处理图片上传
+    public static String ADD_TASK_DISPOSE_IMAGE = ROOT + "/addTaskDisposeImage";
+
+    /**
+     * 工作动态接口
+     */
+    //工作动态列表
+    public static String GET_APP_INFOS = ROOT + "/getAppInfos";
+    // 工作动态详情
+    public static String GET_APP_INFO_DETAIL = ROOT + "/getAppInfoDetail";
+
+    /**
+     * 营运分析接口
+     */
+    //营运分析
+    public static String GET_ANALYZES = ROOT + "/getAnalyzes";
+
+    /**
+     * 告警信息接口
+     */
+    //告警信息列表
+    public static String GET_WARNINGS = ROOT + "/getWarnings";
+    //告警信息详情
+    public static String GET_WARN_DETAIL = ROOT + "/getWarnDetail";
 }
