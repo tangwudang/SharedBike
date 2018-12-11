@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'mtj-circle-plugin'
 
 android {
     compileSdkVersion 26
@@ -28,4 +29,13 @@ dependencies {
     implementation 'me.jessyan:autosize:1.1.0'
     implementation 'org.xutils:xutils:3.5.0'
     implementation files('libs/fastjson-1.2.54.jar')
+}
+
+MtjCirclePluginConfig {
+    // 设置appkey
+    appkey = '368be1e043'
+    // 设置debug 开关，如果需要查看日志则打开开关，为避免影响性能建议上线前关闭（设置为false）
+    debug = false
+    // 默认启动此插件，如果开发者不需要可以禁用（设置为false）
+    enabled = true
 }

@@ -11,7 +11,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
         //classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-
+        //百度统计零埋点插件库
+        classpath 'com.baidu.mobstat:mtj-circle-plugin:latest.integration'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

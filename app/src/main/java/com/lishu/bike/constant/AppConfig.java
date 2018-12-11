@@ -19,4 +19,14 @@ public class AppConfig {
      * 按照日志级别由低到高分别是1.Verbose、2.Debug、3.Info、4.Warning、5.Error。
      */
     public static final int LOG_LEVEL = 0;
+
+    /**
+     * 数据库版本号
+     */
+    public static final int DB_VERSION = 0;
+
+    /**
+     * 数据库名称
+     */
+    public static final String DB_NAME = "bike.db";
 }

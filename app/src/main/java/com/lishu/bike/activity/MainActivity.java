@@ -6,7 +6,13 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.lishu.bike.R;
+import com.lishu.bike.app.BaseApplication;
+import com.lishu.bike.constant.AppConfig;
+import com.lishu.bike.constant.UserPreferences;
+import com.lishu.bike.db.DBHelper;
+import com.lishu.bike.utils.FileUtil;
 import com.lishu.bike.utils.ToastUtil;
+import java.io.File;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private long exitTime = 0;
@@ -15,6 +21,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initDB();
+    }
+
+    private void initDB() {
+        //如果数据库有更新，则先删除原来的数据库
+        if (AppConfig.DB_VERSION > UserPreferences.getInstance().getDbVersion()) {
+            String dbPath = getDatabasePath(AppConfig.DB_NAME).getPath();
+            boolean isSuccess = FileUtil.deleteFile(new File(dbPath));
+            if (isSuccess) {
+                UserPreferences.getInstance().setDbVersion(AppConfig.DB_VERSION);
+            } else {
+                ToastUtil.showShort("数据库升级失败！");
+            }
+        }
+        //初始化数据库
+        DBHelper.instance().open(BaseApplication.getAppContext());
     }
 
     @Override
