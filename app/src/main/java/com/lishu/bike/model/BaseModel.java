@@ -3,27 +3,27 @@ package com.lishu.bike.model;
 
 public class BaseModel {
 
-    private String code;
-    private String desc;
+    private String resCode;
+    private String resMsg;
 
-    public String getCode() {
-        return code;
+    public String getResCode() {
+        return resCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setResCode(String resCode) {
+        this.resCode = resCode;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getResMsg() {
+        return resMsg;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setResMsg(String resMsg) {
+        this.resMsg = resMsg;
     }
 
     public boolean success(){
-        if (code != null && (code.equalsIgnoreCase("000000") || code.equalsIgnoreCase("0"))){
+        if (resCode != null && (resCode.equalsIgnoreCase("000000") || resCode.equalsIgnoreCase("0"))){
             return true;
         }
 

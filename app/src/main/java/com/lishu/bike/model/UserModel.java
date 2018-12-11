@@ -2,98 +2,88 @@ package com.lishu.bike.model;
 
 
 public class UserModel extends BaseModel {
+    private String userId;
+    private UserBean dataList;
 
-    private UserBean data;
-
-    public UserBean getData() {
-        return data;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setData(UserBean data) {
-        this.data = data;
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public UserBean getDataList() {
+        return dataList;
+    }
+
+    public void setDataList(UserBean dataList) {
+        this.dataList = dataList;
     }
 
     public class UserBean{
-        private String userId;
-        private String userName;//实际姓名
-        private String phoneNum;//电话号码，也是注册账号
-        private String headUrl;
-        private String companyType;
-        private String companyName;
-        private String accountBalance;
-        private String remainNoticeCount;
-        private String invitecode;
+        private int id;
+        private String no;//编号
+        private String name;//姓名
+        private int age;//年龄
+        private String phone;//手机号
+        private String address;//住址
+        private String url;//头像URL
 
-        public String getUserId() {
-            return userId;
+        public int getId() {
+            return id;
         }
 
-        public void setUserId(String userId) {
-            this.userId = userId;
+        public void setId(int id) {
+            this.id = id;
         }
 
-        public String getUserName() {
-            return userName;
+        public String getNo() {
+            return no;
         }
 
-        public void setUserName(String userName) {
-            this.userName = userName;
+        public void setNo(String no) {
+            this.no = no;
         }
 
-        public String getPhoneNum() {
-            return phoneNum;
+        public String getName() {
+            return name;
         }
 
-        public void setPhoneNum(String phoneNum) {
-            this.phoneNum = phoneNum;
+        public void setName(String name) {
+            this.name = name;
         }
 
-        public String getHeadUrl() {
-            return headUrl;
+        public int getAge() {
+            return age;
         }
 
-        public void setHeadUrl(String headUrl) {
-            this.headUrl = headUrl;
+        public void setAge(int age) {
+            this.age = age;
         }
 
-        public String getCompanyType() {
-            return companyType;
+        public String getPhone() {
+            return phone;
         }
 
-        public void setCompanyType(String companyType) {
-            this.companyType = companyType;
+        public void setPhone(String phone) {
+            this.phone = phone;
         }
 
-        public String getCompanyName() {
-            return companyName;
+        public String getAddress() {
+            return address;
         }
 
-        public void setCompanyName(String companyName) {
-            this.companyName = companyName;
+        public void setAddress(String address) {
+            this.address = address;
         }
 
-        public String getAccountBalance() {
-            return accountBalance;
+        public String getUrl() {
+            return url;
         }
 
-        public void setAccountBalance(String accountBalance) {
-            this.accountBalance = accountBalance;
-        }
-
-        public String getRemainNoticeCount() {
-            return remainNoticeCount;
-        }
-
-        public void setRemainNoticeCount(String remainNoticeCount) {
-            this.remainNoticeCount = remainNoticeCount;
-        }
-
-        public String getInvitecode() {
-            return invitecode;
-        }
-
-        public void setInvitecode(String invitecode) {
-            this.invitecode = invitecode;
+        public void setUrl(String url) {
+            this.url = url;
         }
     }
 }
