@@ -1,14 +1,45 @@
 package com.lishu.bike.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.lishu.bike.R;
 import com.lishu.bike.interf.IActivity;
+import com.lishu.bike.utils.SystemUtil;
+import com.lishu.bike.utils.ToastUtil;
 
-public class BaseActivity extends AppCompatActivity implements IActivity {
+public abstract class BaseActivity extends AppCompatActivity implements IActivity {
     private ProgressDialog progressDialog;
 
-    /*protected void setTopTitle(String title) {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+    }
+
+    @Override
+    public void initView() {
+    }
+
+    @Override
+    public void initData() {
+    }
+
+    @Override
+    public void initEvent() {
+    }
+
+    protected void setTopTitle(String title) {
         TextView titleView = (TextView) findViewById(R.id.title);
         if (titleView != null) {
             titleView.setText(title);
@@ -84,7 +115,7 @@ public class BaseActivity extends AppCompatActivity implements IActivity {
         if (right != null) {
             right.setVisibility(View.GONE);
         }
-    }*/
+    }
 
     protected void show(String msg) {
         if (progressDialog == null) {
@@ -112,15 +143,47 @@ public class BaseActivity extends AppCompatActivity implements IActivity {
         }
     }
 
-    @Override
-    public void initView() {
+    protected void checkPermissions(String[] permissions, int requestCode) {
+        if (permissions == null) {
+            return;
+        }
+
+        for (int i = 0; i < permissions.length; i++) {
+            if (!(SystemUtil.selfPermissionGranted(this, permissions[i]))) {
+                ActivityCompat.requestPermissions(this, permissions, requestCode);
+                return;
+            }
+        }
+
+        onRequestPermissionsGranted(requestCode);
     }
 
     @Override
-    public void initData() {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            onRequestPermissionsGranted(requestCode);
+        } else {
+            onRequestPermissionsDenied(requestCode);
+        }
+    }
+
+    protected void onRequestPermissionsGranted(int requestCode) {
+    }
+
+    protected void onRequestPermissionsDenied(int requestCode) {
+        ToastUtil.showShort("无法获取相关权限！");
     }
 
     @Override
-    public void initEvent() {
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 }

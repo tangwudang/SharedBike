@@ -1,10 +1,9 @@
 package com.lishu.bike.constant;
 
 /**
- * 常量
+ * 系统配置常量
  */
-
-public class AppConf {
+public class AppConfig {
     /**
      * 是否为测试版本
      */
