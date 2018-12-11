@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:paddingLeft="80mm"
+    android:paddingRight="80mm">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="100mm"
+        android:layout_marginTop="170mm"
+        android:src="@drawable/ic_launcher_background" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="90mm"
+        android:background="@drawable/edittext_bgd"
+        android:gravity="center"
+        android:hint="请输入手机号"
+        android:imeOptions="actionNext"
+        android:inputType="phone"
+        android:maxLength="15"
+        android:textColor="@color/white"
+        android:textColorHint="#9d9d9d"
+        android:textSize="30mm" />
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="90mm"
+        android:layout_marginTop="26mm"
+        android:background="@drawable/edittext_bgd"
+        android:gravity="center"
+        android:hint="请输入密码"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:textColor="@color/white"
+        android:textColorHint="#9d9d9d"
+        android:textSize="30mm" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="90mm"
+        android:layout_marginTop="26mm"
+        android:background="@drawable/button_bgd"
+        android:text="登    录"
+        android:textColor="@color/white"
+        android:textSize="30mm" />
+</LinearLayout>   

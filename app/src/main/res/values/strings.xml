@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">共享单车</string>
+
+    <string name="fence">电子围栏</string>
+    <string name="station">站点查询</string>
+    <string name="address_book">通讯录</string>
+    <string name="inspection">巡检信息</string>
+    <string name="task">任务单</string>
+    <string name="app_info">工作动态</string>
+    <string name="analyzes">运营分析</string>
+    <string name="warnings">警告信息</string>
+    <string name="settings">设置</string>
 </resources>

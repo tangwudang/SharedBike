@@ -9,34 +9,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lishu.bike.R;
-import com.lishu.bike.interf.IActivity;
 import com.lishu.bike.utils.SystemUtil;
 import com.lishu.bike.utils.ToastUtil;
 
-public abstract class BaseActivity extends AppCompatActivity implements IActivity {
+public abstract class BaseActivity extends AppCompatActivity{
     private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-    }
-
-    @Override
-    public void initView() {
-    }
-
-    @Override
-    public void initData() {
-    }
-
-    @Override
-    public void initEvent() {
     }
 
     protected void setTopTitle(String title) {

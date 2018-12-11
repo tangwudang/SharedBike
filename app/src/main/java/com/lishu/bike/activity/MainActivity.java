@@ -1,14 +1,14 @@
 package com.lishu.bike.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.widget.GridView;
+import android.view.View;
 
 import com.lishu.bike.R;
 import com.lishu.bike.utils.ToastUtil;
 
-public class MainActivity extends BaseActivity {
-    private GridView gridView;
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private long exitTime = 0;
 
     @Override
@@ -18,14 +18,39 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
-        gridView = (GridView) findViewById(R.id.gridView);
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.fence_layout:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.station_layout:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.address_book_layout:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.inspection_layout:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.task_layout:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.app_info_layout:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.analyzes_layout:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.warnings_layout:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.settings_layout:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            default:
+                break;
+        }
     }
-
-    @Override
-    public void initEvent() {
-    }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -34,7 +59,7 @@ public class MainActivity extends BaseActivity {
                 ToastUtil.showShort("再按一次退出");
                 exitTime = System.currentTimeMillis();
             } else {
-                this.finish();
+                finish();
             }
             return false;
         }

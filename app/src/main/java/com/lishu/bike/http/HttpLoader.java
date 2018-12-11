@@ -24,6 +24,7 @@ import com.lishu.bike.model.UserModel;
 import com.lishu.bike.model.VersionModel;
 import com.lishu.bike.model.WarnDetailModel;
 import com.lishu.bike.model.WarnModel;
+import com.lishu.bike.utils.MD5;
 
 import org.xutils.common.util.KeyValue;
 import org.xutils.http.RequestParams;
@@ -43,7 +44,7 @@ public class HttpLoader extends HttpBase {
     public static void login(String username, String password, IResponseListener listener) {
         JSONObject request = new JSONObject();
         request.put("username", username);
-        request.put("password", password);
+        request.put("password", new MD5().getMd5(password));
         RequestParams params = getParams(request, HttpAddress.LOGIN);
 
         doPost(params, UserModel.class, listener);
@@ -54,8 +55,8 @@ public class HttpLoader extends HttpBase {
     //修改密码
     public static void changePassword(String oldPassword, String newPassword, IResponseListener listener) {
         JSONObject request = new JSONObject();
-        request.put("oldPassword", oldPassword);
-        request.put("newPassword", newPassword);
+        request.put("oldPassword", new MD5().getMd5(oldPassword));
+        request.put("newPassword", new MD5().getMd5(newPassword));
         RequestParams params = getParams(request, HttpAddress.CHANGE_PASSWORD);
 
         doPost(params, BaseModel.class, listener);
