@@ -3,6 +3,8 @@ package com.lishu.bike.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.baidu.mapapi.CoordType;
+import com.baidu.mapapi.SDKInitializer;
 import com.lishu.bike.constant.AppConfig;
 import com.lishu.bike.constant.UserPreferences;
 
@@ -29,6 +31,11 @@ public class BaseApplication extends Application {
             // 是否输出debug日志, 开启debug会影响性能.
             x.Ext.setDebug(true);
         }
+        // 百度地图初始化
+        SDKInitializer.initialize(this);
+        // 百度地图支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.
+        // 包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。
+        SDKInitializer.setCoordType(CoordType.BD09LL);
     }
 
     public static Context getAppContext() {
