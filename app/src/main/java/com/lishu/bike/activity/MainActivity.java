@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fence_layout:
-                startActivity(new Intent(this, FenceActivity.class));
+                startActivity(new Intent(this, FenceStreetActivity.class));
                 break;
             case R.id.station_layout:
                 startActivity(new Intent(this, LoginActivity.class));

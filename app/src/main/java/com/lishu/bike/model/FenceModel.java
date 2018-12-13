@@ -1,6 +1,7 @@
 package com.lishu.bike.model;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 public class FenceModel extends BaseModel {
@@ -15,9 +16,18 @@ public class FenceModel extends BaseModel {
         this.dataList = dataList;
     }
 
-    public class FenceBean{
+    public class FenceBean implements Serializable {
         private int id;
         private String fenceName;
+        private double latitude;//纬度
+        private double longitude;//经度
+
+        public FenceBean(int id, String streetName, double latitude, double longitude) {
+            this.id = id;
+            this.fenceName = streetName;
+            this.latitude = latitude;
+            this.longitude = longitude;
+        }
 
         public int getId() {
             return id;
@@ -33,6 +43,22 @@ public class FenceModel extends BaseModel {
 
         public void setFenceName(String fenceName) {
             this.fenceName = fenceName;
+        }
+
+        public double getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(double latitude) {
+            this.latitude = latitude;
+        }
+
+        public double getLongitude() {
+            return longitude;
+        }
+
+        public void setLongitude(double longitude) {
+            this.longitude = longitude;
         }
     }
 }

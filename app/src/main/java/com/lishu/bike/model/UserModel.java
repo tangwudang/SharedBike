@@ -29,6 +29,7 @@ public class UserModel extends BaseModel {
         private String phone;//手机号
         private String address;//住址
         private String url;//头像URL
+        private String organizationName;//机构名
 
         public int getId() {
             return id;
@@ -84,6 +85,14 @@ public class UserModel extends BaseModel {
 
         public void setUrl(String url) {
             this.url = url;
+        }
+
+        public String getOrganizationName() {
+            return organizationName;
+        }
+
+        public void setOrganizationName(String organizationName) {
+            this.organizationName = organizationName;
         }
     }
 }

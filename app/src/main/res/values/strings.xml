@@ -10,4 +10,7 @@
     <string name="analyzes">运营分析</string>
     <string name="warnings">警告信息</string>
     <string name="settings">设置</string>
+
+    <string name="please_check_network">请检查网络是否正常</string>
+    <string name="get_data_fail">获取数据失败：</string>
 </resources>

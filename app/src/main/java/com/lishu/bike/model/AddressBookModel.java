@@ -18,6 +18,7 @@ public class AddressBookModel extends BaseModel {
         private int id;
         private String name;//姓名
         private String url;//头像URL
+        private String organizationName;//机构名
 
         public int getId() {
             return id;
@@ -41,6 +42,14 @@ public class AddressBookModel extends BaseModel {
 
         public void setUrl(String url) {
             this.url = url;
+        }
+
+        public String getOrganizationName() {
+            return organizationName;
+        }
+
+        public void setOrganizationName(String organizationName) {
+            this.organizationName = organizationName;
         }
     }
 }

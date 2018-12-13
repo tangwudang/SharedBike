@@ -47,8 +47,8 @@ public class BaseApplication extends Application {
                 // 将 dp 的支持关闭, 彻底隔离修改 density 所造成的不良影响
                 .setSupportDP(false)
                 // 如果关闭对 sp 的支持, 在布局时就应该使用副单位填写字体的尺寸
-                // 如果开启 sp, 对其他三方库控件影响不大, 也可以不关闭对 sp 的支持, 这里我就继续开启 sp
-                //.setSupportSP(false)
+                // 如果开启 sp, 对其他三方库和系统控件影响不大, 也可以不关闭对 sp 的支持
+                .setSupportSP(false)
                 .setSupportSubunits(Subunits.MM);
     }
 }
