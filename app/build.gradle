@@ -29,6 +29,7 @@ dependencies {
     implementation 'me.jessyan:autosize:1.1.0'
     implementation 'org.xutils:xutils:3.5.0'
     implementation files('libs/fastjson-1.2.54.jar')
+    implementation files('libs/BaiduLBS_Android.jar')
 }
 
 MtjCirclePluginConfig {
