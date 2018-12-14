@@ -1,11 +1,13 @@
 package com.lishu.bike.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
 import com.lishu.bike.R;
+import com.lishu.bike.task.Upgrade;
 import com.lishu.bike.utils.ToastUtil;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -16,7 +18,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        checkPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_PHONE_STATE,
+                "com.android.launcher.permission.READ_SETTINGS",
+                "com.android.launcher.permission.WRITE_SETTINGS"}, 100);
+    }
 
+    protected void onRequestPermissionsGranted(int requestCode) {
+        if (requestCode == 100) {
+            new Upgrade(this, false).updateVersion();
+        }
     }
 
     @Override
@@ -26,7 +41,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(this, FenceStreetActivity.class));
                 break;
             case R.id.station_layout:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, StationListActivity.class));
                 break;
             case R.id.address_book_layout:
                 startActivity(new Intent(this, LoginActivity.class));
@@ -47,7 +62,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.settings_layout:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, SettingActivity.class));
                 break;
             default:
                 break;

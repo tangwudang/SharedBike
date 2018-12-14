@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/layout_title" />
+
+    <ListView
+        android:id="@+id/street_lv"
+        android:layout_below="@id/title_layout"
+        android:layout_width="300mm"
+        android:layout_height="wrap_content" />
+
+    <ListView
+        android:id="@+id/station_lv"
+        android:layout_below="@id/title_layout"
+        android:layout_toRightOf="@id/street_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

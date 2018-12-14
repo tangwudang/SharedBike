@@ -51,8 +51,36 @@
             android:name=".activity.FenceListActivity"
             android:screenOrientation="portrait">
         </activity>
+        <!-- ================ 站点查询 ================ -->
+        <activity
+            android:name=".activity.StationListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.StationDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- ================== 设置 ================= -->
+        <activity
+            android:name=".activity.SettingActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.ChangePwdActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.lishu.bike.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <!--元数据-->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="BtW6AatvEjp7qSHM38WFvvSRm6iBf26j" />
