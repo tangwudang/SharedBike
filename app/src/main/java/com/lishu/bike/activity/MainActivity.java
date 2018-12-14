@@ -18,6 +18,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initView();
+
         checkPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_NETWORK_STATE,
                 Manifest.permission.ACCESS_WIFI_STATE,
@@ -26,6 +28,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 Manifest.permission.READ_PHONE_STATE,
                 "com.android.launcher.permission.READ_SETTINGS",
                 "com.android.launcher.permission.WRITE_SETTINGS"}, 100);
+    }
+
+    private void initView() {
+        setTopTitle("首页");
     }
 
     protected void onRequestPermissionsGranted(int requestCode) {
@@ -47,19 +53,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.inspection_layout:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, InspectListActivity.class));
                 break;
             case R.id.task_layout:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, TaskListActivity.class));
                 break;
             case R.id.app_info_layout:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, AppInfoListActivity.class));
                 break;
             case R.id.analyzes_layout:
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.warnings_layout:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, WarnListActivity.class));
                 break;
             case R.id.settings_layout:
                 startActivity(new Intent(this, SettingActivity.class));

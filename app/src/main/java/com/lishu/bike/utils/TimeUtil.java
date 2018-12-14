@@ -12,7 +12,7 @@ import java.util.Date;
 public class TimeUtil {
 
     public static String getCurDatetime() {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd");//设置日期格式2017-02-07 10:20:35
+        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");//设置日期格式2017-02-07 10:20:35
 
         return df.format(new Date());
     }
@@ -41,6 +41,22 @@ public class TimeUtil {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = simpleDateFormat.parse(s);
         return String.valueOf(date.getTime());
+    }
+
+    /**
+     * 日期格式字符串转换成时间戳
+     * @param format 如：yyyy-MM-dd HH:mm:ss
+     * @return
+     */
+    public static String date2TimeStamp(String date_str, String format){
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            //return String.valueOf(sdf.parse(date_str).getTime()/1000);
+            return String.valueOf(sdf.parse(date_str).getTime());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     // 整数(秒数)转换为时分秒格式(xx:xx:xx)

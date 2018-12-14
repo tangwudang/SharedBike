@@ -22,7 +22,7 @@ public class SettingActivity extends BaseActivity{
     }
 
     private void initView() {
-        setTopTitle("设置");
+        setTopTitle(R.string.settings);
     }
 
     private void initEvent() {

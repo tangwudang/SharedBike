@@ -37,7 +37,7 @@ public class StationListActivity extends BaseActivity {
     }
 
     private void initView() {
-        setTopTitle("站点查询");
+        setTopTitle(R.string.station);
 
         mStreetListView = findViewById(R.id.street_lv);
         mStationListView = findViewById(R.id.station_lv);

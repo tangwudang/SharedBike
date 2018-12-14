@@ -16,10 +16,19 @@ public class TaskModel extends BaseModel {
     }
 
     public class TaskBean{
+        private int id;
         private String taskTime;//任务时间 ，yyyyMMddHHmmss,
         private String taskTitle;//任务标题，
         private String taskType;//任务类型，
         private String resultStatus;//处理状态(0:未处理，1;已处理)
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
 
         public String getTaskTime() {
             return taskTime;
