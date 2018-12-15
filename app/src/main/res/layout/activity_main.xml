@@ -10,14 +10,16 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="240mm"
+        android:layout_height="452mm"
         android:scaleType="fitXY"
         android:src="@drawable/banner" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40mm"
+        android:layout_marginTop="70mm"
+        android:layout_marginLeft="@dimen/home_margin_left_right"
+        android:layout_marginRight="@dimen/home_margin_left_right"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:baselineAligned="false">
@@ -32,14 +34,17 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
-                android:layout_marginBottom="20mm"
+                android:layout_marginBottom="@dimen/home_image_margin_bottom"
+                android:scaleType="fitCenter"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/home_icon_fence" />
             <TextView
+                android:id="@+id/fence_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/fence"
+                android:textColor="@color/black"
                 android:textSize="@dimen/home_page_text_size" />
         </LinearLayout>
 
@@ -53,14 +58,17 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
-                android:layout_marginBottom="20mm"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="@dimen/home_image_margin_bottom"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/home_icon_station" />
             <TextView
+                android:id="@+id/station_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/station"
+                android:textColor="@color/black"
                 android:textSize="@dimen/home_page_text_size" />
         </LinearLayout>
 
@@ -74,14 +82,17 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
-                android:layout_marginBottom="20mm"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="@dimen/home_image_margin_bottom"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/home_icon_book" />
             <TextView
+                android:id="@+id/book_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/address_book"
+                android:textColor="@color/black"
                 android:textSize="@dimen/home_page_text_size" />
         </LinearLayout>
     </LinearLayout>
@@ -89,7 +100,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40mm"
+        android:layout_marginTop="@dimen/home_layout_line_margin"
+        android:layout_marginLeft="@dimen/home_margin_left_right"
+        android:layout_marginRight="@dimen/home_margin_left_right"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -103,14 +116,17 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
-                android:layout_marginBottom="20mm"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="@dimen/home_image_margin_bottom"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/home_icon_inspect" />
             <TextView
+                android:id="@+id/inspect_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/inspection"
+                android:textColor="@color/black"
                 android:textSize="@dimen/home_page_text_size" />
         </LinearLayout>
 
@@ -124,14 +140,17 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
-                android:layout_marginBottom="20mm"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="@dimen/home_image_margin_bottom"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/home_icon_task" />
             <TextView
+                android:id="@+id/task_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/task"
+                android:textColor="@color/black"
                 android:textSize="@dimen/home_page_text_size" />
         </LinearLayout>
 
@@ -145,14 +164,17 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
-                android:layout_marginBottom="20mm"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="@dimen/home_image_margin_bottom"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/home_icon_appinfo" />
             <TextView
+                android:id="@+id/appinfo_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/app_info"
+                android:textColor="@color/black"
                 android:textSize="@dimen/home_page_text_size" />
         </LinearLayout>
     </LinearLayout>
@@ -160,7 +182,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40mm"
+        android:layout_marginTop="@dimen/home_layout_line_margin"
+        android:layout_marginLeft="@dimen/home_margin_left_right"
+        android:layout_marginRight="@dimen/home_margin_left_right"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -174,14 +198,17 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
-                android:layout_marginBottom="20mm"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="@dimen/home_image_margin_bottom"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/home_icon_analyze" />
             <TextView
+                android:id="@+id/analyze_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/analyzes"
+                android:textColor="@color/black"
                 android:textSize="@dimen/home_page_text_size" />
         </LinearLayout>
 
@@ -195,14 +222,17 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
-                android:layout_marginBottom="20mm"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="@dimen/home_image_margin_bottom"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/home_icon_warn" />
             <TextView
+                android:id="@+id/warn_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/warnings"
+                android:textColor="@color/black"
                 android:textSize="@dimen/home_page_text_size" />
         </LinearLayout>
 
@@ -216,14 +246,17 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
-                android:layout_marginBottom="20mm"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="@dimen/home_image_margin_bottom"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/home_icon_setting" />
             <TextView
+                android:id="@+id/setting_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/settings"
+                android:textColor="@color/black"
                 android:textSize="@dimen/home_page_text_size" />
         </LinearLayout>
     </LinearLayout>

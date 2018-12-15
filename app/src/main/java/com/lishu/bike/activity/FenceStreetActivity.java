@@ -35,8 +35,7 @@ public class FenceStreetActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fence);
 
-        mMapView = findViewById(R.id.mapView);
-        mBaiduMap = mMapView.getMap();
+        initView();
 
         // 定位使用者位置
         //。。。。
@@ -46,6 +45,12 @@ public class FenceStreetActivity extends BaseActivity {
         getStreets();
         // Marker点击事件监听
         setMarkerListener();
+    }
+
+    private void initView() {
+        setTopTitle(R.string.fence);
+        mMapView = findViewById(R.id.mapView);
+        mBaiduMap = mMapView.getMap();
     }
 
     private void setMapCenter() {
@@ -84,7 +89,7 @@ public class FenceStreetActivity extends BaseActivity {
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
         List<StreetModel.StreetBean> streetList = new ArrayList<>();
         streetList.add(new StreetModel().new StreetBean(1, "东南大学", 31.89493,118.828256));
-        streetList.add(new StreetModel().new StreetBean(2, "小龙湾地铁站", 31.935572,118.839467));
+        streetList.add(new StreetModel().new StreetBean(2, "小龙湾", 31.935572,118.839467));
         streetList.add(new StreetModel().new StreetBean(3, "南京航空航天大学", 31.94458,118.799079));
         addMapMarkers(streetList);
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@

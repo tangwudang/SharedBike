@@ -38,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         }
     }
 
-    protected void setTopLeft(int drawableId) {
+    /*protected void setTopLeft(int drawableId) {
         View left = findViewById(R.id.title_left);
         if (left != null) {
             if (drawableId != -1) {
@@ -47,6 +47,19 @@ public abstract class BaseActivity extends AppCompatActivity{
             } else {
                 left.setVisibility(View.GONE);
             }
+        }
+    }
+    protected void setTopLeftVisible() {
+        View right = findViewById(R.id.title_left);
+        if (right != null) {
+            right.setVisibility(View.VISIBLE);
+        }
+    }*/
+
+    protected void setTopLeftGone() {
+        View right = findViewById(R.id.title_left);
+        if (right != null) {
+            right.setVisibility(View.GONE);
         }
     }
 
@@ -83,20 +96,6 @@ public abstract class BaseActivity extends AppCompatActivity{
 
     protected void setTopRightGone() {
         View right = findViewById(R.id.title_right);
-        if (right != null) {
-            right.setVisibility(View.GONE);
-        }
-    }
-
-    protected void setTopLeftVisible() {
-        View right = findViewById(R.id.title_left);
-        if (right != null) {
-            right.setVisibility(View.VISIBLE);
-        }
-    }
-
-    protected void setTopLeftGone() {
-        View right = findViewById(R.id.title_left);
         if (right != null) {
             right.setVisibility(View.GONE);
         }

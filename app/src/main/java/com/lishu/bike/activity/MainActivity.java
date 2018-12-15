@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.lishu.bike.R;
 import com.lishu.bike.task.Upgrade;
@@ -12,6 +13,10 @@ import com.lishu.bike.utils.ToastUtil;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private long exitTime = 0;
+
+    /*private final int PRESSED_TEXT_COLOR = 0xff000000;
+    private final int NORMAL_TEXT_COLOR = 0xff000000;
+    private TextView fence_tv,station_tv,book_tv,inspect_tv,task_tv,appinfo_tv,analyze_tv,warn_tv,setting_tv;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void initView() {
         setTopTitle("首页");
+        setTopLeftGone();
+
+       /* fence_tv = findViewById(R.id.fence_tv);
+        station_tv = findViewById(R.id.station_tv);
+        book_tv = findViewById(R.id.book_tv);
+        inspect_tv = findViewById(R.id.inspect_tv);
+        task_tv = findViewById(R.id.task_tv);
+        appinfo_tv = findViewById(R.id.appinfo_tv);
+        analyze_tv = findViewById(R.id.analyze_tv);
+        warn_tv = findViewById(R.id.warn_tv);
+        setting_tv = findViewById(R.id.setting_tv);*/
     }
 
     protected void onRequestPermissionsGranted(int requestCode) {
@@ -74,6 +90,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
         }
     }
+
+    /*private void resetTextColor(){
+        fence_tv.setTextColor(NORMAL_TEXT_COLOR);
+        station_tv.setTextColor(NORMAL_TEXT_COLOR);
+        book_tv.setTextColor(NORMAL_TEXT_COLOR);
+        inspect_tv.setTextColor(NORMAL_TEXT_COLOR);
+        task_tv.setTextColor(NORMAL_TEXT_COLOR);
+        appinfo_tv.setTextColor(NORMAL_TEXT_COLOR);
+        analyze_tv.setTextColor(NORMAL_TEXT_COLOR);
+        warn_tv.setTextColor(NORMAL_TEXT_COLOR);
+        setting_tv.setTextColor(NORMAL_TEXT_COLOR);
+    }*/
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

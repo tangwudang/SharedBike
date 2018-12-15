@@ -6,6 +6,8 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
+    <include layout="@layout/layout_title" />
+
     <com.baidu.mapapi.map.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"

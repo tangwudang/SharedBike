@@ -36,8 +36,7 @@ public class FenceListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fence);
 
-        mMapView = findViewById(R.id.mapView);
-        mBaiduMap = mMapView.getMap();
+        initView();
 
         StreetModel.StreetBean street = (StreetModel.StreetBean)getIntent().getExtras().get("street");
 
@@ -47,6 +46,12 @@ public class FenceListActivity extends BaseActivity {
         getFences(street.getId());
         // Marker点击事件监听
         setMarkerListener();
+    }
+
+    private void initView() {
+        setTopTitle("站点信息");
+        mMapView = findViewById(R.id.mapView);
+        mBaiduMap = mMapView.getMap();
     }
 
     private void setMapCenter(double latitude, double longitude) {
@@ -85,8 +90,8 @@ public class FenceListActivity extends BaseActivity {
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
         List<FenceModel.FenceBean> fenceList = new ArrayList<>();
         fenceList.add(new FenceModel().new FenceBean(1, "东南大学围栏", 31.89493,118.828256));
-        fenceList.add(new FenceModel().new FenceBean(2, "小龙湾地铁站围栏", 31.935572,118.839467));
-        fenceList.add(new FenceModel().new FenceBean(3, "南京航空航天大学围栏", 31.94458,118.799079));
+        fenceList.add(new FenceModel().new FenceBean(2, "小龙湾地铁站小龙湾围栏", 31.935572,118.839467));
+        fenceList.add(new FenceModel().new FenceBean(3, "南京航空航天大学航空航天围栏", 31.94458,118.799079));
         addMapMarkers(fenceList);
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
