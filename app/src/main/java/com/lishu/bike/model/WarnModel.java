@@ -17,9 +17,16 @@ public class WarnModel extends BaseModel {
 
     public class WarnBean{
         private int id;
-        private String warnTime;//告警时间 ，yyyyMMddHHmmss,
         private String warnTitle;//任务标题，
+        private String warnTime;//告警时间 ，yyyyMMddHHmmss,
         private String askType;//告警类型
+
+        public WarnBean(int id, String warnTitle, String warnTime, String askType) {
+            this.id = id;
+            this.warnTitle = warnTitle;
+            this.warnTime = warnTime;
+            this.askType = askType;
+        }
 
         public int getId() {
             return id;

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- 首页  -->
-    <dimen name="home_page_text_size">34mm</dimen>
+    <dimen name="home_page_text_size">32mm</dimen>
     <dimen name="home_image_margin_bottom">20mm</dimen>
     <dimen name="home_margin_left_right">30mm</dimen>
     <dimen name="home_layout_line_margin">75mm</dimen>

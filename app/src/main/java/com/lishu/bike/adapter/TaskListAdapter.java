@@ -1,4 +1,4 @@
-package com.lishu.bike.adatper;
+package com.lishu.bike.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.lishu.bike.R;
 import com.lishu.bike.model.TaskModel;
+import com.lishu.bike.utils.TimeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,8 @@ public class TaskListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             view = mInflater.inflate(R.layout.adapter_common_list, null);
             viewHolder.content = view.findViewById(R.id.content);
+            viewHolder.type = view.findViewById(R.id.type);
+            viewHolder.time = view.findViewById(R.id.time);
 
             view.setTag(viewHolder);
         } else {
@@ -57,11 +60,25 @@ public class TaskListAdapter extends BaseAdapter {
         }
       
         viewHolder.content.setText(taskList.get(position).getTaskTitle());
+        TaskModel.TaskBean taskBean = taskList.get(position);
+        viewHolder.content.setText(taskBean.getTaskTitle());
+        String taskType = taskBean.getTaskType();
+        if("1".equals(taskType)){
+            viewHolder.type.setText("员工风采");
+        }else if("2".equals(taskType)){
+            viewHolder.type.setText("会议通知");
+        }
+        String taskTime = TimeUtil.getMessageTime(taskBean.getTaskTime());
+        if(taskTime != null) {
+            viewHolder.time.setText(taskTime);
+        }
 
         return view;
     }
 
     class ViewHolder {
         TextView content;
+        TextView type;
+        TextView time;
     }
 }

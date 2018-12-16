@@ -20,7 +20,6 @@
     <TextView
         android:id="@+id/type"
         app:layout_constraintTop_toBottomOf="@id/content"
-        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="@dimen/middle_text_size"
         android:layout_width="wrap_content"

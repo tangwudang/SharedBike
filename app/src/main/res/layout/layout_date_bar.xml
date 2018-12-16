@@ -9,8 +9,7 @@
     <TextView
         android:id="@+id/begin_time_tv"
         android:textColor="@color/black"
-        android:textSize="26mm"
-        android:textStyle="bold"
+        android:textSize="28mm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="开始时间："/>
@@ -23,8 +22,7 @@
     <TextView
         android:id="@+id/end_time_tv"
         android:textColor="@color/black"
-        android:textSize="26mm"
-        android:textStyle="bold"
+        android:textSize="28mm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="结束时间：" />

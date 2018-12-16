@@ -1,4 +1,4 @@
-package com.lishu.bike.adatper;
+package com.lishu.bike.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.lishu.bike.R;
 import com.lishu.bike.model.WarnModel;
+import com.lishu.bike.utils.TimeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,20 +49,35 @@ public class WarnListAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if(view == null) {
             viewHolder = new ViewHolder();
-            view = mInflater.inflate(R.layout.adapter_warn_list, null);
+            view = mInflater.inflate(R.layout.adapter_common_list, null);
             viewHolder.content = view.findViewById(R.id.content);
+            viewHolder.type = view.findViewById(R.id.type);
+            viewHolder.time = view.findViewById(R.id.time);
 
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
       
-        viewHolder.content.setText(warnList.get(position).getWarnTitle());
+        WarnModel.WarnBean warnBean = warnList.get(position);
+        viewHolder.content.setText(warnBean.getWarnTitle());
+        String warnType = warnBean.getAskType();
+        if("1".equals(warnType)){
+            viewHolder.type.setText("员工风采");
+        }else if("2".equals(warnType)){
+            viewHolder.type.setText("会议通知");
+        }
+        String warnTime = TimeUtil.getMessageTime(warnBean.getWarnTime());
+        if(warnTime != null) {
+            viewHolder.time.setText(warnTime);
+        }
 
         return view;
     }
 
     class ViewHolder {
         TextView content;
+        TextView type;
+        TextView time;
     }
 }

@@ -1,4 +1,4 @@
-package com.lishu.bike.adatper;
+package com.lishu.bike.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.lishu.bike.R;
 import com.lishu.bike.model.InspectModel;
+import com.lishu.bike.utils.TimeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,19 +50,34 @@ public class InspectionListAdapter extends BaseAdapter {
         if(view == null) {
             viewHolder = new ViewHolder();
             view = mInflater.inflate(R.layout.adapter_common_list, null);
-            viewHolder.inspectContent = view.findViewById(R.id.content);
+            viewHolder.content = view.findViewById(R.id.content);
+            viewHolder.type = view.findViewById(R.id.type);
+            viewHolder.time = view.findViewById(R.id.time);
 
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
       
-        viewHolder.inspectContent.setText(inspectList.get(position).getInspectContent());
+        InspectModel.InspectBean inspectBean = inspectList.get(position);
+        viewHolder.content.setText(inspectBean.getInspectContent());
+        int infoType = inspectBean.getTypeName();
+        if(1 == infoType){
+            viewHolder.type.setText("员工风采");
+        }else if(2 == infoType){
+            viewHolder.type.setText("会议通知");
+        }
+        String infoTime = TimeUtil.getMessageTime(inspectBean.getInspectTime());
+        if(infoTime != null) {
+            viewHolder.time.setText(infoTime);
+        }
 
         return view;
     }
 
     class ViewHolder {
-        TextView inspectContent;
+        TextView content;
+        TextView type;
+        TextView time;
     }
 }

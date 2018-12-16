@@ -1,18 +1,16 @@
 package com.lishu.bike.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.lishu.bike.R;
-import com.lishu.bike.adatper.WarnListAdapter;
+import com.lishu.bike.adapter.WarnListAdapter;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.listener.DateSearchListener;
@@ -21,9 +19,8 @@ import com.lishu.bike.model.WarnModel;
 import com.lishu.bike.utils.DateSearchUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
-import com.lishu.bike.widget.MyDatePickerDialog;
 
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WarnListActivity extends BaseSearchActivity implements View.OnClickListener {
@@ -49,6 +46,14 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         warn_list = findViewById(R.id.warn_list);
         mWarnListAdapter = new WarnListAdapter(this);
         warn_list.setAdapter(mWarnListAdapter);
+        //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
+        List<WarnModel.WarnBean> testList = new ArrayList<>();
+        testList.add(new WarnModel().new WarnBean(1,"我公司在今天下午进行员工总结大会", "20181209121514", "1"));
+        testList.add(new WarnModel().new WarnBean(2,"城管局如何做好巡检工作", "20181209101510", "2"));
+        testList.add(new WarnModel().new WarnBean(3,"冬季如何做好防护工作", "20181209111836", "1"));
+        testList.add(new WarnModel().new WarnBean(4,"我公司在今天下午进行员工总结大会，请全体人员准时参加", "20181216091842", "2"));
+        mWarnListAdapter.setData(testList);
+        //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
 
     private void initEvent() {

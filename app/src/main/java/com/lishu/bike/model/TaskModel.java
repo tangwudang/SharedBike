@@ -22,6 +22,13 @@ public class TaskModel extends BaseModel {
         private String taskType;//任务类型，
         private String resultStatus;//处理状态(0:未处理，1;已处理)
 
+        public TaskBean(String taskTitle, String taskTime, String taskType, String resultStatus) {
+            this.taskTime = taskTime;
+            this.taskTitle = taskTitle;
+            this.taskType = taskType;
+            this.resultStatus = resultStatus;
+        }
+
         public int getId() {
             return id;
         }

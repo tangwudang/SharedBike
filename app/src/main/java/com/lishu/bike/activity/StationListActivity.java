@@ -8,8 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.lishu.bike.R;
-import com.lishu.bike.adatper.StationListAdapter;
-import com.lishu.bike.adatper.StreetListAdapter;
+import com.lishu.bike.adapter.StationListAdapter;
+import com.lishu.bike.adapter.StreetListAdapter;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.BaseModel;

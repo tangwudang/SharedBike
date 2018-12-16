@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="84mm">
+
+    <LinearLayout
+        android:id="@+id/unprocessed_layout"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/unprocessed_task"
+            android:text="当前任务"
+            android:textSize="30mm"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_height="80mm" />
+        <View
+            android:id="@+id/unprocessed_bar"
+            android:layout_width="375mm"
+            android:layout_height="4mm"
+            android:background="@color/main_color"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/processed_layout"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/processed_task"
+            android:text="历史任务"
+            android:textSize="30mm"
+            android:textColor="@color/gray_text_color"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_height="80mm" />
+        <View
+            android:id="@+id/processed_bar"
+            android:layout_width="375mm"
+            android:layout_height="4mm"
+            android:visibility="invisible"
+            android:background="@color/main_color"/>
+    </LinearLayout>
+
+</LinearLayout>

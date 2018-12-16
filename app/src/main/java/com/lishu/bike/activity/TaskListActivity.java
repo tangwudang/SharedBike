@@ -1,18 +1,18 @@
 package com.lishu.bike.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lishu.bike.R;
-import com.lishu.bike.adatper.TaskListAdapter;
+import com.lishu.bike.adapter.TaskListAdapter;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.listener.DateSearchListener;
@@ -21,9 +21,8 @@ import com.lishu.bike.model.TaskModel;
 import com.lishu.bike.utils.DateSearchUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
-import com.lishu.bike.widget.MyDatePickerDialog;
 
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskListActivity extends BaseSearchActivity implements View.OnClickListener {
@@ -32,6 +31,15 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
     private ListView task_list;
     private TaskListAdapter mTaskListAdapter;
     private int curPage = 1;
+    //任务tab栏
+    private final int PRESSED_TEXT_COLOR = 0xff000000;
+    private final int NORMAL_TEXT_COLOR = 0xff666666;
+    private LinearLayout processedLayout;
+    private LinearLayout unprocessedLayout;
+    private TextView processedTaskTV;
+    private TextView unprocessedTaskTV;
+    private View processedBar;
+    private View unprocessedBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,13 +55,31 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         begin_time_ev = findViewById(R.id.begin_time_ev);
         end_time_ev = findViewById(R.id.end_time_ev);
         task_list = findViewById(R.id.task_list);
+        processedLayout = findViewById(R.id.processed_layout);
+        unprocessedLayout = findViewById(R.id.unprocessed_layout);
+        processedTaskTV = findViewById(R.id.processed_task);
+        unprocessedTaskTV = findViewById(R.id.unprocessed_task);
+        processedBar = findViewById(R.id.processed_bar);
+        unprocessedBar = findViewById(R.id.unprocessed_bar);
+
         mTaskListAdapter = new TaskListAdapter(this);
         task_list.setAdapter(mTaskListAdapter);
+
+        //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
+        List<TaskModel.TaskBean> testList = new ArrayList<>();
+        testList.add(new TaskModel().new TaskBean("我公司在今天下午进行员工总结大会", "20181209121514", "1", "0"));
+        testList.add(new TaskModel().new TaskBean("城管局如何做好巡检工作", "20181209101510", "2", "0"));
+        testList.add(new TaskModel().new TaskBean("冬季如何做好防护工作", "20181209111836", "1", "1"));
+        testList.add(new TaskModel().new TaskBean("我公司在今天下午进行员工总结大会，请全体人员准时参加", "20181216091842", "2", "1"));
+        mTaskListAdapter.setData(testList);
+        //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
 
     private void initEvent() {
         begin_time_ev.setOnClickListener(this);
         end_time_ev.setOnClickListener(this);
+        processedLayout.setOnClickListener(this);
+        unprocessedLayout.setOnClickListener(this);
         findViewById(R.id.search_button).setOnClickListener(this);
         task_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -75,8 +101,35 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
             case R.id.end_time_ev:
                 showDatePickerDialog(1);
                 break;
+            case R.id.unprocessed_layout:
+                setTab(0);
+                search();
+                break;
+            case R.id.processed_layout:
+                setTab(1);
+                search();
+                break;
             case R.id.search_button:
                 search();
+                break;
+        }
+    }
+
+    private void setTab(int i) {
+        switch (i) {
+            case 0:
+                processedBar.setVisibility(View.INVISIBLE);
+                unprocessedBar.setVisibility(View.VISIBLE);
+                processedTaskTV.setTextColor(NORMAL_TEXT_COLOR);
+                unprocessedTaskTV.setTextColor(PRESSED_TEXT_COLOR);
+                break;
+            case 1:
+                processedBar.setVisibility(View.VISIBLE);
+                unprocessedBar.setVisibility(View.INVISIBLE);
+                processedTaskTV.setTextColor(PRESSED_TEXT_COLOR);
+                unprocessedTaskTV.setTextColor(NORMAL_TEXT_COLOR);
+                break;
+            default:
                 break;
         }
     }

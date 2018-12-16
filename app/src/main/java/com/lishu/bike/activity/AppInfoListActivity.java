@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.lishu.bike.R;
-import com.lishu.bike.adatper.AppInfoListAdapter;
+import com.lishu.bike.adapter.AppInfoListAdapter;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.AppInfoModel;

@@ -34,6 +34,7 @@
             <ImageView
                 android:layout_width="80mm"
                 android:layout_height="80mm"
+
                 android:layout_marginBottom="@dimen/home_image_margin_bottom"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center_horizontal"

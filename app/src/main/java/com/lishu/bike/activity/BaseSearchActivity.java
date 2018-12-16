@@ -1,18 +1,12 @@
 package com.lishu.bike.activity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.lishu.bike.R;
-import com.lishu.bike.adatper.InspectionListAdapter;
-import com.lishu.bike.app.BaseApplication;
-import com.lishu.bike.model.InspectModel;
 import com.lishu.bike.widget.MyDatePickerDialog;
 
 import java.util.Calendar;

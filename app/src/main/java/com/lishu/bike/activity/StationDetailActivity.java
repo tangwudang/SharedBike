@@ -24,7 +24,7 @@ public class StationDetailActivity extends BaseActivity {
     }
 
     private void initView() {
-        setTopTitle("站点信息");
+        setTopTitle("停车点信息");
     }
 
     /**

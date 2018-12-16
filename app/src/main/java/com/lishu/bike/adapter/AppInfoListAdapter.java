@@ -1,4 +1,4 @@
-package com.lishu.bike.adatper;
+package com.lishu.bike.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -12,9 +12,17 @@
 
     <include layout="@layout/layout_search_bar" />
 
+    <View style="@style/SplitLineStyle" />
+
+    <include layout="@layout/layout_select_bar" />
+
+    <View style="@style/SplitLineStyle" />
+
     <ListView
         android:id="@+id/task_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right"/>
 
 </LinearLayout>
