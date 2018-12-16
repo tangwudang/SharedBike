@@ -1,25 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <include
         android:id="@+id/title_layout"
         layout="@layout/layout_title" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130mm"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+        <TextView
+            android:id="@+id/user_avatar"
+            android:text="头像"
+            style="@style/MiddleBoldTextView"
+            android:layout_centerVertical="true" />
+        <ImageView
+            android:layout_width="84mm"
+            android:layout_height="84mm"
+            android:layout_centerVertical="true"
+            android:src="@drawable/usr_avatar"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineMarginStyle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="用户姓名" />
+        <TextView
+            android:id="@+id/user_name"
+            style="@style/SmallTextViewStyle"
+            android:text="未知"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineMarginStyle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="用户性别" />
+        <TextView
+            android:id="@+id/user_sex"
+            style="@style/SmallTextViewStyle"
+            android:text="男"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineMarginStyle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="所属机构" />
+        <TextView
+            android:id="@+id/user_organization"
+            style="@style/SmallTextViewStyle"
+            android:text="江宁街道"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineMarginStyle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="联系方式" />
+        <TextView
+            android:id="@+id/user_phone"
+            style="@style/SmallTextViewStyle"
+            android:text="15811858688"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineStyle"/>
+
     <Button
         android:id="@+id/change_password"
-        android:layout_width="match_parent"
-        android:layout_height="80mm"
         android:text="修改密码"
-        app:layout_constraintTop_toBottomOf="@id/title_layout" />
+        style="@style/ButtonStyle"
+        android:layout_marginTop="52mm" />
 
     <Button
         android:id="@+id/logout"
-        android:layout_width="match_parent"
-        android:layout_height="80mm"
-        android:text="退出"
-        app:layout_constraintTop_toBottomOf="@id/change_password" />
+        android:text="退出登录"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="44mm" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

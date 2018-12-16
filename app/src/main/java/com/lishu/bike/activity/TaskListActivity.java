@@ -54,7 +54,7 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
     private void initEvent() {
         begin_time_ev.setOnClickListener(this);
         end_time_ev.setOnClickListener(this);
-        findViewById(R.id.search_icon).setOnClickListener(this);
+        findViewById(R.id.search_button).setOnClickListener(this);
         task_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
@@ -75,7 +75,7 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
             case R.id.end_time_ev:
                 showDatePickerDialog(1);
                 break;
-            case R.id.search_icon:
+            case R.id.search_button:
                 search();
                 break;
         }

@@ -22,6 +22,12 @@ public class AppInfoModel extends BaseModel {
         private String imageUrl;//标题图片,
         private int appInfoType;//类型（员工风采、会议通知）
 
+        public AppInfoBean(String infoTitle, String publishTime, int appInfoType) {
+            this.infoTitle = infoTitle;
+            this.publishTime = publishTime;
+            this.appInfoType = appInfoType;
+        }
+
         public int getId() {
             return id;
         }

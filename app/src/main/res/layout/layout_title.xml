@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:onClick="onTopLeftClick"
-        android:paddingLeft="30mm"
+        android:paddingLeft="38mm"
         android:paddingRight="30mm"
         android:paddingTop="15mm"
         android:paddingBottom="15mm"/>
@@ -25,15 +25,14 @@
         android:textColor="@color/white"
         android:textSize="36mm"/>
 
-    <TextView
+    <ImageView
         android:id="@+id/title_right"
-        android:textSize="26mm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:paddingLeft="20mm"
-        android:paddingRight="30mm"
+        android:paddingLeft="30mm"
+        android:paddingRight="@dimen/margin_left_right"
         android:visibility="gone" />
 
 </RelativeLayout>

@@ -44,7 +44,7 @@ public class StreetListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View view, ViewGroup parent) {
+    public View getView(int position, View view, ViewGroup parent) {
         ViewHolder viewHolder = null;
         if(view == null) {
             viewHolder = new ViewHolder();

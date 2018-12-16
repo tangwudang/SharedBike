@@ -16,6 +16,7 @@ import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.InspectModel;
 import com.lishu.bike.utils.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AppInfoListActivity extends BaseActivity{
@@ -41,6 +42,15 @@ public class AppInfoListActivity extends BaseActivity{
         app_info_list = findViewById(R.id.app_info_list);
         mAppInfoListAdapter = new AppInfoListAdapter(this);
         app_info_list.setAdapter(mAppInfoListAdapter);
+
+        //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
+        List<AppInfoModel.AppInfoBean> appInfoList = new ArrayList<>();
+        appInfoList.add(new AppInfoModel().new AppInfoBean("我公司在今天下午进行员工总结大会", "20181209121514", 1));
+        appInfoList.add(new AppInfoModel().new AppInfoBean("城管局如何做好巡检工作", "20181209101510", 2));
+        appInfoList.add(new AppInfoModel().new AppInfoBean("冬季如何做好防护工作", "20181209111836", 1));
+        appInfoList.add(new AppInfoModel().new AppInfoBean("我公司在今天下午进行员工总结大会，请全体人员准时参加", "20181216091842", 2));
+        mAppInfoListAdapter.setData(appInfoList);
+        //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
 
     private void initEvent() {

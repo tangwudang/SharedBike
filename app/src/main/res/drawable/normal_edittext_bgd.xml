@@ -3,14 +3,14 @@
     android:shape="rectangle">
 
     <!--填充-->
-    <solid android:color="@color/white" />
+    <solid android:color="@color/normal_edittext_bgd" />
 
     <!-- 描边 -->
     <!--<stroke
-        android:width="1px"
-        android:color="@color/green" />-->
+        android:width="1mm"
+        android:color="@color/white" />-->
 
     <!--圆角-->
-    <corners android:radius="45px" />
+    <corners android:radius="@dimen/corners_radius" />
 
 </shape>

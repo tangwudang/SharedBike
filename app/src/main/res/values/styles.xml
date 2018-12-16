@@ -8,4 +8,72 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ButtonStyle">
+        <item name="android:layout_width">@dimen/button_width</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:background">@drawable/button_bgd</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="LoginEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80mm</item>
+        <item name="android:background">@drawable/login_edittext_bgd</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">30mm</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">20mm</item>
+    </style>
+
+    <style name="NormalEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80mm</item>
+        <item name="android:background">@drawable/normal_edittext_bgd</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">30mm</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">10mm</item>
+    </style>
+
+    <style name="DateEditText">
+        <item name="android:layout_width">190mm</item>
+        <item name="android:layout_height">60mm</item>
+        <item name="android:background">@drawable/normal_edittext_bgd</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">30mm</item>
+        <item name="android:gravity">center</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="SplitLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1mm</item>
+        <item name="android:background">@color/split_line</item>
+    </style>
+
+    <style name="SplitLineMarginStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1mm</item>
+        <item name="android:background">@color/split_line</item>
+        <item name="android:layout_marginLeft">@dimen/margin_left_right</item>
+        <item name="android:layout_marginRight">@dimen/margin_left_right</item>
+    </style>
+
+    <style name="MiddleBoldTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">32mm</item>
+    </style>
+
+    <style name="SmallTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">28mm</item>
+    </style>
 </resources>

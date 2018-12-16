@@ -8,4 +8,10 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
+
+    <color name="button_pressed">#3985d4</color>
+    <color name="split_line">#d8d8d8</color>
+    <color name="normal_edittext_bgd">#e8e8e8</color>
+    <color name="normal_bgd">#f6f6f6</color>
+    <color name="gray_text_color">#666666</color>
 </resources>

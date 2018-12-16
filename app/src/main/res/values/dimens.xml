@@ -1,7 +1,18 @@
 <resources>
 
+    <!-- 首页  -->
     <dimen name="home_page_text_size">34mm</dimen>
     <dimen name="home_image_margin_bottom">20mm</dimen>
     <dimen name="home_margin_left_right">30mm</dimen>
     <dimen name="home_layout_line_margin">75mm</dimen>
+    <!-- 按钮  -->
+    <dimen name="button_width">680mm</dimen>
+    <dimen name="button_height">80mm</dimen>
+    <dimen name="button_text_size">32mm</dimen>
+    <!-- 普通文字大小  -->
+    <dimen name="middle_text_size">32mm</dimen>
+    <dimen name="small_text_size">28mm</dimen>
+    <!-- 页面的左右空距  -->
+    <dimen name="margin_left_right">35mm</dimen>
+    <dimen name="corners_radius">15mm</dimen>
 </resources>

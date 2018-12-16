@@ -9,6 +9,8 @@
     <ListView
         android:id="@+id/app_info_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right"/>
 
 </LinearLayout>

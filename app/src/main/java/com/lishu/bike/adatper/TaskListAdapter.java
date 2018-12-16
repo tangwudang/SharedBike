@@ -48,7 +48,7 @@ public class TaskListAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if(view == null) {
             viewHolder = new ViewHolder();
-            view = mInflater.inflate(R.layout.adapter_inspection_list, null);
+            view = mInflater.inflate(R.layout.adapter_common_list, null);
             viewHolder.content = view.findViewById(R.id.content);
 
             view.setTag(viewHolder);

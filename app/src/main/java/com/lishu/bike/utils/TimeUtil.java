@@ -21,11 +21,11 @@ public class TimeUtil {
      * 获取时间
      */
     public static String getMessageTime(String datetime) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         try {
             Date dt = df.parse(datetime);
             //SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日   HH:mm:ss");
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
             return formatter.format(dt);
         } catch (Exception exception) {
             exception.printStackTrace();

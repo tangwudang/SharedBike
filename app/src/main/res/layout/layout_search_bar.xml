@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="114mm"
+    android:background="@color/normal_bgd"
+    android:paddingLeft="@dimen/margin_left_right"
+    android:paddingRight="@dimen/margin_left_right">
+
+    <Button
+        android:id="@+id/search_button"
+        android:text="搜索"
+        style="@style/ButtonStyle"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

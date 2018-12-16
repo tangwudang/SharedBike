@@ -79,7 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         }
     }
 
-    protected void setTopRight(String titleRight) {
+   /* protected void setTopRight(String titleRight) {
         TextView rightView = (TextView) findViewById(R.id.title_right);
         if (rightView != null) {
             rightView.setVisibility(View.VISIBLE);
@@ -99,7 +99,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         if (right != null) {
             right.setVisibility(View.GONE);
         }
-    }
+    }*/
 
     protected void show(String msg) {
         if (progressDialog == null) {

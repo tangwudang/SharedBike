@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="252mm"
+    android:layout_height="110mm">
 
     <TextView
         android:id="@+id/street_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textSize="@dimen/middle_text_size"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="252mm"
+        android:layout_height="110mm"
+        android:gravity="center"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

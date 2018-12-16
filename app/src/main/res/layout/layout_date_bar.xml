@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="84mm"
+    android:gravity="center"
+    android:paddingLeft="@dimen/margin_left_right"
+    android:paddingRight="@dimen/margin_left_right">
 
     <TextView
         android:id="@+id/begin_time_tv"
+        android:textColor="@color/black"
+        android:textSize="26mm"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="开始时间：" />
+        android:text="开始时间："/>
 
     <EditText
         android:id="@+id/begin_time_ev"
-        android:layout_width="100mm"
-        android:layout_height="wrap_content" />
+        style="@style/DateEditText"
+        android:layout_marginRight="20mm"/>
 
     <TextView
         android:id="@+id/end_time_tv"
+        android:textColor="@color/black"
+        android:textSize="26mm"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="结束时间：" />
 
     <EditText
         android:id="@+id/end_time_ev"
-        android:layout_width="100mm"
-        android:layout_height="wrap_content" />
+        style="@style/DateEditText"/>
 
-    <ImageView
-        android:id="@+id/search_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher" />
 </LinearLayout>

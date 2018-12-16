@@ -2,55 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:id="@+id/login_layout"
+    android:background="@drawable/image_login_bgd"
     android:orientation="vertical"
-    android:paddingLeft="80mm"
-    android:paddingRight="80mm">
+    android:paddingLeft="90mm"
+    android:paddingRight="90mm">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250mm"
+        android:layout_height="250mm"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="170mm"
-        android:layout_marginBottom="100mm"
-        android:src="@drawable/ic_launcher_background" />
+        android:layout_marginTop="190mm"
+        android:layout_marginBottom="220mm"
+        android:src="@drawable/image_login_avatar" />
 
     <EditText
         android:id="@+id/edit_name"
-        android:layout_width="match_parent"
-        android:layout_height="90mm"
-        android:background="@drawable/edittext_bgd"
-        android:gravity="center"
-        android:hint="请输入手机号"
+        android:hint="@string/please_input_login_name"
+        style="@style/LoginEditText"
+        android:drawableLeft="@drawable/icon_username"
         android:imeOptions="actionNext"
-        android:inputType="phone"
-        android:maxLength="15"
-        android:textColor="@color/white"
-        android:textColorHint="#9d9d9d"
-        android:textSize="30mm" />
+        android:inputType="text"
+        android:maxLength="15"/>
 
     <EditText
         android:id="@+id/edit_password"
-        android:layout_width="match_parent"
-        android:layout_height="90mm"
-        android:layout_marginTop="26mm"
-        android:background="@drawable/edittext_bgd"
-        android:gravity="center"
-        android:hint="请输入密码"
+        android:layout_marginTop="32mm"
+        android:hint="@string/please_input_password"
+        style="@style/LoginEditText"
+        android:drawableLeft="@drawable/icon_password"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
-        android:maxLength="20"
-        android:textColor="@color/white"
-        android:textColorHint="#9d9d9d"
-        android:textSize="30mm" />
+        android:maxLength="20"/>
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="match_parent"
-        android:layout_height="90mm"
-        android:layout_marginTop="26mm"
-        android:background="@drawable/button_bgd"
-        android:text="登    录"
-        android:textColor="@color/white"
-        android:textSize="30mm" />
+        style="@style/ButtonStyle"
+        android:layout_marginTop="80mm"
+        android:layout_width="570mm"
+        android:text="登录"/>
 </LinearLayout>   

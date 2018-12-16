@@ -1,11 +1,15 @@
 package com.lishu.bike.activity;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.lishu.bike.R;
 import com.lishu.bike.constant.UserPreferences;
@@ -18,10 +22,15 @@ import com.lishu.bike.utils.ToastUtil;
 public class LoginActivity extends BaseActivity {
     private EditText mLoginName, mLoginPassword;
     private Button mLoginButton;
+    private LinearLayout mLoginLayout;
+    private boolean first_get_scroll_height = true;;
+    private int[] location = new int[2];
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
         initView();
@@ -37,6 +46,8 @@ public class LoginActivity extends BaseActivity {
         mLoginName = findViewById(R.id.edit_name);
         mLoginPassword = findViewById(R.id.edit_password);
         mLoginButton = findViewById(R.id.login_button);
+        mLoginLayout = findViewById(R.id.login_layout);
+        controlKeyboardLayout(mLoginLayout, mLoginButton);
     }
 
     public void initEvent() {
@@ -92,6 +103,36 @@ public class LoginActivity extends BaseActivity {
 
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
+            }
+        });
+    }
+
+    /**
+     * 滚动root,使scrollToView在root可视区域的底部
+     */
+    private void controlKeyboardLayout(final View root, final View scrollToView) {
+        root.getViewTreeObserver().addOnGlobalLayoutListener( new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Rect rect = new Rect();
+                //获取root在窗体的可视区域
+                root.getWindowVisibleDisplayFrame(rect);
+                //获取root在窗体的不可视区域高度(被其他View遮挡的区域高度)
+                int rootInvisibleHeight = root.getRootView().getHeight() - rect.bottom;
+                //若不可视区域高度大于100，则键盘显示
+                if (rootInvisibleHeight > 220) {
+                    //获取scrollToView在窗体的坐标
+                    if (first_get_scroll_height) {
+                        scrollToView.getLocationInWindow(location);
+                        first_get_scroll_height = false;
+                    }
+                    //计算root滚动高度，使scrollToView在可见区域
+                    int scrollHeight = (location[1] + scrollToView.getHeight()) - rect.bottom;
+                    root.scrollTo(0, scrollHeight);
+                } else {
+                    //键盘隐藏
+                    root.scrollTo(0, 0);
+                }
             }
         });
     }

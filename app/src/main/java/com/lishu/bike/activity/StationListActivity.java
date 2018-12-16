@@ -54,6 +54,14 @@ public class StationListActivity extends BaseActivity {
         streetList.add(new StreetModel().new StreetBean(1, "谷里街道", 1,1));
         streetList.add(new StreetModel().new StreetBean(2, "江宁街道", 1,1));
         streetList.add(new StreetModel().new StreetBean(3, "汤山街道", 1,1));
+        streetList.add(new StreetModel().new StreetBean(1, "东山街道", 1,1));
+        streetList.add(new StreetModel().new StreetBean(2, "禄口街道", 1,1));
+        streetList.add(new StreetModel().new StreetBean(3, "秣陵街道", 1,1));
+        streetList.add(new StreetModel().new StreetBean(1, "谷里街道", 1,1));
+        streetList.add(new StreetModel().new StreetBean(2, "江宁街道", 1,1));
+        streetList.add(new StreetModel().new StreetBean(3, "汤山街道", 1,1));
+        streetList.add(new StreetModel().new StreetBean(2, "江宁街道", 1,1));
+        streetList.add(new StreetModel().new StreetBean(3, "汤山街道", 1,1));
         mStreetListAdapter.setData(streetList);
 
         List<StationModel.StationBean> stationList = new ArrayList<>();

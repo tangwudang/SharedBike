@@ -6,7 +6,11 @@
 
     <include layout="@layout/layout_title" />
 
-    <include layout="@layout/layout_date_search_bar" />
+    <include layout="@layout/layout_date_bar" />
+
+    <View style="@style/SplitLineStyle" />
+
+    <include layout="@layout/layout_search_bar" />
 
     <ListView
         android:id="@+id/warn_list"
