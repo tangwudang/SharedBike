@@ -67,10 +67,10 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
         List<TaskModel.TaskBean> testList = new ArrayList<>();
-        testList.add(new TaskModel().new TaskBean("我公司在今天下午进行员工总结大会", "20181209121514", "1", "0"));
-        testList.add(new TaskModel().new TaskBean("城管局如何做好巡检工作", "20181209101510", "2", "0"));
-        testList.add(new TaskModel().new TaskBean("冬季如何做好防护工作", "20181209111836", "1", "1"));
-        testList.add(new TaskModel().new TaskBean("我公司在今天下午进行员工总结大会，请全体人员准时参加", "20181216091842", "2", "1"));
+        testList.add(new TaskModel().new TaskBean(1,"我公司在今天下午进行员工总结大会", "20181209121514", "1", "0"));
+        testList.add(new TaskModel().new TaskBean(2,"城管局如何做好巡检工作", "20181209101510", "2", "0"));
+        testList.add(new TaskModel().new TaskBean(3,"冬季如何做好防护工作", "20181209111836", "1", "1"));
+        testList.add(new TaskModel().new TaskBean(4,"我公司在今天下午进行员工总结大会，请全体人员准时参加", "20181216091842", "2", "1"));
         mTaskListAdapter.setData(testList);
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
@@ -86,7 +86,7 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 int taskId = ((TaskModel.TaskBean)parent.getItemAtPosition(position)).getId();
                 Intent intent = new Intent(TaskListActivity.this, TaskDetailActivity.class);
-                intent.putExtra("inspectId", taskId);
+                intent.putExtra("taskId", taskId);
                 startActivity(intent);
             }
         });

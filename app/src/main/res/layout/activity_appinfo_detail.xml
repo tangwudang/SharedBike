@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_left_right"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/title"
+                android:text="如何做好保护工作"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"
+                android:textSize="36mm" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10mm"
+                android:layout_marginBottom="20mm"
+                android:layout_gravity="center_horizontal">
+                <TextView
+                    android:id="@+id/author"
+                    android:text="黎明"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30mm"
+                    android:textColor="@color/gray_text_color"
+                    android:textSize="28mm" />
+                <TextView
+                    android:id="@+id/time"
+                    android:text="2018-12-12 10:11:38"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_text_color"
+                    android:textSize="28mm" />
+            </LinearLayout>
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

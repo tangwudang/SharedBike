@@ -63,9 +63,9 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         warn_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-                int inspectId = ((WarnModel.WarnBean)parent.getItemAtPosition(position)).getId();
+                int warnId = ((WarnModel.WarnBean)parent.getItemAtPosition(position)).getId();
                 Intent intent = new Intent(WarnListActivity.this, WarnDetailActivity.class);
-                intent.putExtra("inspectId", inspectId);
+                intent.putExtra("warnId", warnId);
                 startActivity(intent);
             }
         });

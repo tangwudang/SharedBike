@@ -61,12 +61,7 @@ public class InspectionListAdapter extends BaseAdapter {
       
         InspectModel.InspectBean inspectBean = inspectList.get(position);
         viewHolder.content.setText(inspectBean.getInspectContent());
-        int infoType = inspectBean.getTypeName();
-        if(1 == infoType){
-            viewHolder.type.setText("员工风采");
-        }else if(2 == infoType){
-            viewHolder.type.setText("会议通知");
-        }
+        viewHolder.type.setText(inspectBean.getInspectTypeName());
         String infoTime = TimeUtil.getMessageTime(inspectBean.getInspectTime());
         if(infoTime != null) {
             viewHolder.time.setText(infoTime);

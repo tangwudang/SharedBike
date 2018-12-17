@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="84mm"
     android:gravity="center"
+    android:background="@color/white"
     android:paddingLeft="@dimen/margin_left_right"
     android:paddingRight="@dimen/margin_left_right">
 

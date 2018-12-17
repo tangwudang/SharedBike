@@ -61,12 +61,7 @@ public class AppInfoListAdapter extends BaseAdapter {
 
         AppInfoModel.AppInfoBean appInfoBean = appInfoList.get(position);
         viewHolder.content.setText(appInfoBean.getInfoTitle());
-        int infoType = appInfoBean.getAppInfoType();
-        if(1 == infoType){
-            viewHolder.type.setText("员工风采");
-        }else if(2 == infoType){
-            viewHolder.type.setText("会议通知");
-        }
+        viewHolder.type.setText(appInfoBean.getAppInfoType());
         String infoTime = TimeUtil.getMessageTime(appInfoBean.getPublishTime());
         if(infoTime != null) {
             viewHolder.time.setText(infoTime);

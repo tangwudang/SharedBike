@@ -2,6 +2,7 @@ package com.lishu.bike.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.TextView;
 
 import com.lishu.bike.R;
 import com.lishu.bike.http.HttpBase;
@@ -11,6 +12,8 @@ import com.lishu.bike.model.StationDetailModel;
 import com.lishu.bike.utils.ToastUtil;
 
 public class StationDetailActivity extends BaseActivity {
+    private TextView stationName, stationAddress, stationManager;
+    private TextView mobikeNum, ofoNum, hellobikeNum;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +28,13 @@ public class StationDetailActivity extends BaseActivity {
 
     private void initView() {
         setTopTitle("停车点信息");
+
+        stationName = findViewById(R.id.stationName);
+        stationAddress = findViewById(R.id.stationAddress);
+        stationManager = findViewById(R.id.stationManager);
+        mobikeNum = findViewById(R.id.mobikeNum);
+        ofoNum = findViewById(R.id.ofoNum);
+        hellobikeNum = findViewById(R.id.hellobikeNum);
     }
 
     /**
@@ -45,8 +55,13 @@ public class StationDetailActivity extends BaseActivity {
 
                 StationDetailModel stationDetail = (StationDetailModel) model;
                 if(stationDetail != null){
+                    stationName.setText(stationDetail.getName());
+                    stationAddress.setText(stationDetail.getInstallAddress());
+                    stationManager.setText(stationDetail.getDutyPersonName());
 
-
+                    mobikeNum.setText(stationDetail.getMobikeNum() + "辆");
+                    ofoNum.setText(stationDetail.getOfoNum() + "辆");
+                    hellobikeNum.setText(stationDetail.getHellobikeNum() + "辆");
                 }
             }
         });

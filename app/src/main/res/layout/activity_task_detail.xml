@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/layout_title" />
+
+    <LinearLayout
+        android:id="@+id/taskName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_first_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:layout_below="@id/title_layout">
+
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="任务名称：" />
+
+        <TextView
+            android:id="@+id/taskName"
+            style="@style/GrayDetailTextView"
+            android:text="违停处理" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/taskAddress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:layout_below="@id/taskName_layout">
+
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="任务地点：" />
+
+        <TextView
+            android:id="@+id/taskAddress"
+            style="@style/GrayDetailTextView"
+            android:text="江宁区秣周东路12号" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/taskContent_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:layout_below="@id/taskAddress_layout">
+
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="任务内容：" />
+
+        <TextView
+            android:id="@+id/taskContent"
+            style="@style/GrayDetailTextView"
+            android:maxLines="5"
+            android:ellipsize="end"
+            android:text="有多辆违停占用人行通道，请相关人员尽快处理" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sendTime_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:layout_below="@id/taskContent_layout">
+
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="下发时间：" />
+
+        <TextView
+            android:id="@+id/sendTime"
+            style="@style/GrayDetailTextView"
+            android:text="2018-12-17 10:22:58" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/resultStatus_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:layout_below="@id/sendTime_layout">
+
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="处理状态：" />
+
+        <TextView
+            android:id="@+id/resultStatus"
+            style="@style/GrayDetailTextView"
+            android:text="已处理" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/livePicture"
+        style="@style/BlackDetailTextView"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_below="@id/resultStatus_layout"
+        android:text="现场照片：" />
+
+
+    <Button
+        android:id="@+id/process_button"
+        android:text="处理"
+        style="@style/ButtonStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_left_right"/>
+</RelativeLayout>

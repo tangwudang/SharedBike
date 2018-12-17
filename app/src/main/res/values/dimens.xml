@@ -1,5 +1,4 @@
 <resources>
-
     <!-- 首页  -->
     <dimen name="home_page_text_size">32mm</dimen>
     <dimen name="home_image_margin_bottom">20mm</dimen>
@@ -15,4 +14,8 @@
     <!-- 页面的左右空距  -->
     <dimen name="margin_left_right">35mm</dimen>
     <dimen name="corners_radius">15mm</dimen>
+
+    <!-- 详情页的行间距  -->
+    <dimen name="detail_line_margin">20mm</dimen>
+    <dimen name="detail_first_line_margin">50mm</dimen>
 </resources>

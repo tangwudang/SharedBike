@@ -8,7 +8,7 @@
     <string name="task">任务单</string>
     <string name="app_info">工作动态</string>
     <string name="analyzes">运营分析</string>
-    <string name="warnings">警告信息</string>
+    <string name="warnings">告警信息</string>
     <string name="settings">设置</string>
 
     <string name="please_check_network">请检查网络是否正常</string>

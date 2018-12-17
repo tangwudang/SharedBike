@@ -18,12 +18,12 @@
 
         <TextView
             style="@style/BlackDetailTextView"
-            android:text="站点名称：" />
+            android:text="巡检人员：" />
 
         <TextView
-            android:id="@+id/stationName"
+            android:id="@+id/dutyName"
             style="@style/GrayDetailTextView"
-            android:text="托乐嘉花园" />
+            android:text="王晓明" />
     </LinearLayout>
 
     <LinearLayout
@@ -35,12 +35,12 @@
 
         <TextView
             style="@style/BlackDetailTextView"
-            android:text="地址：" />
+            android:text="巡检时间：" />
 
         <TextView
-            android:id="@+id/stationAddress"
+            android:id="@+id/inspectTime"
             style="@style/GrayDetailTextView"
-            android:text="将军大道123号" />
+            android:text="2018-12-17 10:22:58" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,88 +52,57 @@
 
         <TextView
             style="@style/BlackDetailTextView"
-            android:text="管理员：" />
+            android:text="上报地点：" />
 
         <TextView
-            android:id="@+id/stationManager"
+            android:id="@+id/inspectAddress"
             style="@style/GrayDetailTextView"
-            android:text="张晓峰" />
+            android:text="江宁区秣周东路12号" />
     </LinearLayout>
 
-    <View
-        style="@style/SplitLineStyle"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_left_right"
-        android:layout_marginTop="40mm"
-        android:layout_marginRight="@dimen/margin_left_right" />
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="上报类型：" />
+
+        <TextView
+            android:id="@+id/inspectType"
+            style="@style/GrayDetailTextView"
+            android:text="车辆违停" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="备注：" />
+
+        <TextView
+            android:id="@+id/inspectContent"
+            style="@style/GrayDetailTextView"
+            android:maxLines="4"
+            android:ellipsize="end"
+            android:text="违停占用人行通道" />
+    </LinearLayout>
 
     <TextView
         style="@style/BlackDetailTextView"
         android:layout_width="match_parent"
         android:layout_marginLeft="@dimen/margin_left_right"
         android:layout_marginTop="@dimen/detail_line_margin"
-        android:text="当前停车情况：" />
+        android:text="现场照片：" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_left_right"
-        android:layout_marginTop="@dimen/detail_line_margin"
-        android:layout_marginRight="@dimen/margin_left_right"
-        android:gravity="center">
 
-        <ImageView
-            android:layout_width="150mm"
-            android:layout_height="150mm"
-            android:src="@drawable/img_mobike" />
-
-        <TextView
-            android:id="@+id/mobikeNum"
-            style="@style/GrayDetailTextView"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="50mm"
-            android:text="12辆" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_left_right"
-        android:layout_marginTop="@dimen/detail_line_margin"
-        android:layout_marginRight="@dimen/margin_left_right"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="150mm"
-            android:layout_height="150mm"
-            android:src="@drawable/img_ofo" />
-
-        <TextView
-            android:id="@+id/ofoNum"
-            style="@style/GrayDetailTextView"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="50mm"
-            android:text="35辆" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_left_right"
-        android:layout_marginTop="@dimen/detail_line_margin"
-        android:layout_marginRight="@dimen/margin_left_right"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="150mm"
-            android:layout_height="150mm"
-            android:src="@drawable/img_hellobike" />
-
-        <TextView
-            android:id="@+id/hellobikeNum"
-            style="@style/GrayDetailTextView"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="50mm"
-            android:text="21辆" />
-    </LinearLayout>
 
 </LinearLayout>

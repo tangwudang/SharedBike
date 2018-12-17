@@ -19,12 +19,13 @@ public class InspectModel extends BaseModel {
         private int id;
         private String inspectTime;
         private String inspectContent;
-        private int typeName;
+        private String inspectTypeName;
 
-        public InspectBean(String inspectContent, String inspectTime,  int typeName) {
+        public InspectBean(int id, String inspectContent, String inspectTime,  String typeName) {
+            this.id = id;
             this.inspectContent = inspectContent;
             this.inspectTime = inspectTime;
-            this.typeName = typeName;
+            this.inspectTypeName = typeName;
         }
 
         public int getId() {
@@ -51,12 +52,12 @@ public class InspectModel extends BaseModel {
             this.inspectContent = inspectContent;
         }
 
-        public int getTypeName() {
-            return typeName;
+        public String getInspectTypeName() {
+            return inspectTypeName;
         }
 
-        public void setTypeName(int typeName) {
-            this.typeName = typeName;
+        public void setInspectTypeName(String inspectTypeName) {
+            this.inspectTypeName = inspectTypeName;
         }
     }
 }

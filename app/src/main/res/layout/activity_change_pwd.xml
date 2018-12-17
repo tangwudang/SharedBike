@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <include layout="@layout/layout_title" />
@@ -47,7 +48,7 @@
 
     <Button
         android:id="@+id/ok_button"
-        android:text="@string/button_ok"
+        android:text="@string/button_submit"
         style="@style/ButtonStyle"
         android:layout_marginTop="60mm" />
 </LinearLayout>
