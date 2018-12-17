@@ -42,6 +42,7 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
     private void initView() {
         setTopTitle(R.string.inspection);
         setTopRight(R.drawable.icon_add);
+
         begin_time_ev = findViewById(R.id.begin_time_ev);
         end_time_ev = findViewById(R.id.end_time_ev);
         inspection_list = findViewById(R.id.inspection_list);
@@ -61,6 +62,7 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         begin_time_ev.setOnClickListener(this);
         end_time_ev.setOnClickListener(this);
         findViewById(R.id.search_button).setOnClickListener(this);
+        findViewById(R.id.title_right).setOnClickListener(this);
         inspection_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
@@ -83,6 +85,9 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
                 break;
             case R.id.search_button:
                 search();
+                break;
+            case R.id.title_right:
+                startActivity(new Intent(InspectListActivity.this, AddInspectActivity.class));
                 break;
         }
     }

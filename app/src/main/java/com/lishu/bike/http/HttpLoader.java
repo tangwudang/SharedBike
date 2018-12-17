@@ -228,7 +228,7 @@ public class HttpLoader extends HttpBase {
     //任务处理图片上传
     public static void addTaskDisposeImage(int taskResponseId, String filePath, IResponseListener listener) {
         JSONObject request = new JSONObject();
-        request.put("TaskResponseId", taskResponseId);
+        request.put("taskResponseId", taskResponseId);
 
         RequestParams params = new RequestParams(HttpAddress.ADD_INSPECT_IMAGE);
         params.setAsJsonContent(true);
@@ -236,7 +236,7 @@ public class HttpLoader extends HttpBase {
         list.add(new KeyValue("params", request.toString()));
         File avatarImg = new File(filePath);
         if (avatarImg.exists()) {
-            list.add(new KeyValue("TaskResponseImage", avatarImg));
+            list.add(new KeyValue("taskResponseImage", avatarImg));
         }
         MultipartBody body = new MultipartBody(list, "UTF-8");
         params.setRequestBody(body);

@@ -69,6 +69,10 @@
             android:name=".activity.InspectDetailActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".activity.AddInspectActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <!-- ================ 任务单 ================ -->
         <activity
             android:name=".activity.TaskListActivity"
@@ -76,6 +80,10 @@
         </activity>
         <activity
             android:name=".activity.TaskDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.TaskDisposeActivity"
             android:screenOrientation="portrait">
         </activity>
         <!-- ================ 工作动态 ================ -->

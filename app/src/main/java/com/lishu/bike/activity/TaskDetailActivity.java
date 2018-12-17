@@ -1,5 +1,6 @@
 package com.lishu.bike.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.lishu.bike.utils.ToastUtil;
 
 public class TaskDetailActivity extends BaseActivity{
     private TextView taskName, taskAddress, taskContent, sendTime, resultStatus;
+    private int taskId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class TaskDetailActivity extends BaseActivity{
         initView();
         initEvent();
 
-        int taskId = getIntent().getIntExtra("taskId", -1);
+        taskId = getIntent().getIntExtra("taskId", -1);
         getTaskDetail(taskId);
     }
 
@@ -41,7 +43,9 @@ public class TaskDetailActivity extends BaseActivity{
         findViewById(R.id.process_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(TaskDetailActivity.this, TaskDisposeActivity.class);
+                intent.putExtra("taskId", taskId);
+                startActivity(intent);
             }
         });
     }

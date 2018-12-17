@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/layout_title" />
+
+    <LinearLayout
+        android:id="@+id/mobike_layout"
+        android:layout_below="@id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="100mm"
+            android:layout_height="101mm"
+            android:src="@drawable/img_mobike" />
+
+        <TextView
+            android:id="@+id/mobikeNum"
+            style="@style/GrayDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50mm"
+            android:text="12辆" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ofo_layout"
+        android:layout_below="@id/mobike_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="102mm"
+            android:layout_height="100mm"
+            android:src="@drawable/img_ofo" />
+
+        <TextView
+            android:id="@+id/ofoNum"
+            style="@style/GrayDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50mm"
+            android:text="35辆" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/hello_layout"
+        android:layout_below="@id/ofo_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="102mm"
+            android:layout_height="124mm"
+            android:src="@drawable/img_hellobike" />
+
+        <TextView
+            android:id="@+id/hellobikeNum"
+            style="@style/GrayDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50mm"
+            android:text="21辆" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/type_layout"
+        android:layout_below="@id/hello_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="违规类型：" />
+
+        <TextView
+            android:id="@+id/violationType"
+            style="@style/GrayDetailTextView"
+            android:text="张晓峰" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content_layout"
+        android:layout_below="@id/type_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginTop="@dimen/detail_line_margin"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            android:id="@+id/disposeHint"
+            style="@style/BlackDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/title_layout"
+            android:text="备注：" />
+
+        <EditText
+            android:id="@+id/disposeContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15mm"
+            android:background="@drawable/normal_edittext_bgd"
+            android:padding="15mm"
+            android:lines="4"
+            android:hint="文字描述..."
+            android:layout_below="@id/disposeHint"
+            android:textColor="@color/gray_text_color"
+            android:textSize="30mm"
+            android:gravity="start"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/submit"
+        android:text="@string/button_submit"
+        style="@style/ButtonStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_left_right"/>
+
+</RelativeLayout>

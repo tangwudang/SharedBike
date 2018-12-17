@@ -5,9 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/title_layout"
-        layout="@layout/layout_title" />
+    <include layout="@layout/layout_title" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,7 +81,7 @@
 
         <ImageView
             android:layout_width="150mm"
-            android:layout_height="150mm"
+            android:layout_height="151mm"
             android:src="@drawable/img_mobike" />
 
         <TextView
@@ -103,7 +101,7 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="150mm"
+            android:layout_width="152mm"
             android:layout_height="150mm"
             android:src="@drawable/img_ofo" />
 
@@ -124,8 +122,8 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="150mm"
-            android:layout_height="150mm"
+            android:layout_width="152mm"
+            android:layout_height="185mm"
             android:src="@drawable/img_hellobike" />
 
         <TextView
