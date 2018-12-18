@@ -11,7 +11,7 @@ public class ImageUtil {
     public static void bindImageView(ImageView imgView, Uri uri, int defaultResId){
         ImageOptions imageOptions = new ImageOptions.Builder()
                 .setFailureDrawableId(defaultResId)
-                .setLoadingDrawableId(defaultResId)
+               // .setLoadingDrawableId(defaultResId)
                 .setUseMemCache(true)
                 .build();
 
@@ -21,7 +21,7 @@ public class ImageUtil {
     public static void bindImageView(ImageView imgView, String path, int defaultResId){
         ImageOptions imageOptions = new ImageOptions.Builder()
                 .setFailureDrawableId(defaultResId)
-                .setLoadingDrawableId(defaultResId)
+               // .setLoadingDrawableId(defaultResId)
                 .setUseMemCache(true)
                 .build();
 
@@ -31,7 +31,7 @@ public class ImageUtil {
     /*public static void setUserAvatar(ImageView imgView, Uri uri, int defaultResId){
         ImageOptions imageOptions = new ImageOptions.Builder()
                 .setFailureDrawableId(defaultResId)
-                .setLoadingDrawableId(defaultResId)
+               // .setLoadingDrawableId(defaultResId)
                 .setUseMemCache(true)
                 .setCrop(true)
                 .setImageScaleType(ImageView.ScaleType.FIT_CENTER)
@@ -44,7 +44,7 @@ public class ImageUtil {
     public static void setUserAvatar(ImageView imgView, String path, int defaultResId){
         ImageOptions imageOptions = new ImageOptions.Builder()
                 .setFailureDrawableId(defaultResId)
-                .setLoadingDrawableId(defaultResId)
+                //.setLoadingDrawableId(defaultResId)
                 .setUseMemCache(true)
                 .setCrop(true)
                 .setImageScaleType(ImageView.ScaleType.FIT_CENTER)
