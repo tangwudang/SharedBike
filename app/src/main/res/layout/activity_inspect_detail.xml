@@ -86,7 +86,7 @@
 
         <TextView
             style="@style/BlackDetailTextView"
-            android:text="备注：" />
+            android:text="备注内容：" />
 
         <TextView
             android:id="@+id/inspectContent"

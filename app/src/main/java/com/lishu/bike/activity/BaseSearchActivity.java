@@ -48,13 +48,13 @@ public class BaseSearchActivity extends BaseActivity{
                             //begin_time_ev.setText(year + "年" + monthOfYear + "月" + dayOfMonth + "日");
                             EditText beginTime = findViewById(R.id.begin_time_ev);
                             if(beginTime != null){
-                                beginTime.setText(year + "/" + monthOfYear + "/" + dayOfMonth + "/");
+                                beginTime.setText(year + "/" + monthOfYear + "/" + dayOfMonth);
                             }
                         } else if (type == 1) {
                             //end_time_ev.setText(year + "年" + monthOfYear + "月" + dayOfMonth + "日");
                             EditText endTime = findViewById(R.id.end_time_ev);
                             if(endTime != null){
-                                endTime.setText(year + "/" + monthOfYear + "/" + dayOfMonth + "/");
+                                endTime.setText(year + "/" + monthOfYear + "/" + dayOfMonth);
                             }
                         }
                     }

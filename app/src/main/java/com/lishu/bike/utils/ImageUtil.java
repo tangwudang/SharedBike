@@ -1,5 +1,6 @@
 package com.lishu.bike.utils;
 
+import android.net.Uri;
 import android.widget.ImageView;
 
 import org.xutils.image.ImageOptions;
@@ -7,7 +8,7 @@ import org.xutils.x;
 
 public class ImageUtil {
 
-    /*public static void bindImageView(ImageView imgView, Uri uri, int defaultResId){
+    public static void bindImageView(ImageView imgView, Uri uri, int defaultResId){
         ImageOptions imageOptions = new ImageOptions.Builder()
                 .setFailureDrawableId(defaultResId)
                 .setLoadingDrawableId(defaultResId)
@@ -15,7 +16,7 @@ public class ImageUtil {
                 .build();
 
         x.image().bind(imgView, uri.toString(), imageOptions);
-    }*/
+    }
 
     public static void bindImageView(ImageView imgView, String path, int defaultResId){
         ImageOptions imageOptions = new ImageOptions.Builder()

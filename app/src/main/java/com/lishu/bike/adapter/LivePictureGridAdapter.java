@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.lishu.bike.R;
 import com.lishu.bike.activity.PhotoViewActivity;
 import com.lishu.bike.entity.LivePictureEntity;
+import com.lishu.bike.listener.TakePhotoListener;
 import com.lishu.bike.utils.ImageUtil;
 import com.lishu.bike.utils.ToastUtil;
 
@@ -22,6 +23,7 @@ public class LivePictureGridAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
     private List<LivePictureEntity> imageList = new ArrayList<>();
+    private TakePhotoListener photoListener;
 
     public LivePictureGridAdapter(Context context) {
         mContext = context;
@@ -31,6 +33,10 @@ public class LivePictureGridAdapter extends BaseAdapter {
     public void setData(List<LivePictureEntity> imageList){
         this.imageList = imageList;
         notifyDataSetChanged();
+    }
+
+    public void setPhotoListener(TakePhotoListener photoListener) {
+        this.photoListener = photoListener;
     }
 
     @Override
@@ -90,7 +96,7 @@ public class LivePictureGridAdapter extends BaseAdapter {
             if(TextUtils.isEmpty(imagePath)){
                 ToastUtil.showShort("获取图片路径失败");
             }else{
-                ImageUtil.bindImageView(viewHolder.icon, imagePath, R.drawable.img_mobike);
+                ImageUtil.bindImageView(viewHolder.icon, imagePath, R.drawable.ic_default_photo);
 
                 viewHolder.icon.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -118,7 +124,7 @@ public class LivePictureGridAdapter extends BaseAdapter {
                     if(imageList.size() > 4){
                         ToastUtil.showShort("最多上传4张照片！");
                     }else{
-                        //selectPicFromCamera();
+                        photoListener.takePhoto();
                     }
                 }
             });

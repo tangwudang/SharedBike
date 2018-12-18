@@ -74,7 +74,7 @@ public class TaskDetailActivity extends BaseActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 Intent intent = new Intent(TaskDetailActivity.this, PhotoViewActivity.class);
-                intent.putExtra("imageUrl", (String)parent.getItemAtPosition(position));
+                intent.putExtra("remotePath", (String)parent.getItemAtPosition(position));
                 startActivity(intent);
             }
         });
