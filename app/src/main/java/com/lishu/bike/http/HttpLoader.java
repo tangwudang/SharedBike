@@ -101,9 +101,9 @@ public class HttpLoader extends HttpBase {
         doPost(params, AddressBookModel.class, listener);
     }
     //通讯录详情
-    public static void addressBookDetail(IResponseListener listener) {
+    public static void addressBookDetail(int contactId, IResponseListener listener) {
         JSONObject request = new JSONObject();
-        RequestParams params = getParams(request, HttpAddress.ADDRESS_BOOK_DETAIL);
+        RequestParams params = getParams(request, HttpAddress.ADDRESS_BOOK_DETAIL + "?userId=" + contactId);
 
         doPost(params, AddressBookDetailModel.class, listener);
     }

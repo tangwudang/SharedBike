@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:paddingTop="15mm"
+        android:paddingBottom="15mm">
+        <EditText
+            android:id="@+id/search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="70mm"
+            android:background="@drawable/normal_edittext_bgd"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textSize="30mm" />
+        <LinearLayout
+            android:id="@+id/search_hint"
+            android:layout_width="match_parent"
+            android:layout_height="70mm"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8mm"
+                android:src="@drawable/icon_search" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="搜索联系人"
+                android:textColor="@color/gray_text_color"
+                android:textSize="26mm" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/contacts_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:scrollbars="none"/>
+        <TextView
+            android:id="@+id/dialog"
+            android:layout_width="180mm"
+            android:layout_height="180mm"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape_side_bar_bg"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:textSize="100mm"
+            android:visibility="invisible" />
+        <com.lishu.bike.widget.SideBar
+            android:id="@+id/sidebar"
+            android:layout_width="60mm"
+            android:layout_height="880mm"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="10mm"
+            android:paddingRight="10mm"
+            android:layout_marginTop="60mm"
+            android:layout_marginBottom="120mm"/>
+    </RelativeLayout>
+
+</LinearLayout>

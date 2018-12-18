@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.TextView;
 
 import com.lishu.bike.R;
 import com.lishu.bike.task.Upgrade;
@@ -66,7 +65,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(this, StationListActivity.class));
                 break;
             case R.id.address_book_layout:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, AddressBookActivity.class));
                 break;
             case R.id.inspection_layout:
                 startActivity(new Intent(this, InspectListActivity.class));

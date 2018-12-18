@@ -30,6 +30,8 @@ dependencies {
     implementation 'org.xutils:xutils:3.5.0'
     implementation files('libs/fastjson-1.2.54.jar')
     implementation files('libs/BaiduLBS_Android.jar')
+    implementation files('libs/pinyin4j-2.5.0.jar')
+    implementation 'com.oginotihiro:cropview:1.0.0'
 }
 
 MtjCirclePluginConfig {

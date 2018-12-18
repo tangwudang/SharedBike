@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_title" />
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:src="@drawable/person_default"
+        android:layout_marginTop="50mm"
+        android:layout_marginBottom="30mm"
+        android:layout_width="200mm"
+        android:layout_height="200mm"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:text="未知"
+        android:textSize="36mm"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:layout_marginTop="50mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="性别" />
+        <TextView
+            android:id="@+id/sex"
+            style="@style/SmallTextViewStyle"
+            android:text="未知"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineMarginStyle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="年龄" />
+        <TextView
+            android:id="@+id/age"
+            style="@style/SmallTextViewStyle"
+            android:text="未知"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineMarginStyle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="编号" />
+        <TextView
+            android:id="@+id/no"
+            style="@style/SmallTextViewStyle"
+            android:text="未知"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineMarginStyle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="手机号" />
+        <TextView
+            android:id="@+id/phone"
+            style="@style/SmallTextViewStyle"
+            android:text="未知"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineMarginStyle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="住址" />
+        <TextView
+            android:id="@+id/address"
+            style="@style/SmallTextViewStyle"
+            android:text="未知"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View style="@style/SplitLineMarginStyle"/>
+
+</LinearLayout>

@@ -106,15 +106,35 @@
             android:text="已处理" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/livePicture"
-        style="@style/BlackDetailTextView"
+    <LinearLayout
+        android:id="@+id/livePicture_layout"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_left_right"
         android:layout_marginTop="@dimen/detail_line_margin"
-        android:layout_below="@id/resultStatus_layout"
-        android:text="现场照片：" />
+        android:layout_marginRight="@dimen/margin_left_right"
+        android:layout_below="@id/resultStatus_layout">
 
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="现场照片：" />
+
+        <GridView
+            android:id="@+id/picture_gridview"
+            android:layout_toRightOf="@id/livePicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"
+            android:fadingEdge="none"
+            android:gravity="center"
+            android:horizontalSpacing="10mm"
+            android:verticalSpacing="10mm"
+            android:listSelector="#00000000"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth">
+        </GridView>
+    </LinearLayout>
 
     <Button
         android:id="@+id/process_button"

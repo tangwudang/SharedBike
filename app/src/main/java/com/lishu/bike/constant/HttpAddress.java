@@ -45,7 +45,7 @@ public class HttpAddress {
     //通讯录
     public static String ADDRESS_BOOKS = ROOT + "/addressBooks" + USER_ID;
     //通讯录详情
-    public static String ADDRESS_BOOK_DETAIL = ROOT + "/addressBookDetail" + USER_ID;
+    public static String ADDRESS_BOOK_DETAIL = ROOT + "/addressBookDetail";
 
     /**
      * 站点查询接口

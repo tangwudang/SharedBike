@@ -1,6 +1,7 @@
 package com.lishu.bike.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -18,10 +19,12 @@ import com.lishu.bike.utils.ToastUtil;
 
 public abstract class BaseActivity extends AppCompatActivity{
     private ProgressDialog progressDialog;
+    private Context mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
     }
 
     protected void setTopTitle(String title) {
@@ -106,6 +109,21 @@ public abstract class BaseActivity extends AppCompatActivity{
             progressDialog = new ProgressDialog(this);
             progressDialog.setMessage(msg);
             progressDialog.setCancelable(true);
+        }
+
+        try {
+            progressDialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void showAlways(String msg) {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(msg);
+            progressDialog.setCancelable(false);
+            progressDialog.setCanceledOnTouchOutside(false);
         }
 
         try {

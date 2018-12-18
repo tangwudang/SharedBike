@@ -1,9 +1,10 @@
 package com.lishu.bike.model;
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class AddressBookModel extends BaseModel {
+public class AddressBookModel extends BaseModel implements Serializable {
     private List<AddressBook> dataList;
 
     public List<AddressBook> getDataList() {
@@ -14,11 +15,13 @@ public class AddressBookModel extends BaseModel {
         this.dataList = dataList;
     }
 
-    public class AddressBook{
+    public class AddressBook implements Serializable {
         private int id;
         private String name;//姓名
         private String url;//头像URL
         private String organizationName;//机构名
+        private String PinYin;//这个属性不存入数据库
+        private String FirstPinYin;//这个属性不存入数据库
 
         public int getId() {
             return id;
@@ -50,6 +53,22 @@ public class AddressBookModel extends BaseModel {
 
         public void setOrganizationName(String organizationName) {
             this.organizationName = organizationName;
+        }
+
+        public String getPinYin() {
+            return PinYin;
+        }
+
+        public void setPinYin(String pinYin) {
+            PinYin = pinYin;
+        }
+
+        public String getFirstPinYin() {
+            return FirstPinYin;
+        }
+
+        public void setFirstPinYin(String firstPinYin) {
+            FirstPinYin = firstPinYin;
         }
     }
 }

@@ -4,18 +4,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.lishu.bike.R;
+import com.lishu.bike.adapter.PictureGridViewAdapter;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.TaskDetailModel;
 import com.lishu.bike.utils.ToastUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TaskDetailActivity extends BaseActivity{
     private TextView taskName, taskAddress, taskContent, sendTime, resultStatus;
     private int taskId;
+    //现场图片
+    private GridView mPictureGridView;
+    private PictureGridViewAdapter mPictureGridViewAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +46,19 @@ public class TaskDetailActivity extends BaseActivity{
         taskContent = findViewById(R.id.taskContent);
         sendTime = findViewById(R.id.sendTime);
         resultStatus = findViewById(R.id.resultStatus);
+        //现场照片
+        mPictureGridView = findViewById(R.id.picture_gridview);
+        mPictureGridViewAdapter = new PictureGridViewAdapter(this);
+        mPictureGridView.setAdapter(mPictureGridViewAdapter);
+
+        //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
+        List<String> testList = new ArrayList<>();
+        testList.add("1");
+        testList.add("2");
+        testList.add("3");
+        testList.add("4");
+        mPictureGridViewAdapter.setData(testList);
+        //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@
     }
 
     private void initEvent() {
@@ -45,6 +67,14 @@ public class TaskDetailActivity extends BaseActivity{
             public void onClick(View view) {
                 Intent intent = new Intent(TaskDetailActivity.this, TaskDisposeActivity.class);
                 intent.putExtra("taskId", taskId);
+                startActivity(intent);
+            }
+        });
+        mPictureGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                Intent intent = new Intent(TaskDetailActivity.this, PhotoViewActivity.class);
+                intent.putExtra("imageUrl", (String)parent.getItemAtPosition(position));
                 startActivity(intent);
             }
         });
@@ -73,6 +103,13 @@ public class TaskDetailActivity extends BaseActivity{
                     taskContent.setText(taskDetail.getTaskContent());
                     sendTime.setText(taskDetail.getSendTime());
                     resultStatus.setText(taskDetail.getResultStatus());
+
+                    String []imgs = taskDetail.getTaskImages().split(",");
+                    List<String> imageList = new ArrayList<>();
+                    for(int i = 0; i < imgs.length; i++){
+                        imageList.add(imgs[i]);
+                    }
+                    mPictureGridViewAdapter.setData(imageList);
                 }
             }
         });

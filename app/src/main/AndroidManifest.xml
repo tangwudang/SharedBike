@@ -60,6 +60,15 @@
             android:name=".activity.StationDetailActivity"
             android:screenOrientation="portrait">
         </activity>
+        <!-- ================ 通讯录 ================ -->
+        <activity
+            android:name=".activity.AddressBookActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.AddressBookDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <!-- ================ 巡检信息 ================ -->
         <activity
             android:name=".activity.InspectListActivity"
@@ -104,7 +113,6 @@
             android:name=".activity.WarnDetailActivity"
             android:screenOrientation="portrait">
         </activity>
-
         <!-- ================== 设置 ================= -->
         <activity
             android:name=".activity.SettingActivity"
@@ -114,7 +122,11 @@
             android:name=".activity.ChangePwdActivity"
             android:screenOrientation="portrait">
         </activity>
-
+        <!-- ================== 其它 ================= -->
+        <activity
+            android:name=".activity.PhotoViewActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
