@@ -16,6 +16,16 @@
         android:layout_height="match_parent"
         android:background="@color/white"/>
 
+    <!--<View
+        android:id="@+id/line"
+        android:layout_marginTop="20mm"
+        android:layout_marginLeft="20mm"
+        android:layout_width="2mm"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_layout"
+        android:layout_toRightOf="@id/street_lv"
+        android:background="@color/split_line"/>-->
+
     <ListView
         android:id="@+id/station_lv"
         android:layout_marginTop="20mm"

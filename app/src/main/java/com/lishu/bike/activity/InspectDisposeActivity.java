@@ -28,7 +28,7 @@ import com.lishu.bike.widget.NoScrollGridView;
 import java.io.File;
 import java.util.ArrayList;
 
-public class AddInspectActivity extends BaseActivity{
+public class InspectDisposeActivity extends BaseActivity{
     private EditText disposeContent;
     //现场照片
     private NoScrollGridView mPictrueGridview;

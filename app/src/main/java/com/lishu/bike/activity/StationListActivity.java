@@ -77,6 +77,7 @@ public class StationListActivity extends BaseActivity {
         mStreetListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                mStreetListAdapter.setSelection(position);
                 int streetId = ((StreetModel.StreetBean)parent.getItemAtPosition(position)).getId();
                 getStations(streetId);
             }

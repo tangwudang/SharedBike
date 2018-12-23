@@ -79,7 +79,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activity.AddInspectActivity"
+            android:name=".activity.InspectDisposeActivity"
             android:screenOrientation="portrait">
         </activity>
         <!-- ================ 任务单 ================ -->
@@ -102,6 +102,11 @@
         </activity>
         <activity
             android:name=".activity.AppInfoDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- ================ 运营分析 ================ -->
+        <activity
+            android:name=".activity.AnalyzeActivity"
             android:screenOrientation="portrait">
         </activity>
         <!-- ================ 告警信息 ================ -->

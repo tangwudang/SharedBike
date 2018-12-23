@@ -115,7 +115,7 @@ public class LivePictureGridAdapter extends BaseAdapter {
                 });
             }
         } else if (type == 1) {//“+图片”的图标
-            viewHolder.icon.setBackgroundResource(R.drawable.add_pic_btn_selector);
+            viewHolder.icon.setBackgroundResource(R.drawable.image_add_photo);
             viewHolder.delete.setVisibility(View.GONE);
             viewHolder.icon.setOnClickListener(new View.OnClickListener() {
                 @Override

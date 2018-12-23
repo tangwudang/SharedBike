@@ -8,13 +8,19 @@
     android:paddingLeft="90mm"
     android:paddingRight="90mm">
 
-    <ImageView
-        android:layout_width="250mm"
-        android:layout_height="250mm"
+    <LinearLayout
+        android:layout_width="240mm"
+        android:layout_height="240mm"
+        android:layout_marginTop="220mm"
+        android:layout_marginBottom="180mm"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="190mm"
-        android:layout_marginBottom="220mm"
-        android:src="@drawable/image_login_avatar" />
+        android:gravity="center"
+        android:background="@drawable/ic_circle_bgd">
+        <ImageView
+            android:layout_width="150mm"
+            android:layout_height="150mm"
+            android:src="@drawable/ic_app" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/edit_name"

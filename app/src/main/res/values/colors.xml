@@ -14,4 +14,11 @@
     <color name="normal_edittext_bgd">#e8e8e8</color>
     <color name="normal_bgd">#f6f6f6</color>
     <color name="gray_text_color">#666666</color>
+
+    <color name="tab_normal_bgd">#99CAFB</color>
+    <color name="tab_pressed_bgd">#70B4FA</color>
+
+    <color name="chart_hellobike">#7683FF</color>
+    <color name="chart_ofo">#FFE876</color>
+    <color name="chart_mobike">#FC5353</color>
 </resources>

@@ -87,7 +87,7 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
                 search();
                 break;
             case R.id.title_right:
-                startActivity(new Intent(InspectListActivity.this, AddInspectActivity.class));
+                startActivity(new Intent(InspectListActivity.this, InspectDisposeActivity.class));
                 break;
         }
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">共享单车</string>
+    <string name="app_name">单车监管</string>
 
     <string name="fence">电子围栏</string>
     <string name="station">站点查询</string>

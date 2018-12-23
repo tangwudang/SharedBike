@@ -17,6 +17,7 @@ public class StreetListAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
     private List<StreetModel.StreetBean> streetList = new ArrayList<>();
+    private int clickedItem = 0;//标识被选择的item
 
     public StreetListAdapter(Context context) {
         mContext = context;
@@ -25,6 +26,11 @@ public class StreetListAdapter extends BaseAdapter {
 
     public void setData(List<StreetModel.StreetBean> streetList){
         this.streetList = streetList;
+        notifyDataSetChanged();
+    }
+
+    public void setSelection(int position) {
+        clickedItem = position;
         notifyDataSetChanged();
     }
 
@@ -54,6 +60,12 @@ public class StreetListAdapter extends BaseAdapter {
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
+        }
+
+        if (clickedItem == position) {    //根据点击的Item当前状态设置背景
+            view.setBackgroundResource(R.color.normal_bgd);
+        }else{
+            view.setBackgroundResource(R.color.white);
         }
       
         viewHolder.streetName.setText(streetList.get(position).getStreetName());

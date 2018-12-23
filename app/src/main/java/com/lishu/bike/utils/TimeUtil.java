@@ -17,6 +17,12 @@ public class TimeUtil {
         return df.format(new Date());
     }
 
+    public static String getCurDatetimeByPattern(String pattern) {
+        SimpleDateFormat df = new SimpleDateFormat(pattern);//设置日期格式"yyyy年MM月dd日"
+
+        return df.format(new Date());
+    }
+
     /**
      * 获取时间
      */

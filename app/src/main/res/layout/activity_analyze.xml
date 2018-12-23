@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <include layout="@layout/layout_analyze_tab" />
+
+            <TextView
+                android:id="@+id/dateTv"
+                android:textColor="@color/gray_text_color"
+                android:textSize="@dimen/normal_text_size"
+                android:layout_width="match_parent"
+                android:layout_marginTop="15mm"
+                android:gravity="center"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="企业投放量统计："
+                android:textColor="@color/gray_text_color"
+                android:textSize="@dimen/normal_text_size"
+                android:layout_margin="@dimen/margin_left_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.github.mikephil.charting.charts.HorizontalBarChart
+                android:id="@+id/bar_chart"
+                android:layout_marginLeft="5mm"
+                android:layout_marginRight="10mm"
+                android:layout_width="match_parent"
+                android:layout_height="300mm"/>
+
+            <View style="@style/SplitLineStyle"/>
+
+            <TextView
+                android:text="各企业违停占比："
+                android:textColor="@color/gray_text_color"
+                android:textSize="@dimen/normal_text_size"
+                android:layout_margin="35mm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/illegal_chart"
+                android:layout_marginLeft="@dimen/margin_left_right"
+                android:layout_width="460mm"
+                android:layout_height="460mm"/>
+
+            <View style="@style/SplitLineStyle"/>
+
+            <TextView
+                android:text="各企业投诉占比："
+                android:textColor="@color/gray_text_color"
+                android:textSize="@dimen/normal_text_size"
+                android:layout_margin="35mm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/complaint_chart"
+                android:layout_marginLeft="@dimen/margin_left_right"
+                android:layout_width="460mm"
+                android:layout_height="460mm"/>
+
+            <View style="@style/SplitLineStyle"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -54,6 +54,10 @@ public class LoginActivity extends BaseActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // just for testing, begin =======================
+                //startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                //finish();
+                // just for testing, end =======================
                 login(mLoginName.getText().toString(), mLoginPassword.getText().toString());
             }
         });

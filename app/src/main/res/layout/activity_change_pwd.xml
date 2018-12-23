@@ -27,7 +27,7 @@
         android:layout_marginTop="30mm"
         android:layout_marginLeft="@dimen/margin_left_right"
         android:layout_marginRight="@dimen/margin_left_right"
-        android:drawableLeft="@drawable/icon_password"
+        android:drawableLeft="@drawable/ic_login_password"
         android:paddingLeft="20mm"
         android:imeOptions="actionNext"
         android:inputType="textPassword"
@@ -40,7 +40,7 @@
         android:layout_marginTop="30mm"
         android:layout_marginLeft="@dimen/margin_left_right"
         android:layout_marginRight="@dimen/margin_left_right"
-        android:drawableLeft="@drawable/icon_password"
+        android:drawableLeft="@drawable/ic_login_password"
         android:paddingLeft="20mm"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
@@ -50,5 +50,5 @@
         android:id="@+id/ok_button"
         android:text="@string/button_submit"
         style="@style/ButtonStyle"
-        android:layout_marginTop="60mm" />
+        android:layout_marginTop="80mm" />
 </LinearLayout>

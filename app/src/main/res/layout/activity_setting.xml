@@ -23,7 +23,7 @@
             android:layout_width="84mm"
             android:layout_height="84mm"
             android:layout_centerVertical="true"
-            android:src="@drawable/usr_avatar"
+            android:src="@drawable/person_default"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 

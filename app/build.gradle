@@ -32,6 +32,7 @@ dependencies {
     implementation files('libs/BaiduLBS_Android.jar')
     implementation files('libs/pinyin4j-2.5.0.jar')
     implementation 'com.oginotihiro:cropview:1.0.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 }
 
 MtjCirclePluginConfig {

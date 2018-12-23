@@ -13,6 +13,10 @@ public class MyDatePickerDialog extends DatePickerDialog {
         super(context, callBack, year, monthOfYear, dayOfMonth);
     }
 
+    public MyDatePickerDialog(Context context, int theme, OnDateSetListener callBack, int year, int monthOfYear, int dayOfMonth) {
+        super(context, DatePickerDialog.THEME_HOLO_LIGHT, callBack, year, monthOfYear, dayOfMonth);
+    }
+
     @Override
     protected void onStop() {
         //super.onStop();

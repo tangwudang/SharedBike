@@ -176,14 +176,14 @@
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/location_button_selector"/>
+                        android:layout_width="36mm"
+                        android:layout_height="42mm"
+                        android:src="@drawable/icon_location"/>
                     <TextView
                         android:id="@+id/location_again"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5mm"
                         android:text="重新定位"
                         android:textColor="@color/gray_text_color"
                         android:textSize="24mm"/>

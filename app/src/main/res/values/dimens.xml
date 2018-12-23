@@ -10,6 +10,7 @@
     <dimen name="button_text_size">32mm</dimen>
     <!-- 普通文字大小  -->
     <dimen name="middle_text_size">32mm</dimen>
+    <dimen name="normal_text_size">30mm</dimen>
     <dimen name="small_text_size">28mm</dimen>
     <!-- 页面的左右空距  -->
     <dimen name="margin_left_right">35mm</dimen>

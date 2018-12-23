@@ -77,7 +77,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(this, AppInfoListActivity.class));
                 break;
             case R.id.analyzes_layout:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, AnalyzeActivity.class));
                 break;
             case R.id.warnings_layout:
                 startActivity(new Intent(this, WarnListActivity.class));
