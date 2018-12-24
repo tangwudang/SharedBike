@@ -20,9 +20,11 @@ import com.lishu.bike.R;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.BaseModel;
+import com.lishu.bike.model.FenceDetailModel;
 import com.lishu.bike.model.FenceModel;
 import com.lishu.bike.model.StreetModel;
 import com.lishu.bike.utils.ToastUtil;
+import com.lishu.bike.widget.FenceDetailDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +54,7 @@ public class FenceListActivity extends BaseActivity {
         setTopTitle("站点信息");
         mMapView = findViewById(R.id.mapView);
         mBaiduMap = mMapView.getMap();
+
     }
 
     private void setMapCenter(double latitude, double longitude) {
@@ -130,8 +133,7 @@ public class FenceListActivity extends BaseActivity {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 FenceModel.FenceBean fence = (FenceModel.FenceBean)marker.getExtraInfo().get("fence");
-                //点击marker显示弹出层
-                ToastUtil.showShort(fence.getFenceName());
+                getFenceDetail(fence.getId());
                 return false;
             }
         });
@@ -144,6 +146,42 @@ public class FenceListActivity extends BaseActivity {
             @Override
             public boolean onMapPoiClick(MapPoi mapPoi) {
                 return false;
+            }
+        });
+    }
+
+    private void getFenceDetail(int fenceId) {
+        //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
+        FenceDetailModel fenceDetailModel = new FenceDetailModel();
+        fenceDetailModel.setFenceName("沙利亚");
+        fenceDetailModel.setInstallAddress("江宁区东山街道122号");
+        fenceDetailModel.setStreetName("东山街道");
+        fenceDetailModel.setRemark("江宁区东山街道122号江宁区东山街道122号江宁区东山街道122号");
+
+        if (fenceDetailModel != null) {
+            FenceDetailDialog fenceDetailDialog = new FenceDetailDialog(FenceListActivity.this);
+            fenceDetailDialog.setDialogData(fenceDetailModel);
+        }
+        //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@
+        HttpLoader.getFenceDetail(fenceId, new HttpBase.IResponseListener() {
+            @Override
+            public void onResponse(BaseModel model) {
+                if (model == null) {
+                    hide();
+                    ToastUtil.showShort(R.string.please_check_network);
+                    return;
+                }
+                if (!model.success()) {
+                    hide();
+                    ToastUtil.showShort(getString(R.string.get_data_fail) + model.getResMsg());
+                    return;
+                }
+
+                FenceDetailModel fenceDetailModel = (FenceDetailModel) model;
+                if (fenceDetailModel != null) {
+                    FenceDetailDialog fenceDetailDialog = new FenceDetailDialog(FenceListActivity.this);
+                    fenceDetailDialog.setDialogData(fenceDetailModel);
+                }
             }
         });
     }

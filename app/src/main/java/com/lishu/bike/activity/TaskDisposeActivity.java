@@ -9,9 +9,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
@@ -23,6 +21,7 @@ import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.listener.TakePhotoListener;
 import com.lishu.bike.model.BaseModel;
+import com.lishu.bike.model.TaskImageModel;
 import com.lishu.bike.utils.LogUtil;
 import com.lishu.bike.utils.ToastUtil;
 
@@ -39,6 +38,7 @@ public class TaskDisposeActivity extends BaseActivity {
     private int uploadedImageSize = 0;//当前已经成功上传的照片张数
     private LivePictureGridAdapter mGridviewAdapter;
     private File cameraFile;
+    private String uploadedFileNames;//已上传的图片名称，由服务器返回
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -165,6 +165,11 @@ public class TaskDisposeActivity extends BaseActivity {
                     ToastUtil.showShort(getString(R.string.get_data_fail) + model.getResMsg());
                     return;
                 }
+                TaskImageModel taskImageModel = (TaskImageModel) model;
+                if (taskImageModel != null) {
+                    uploadedFileNames = taskImageModel.getTaskResponseImageName() + ",";
+                }
+
                 uploadedImageSize++;
                 if(uploadedImageSize == imageListSize){//说明所有图片都已成功上传到服务器
                     hide();
@@ -175,7 +180,8 @@ public class TaskDisposeActivity extends BaseActivity {
     }
 
     private void submitTaskDispose() {
-        HttpLoader.addTaskDisposeImage(taskId, disposeContent.getText().toString(), new HttpBase.IResponseListener() {
+        HttpLoader.addTaskResponse(taskId, disposeContent.getText().toString(),
+                uploadedFileNames.substring(0, uploadedFileNames.length() - 2), new HttpBase.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
                 if (model == null) {

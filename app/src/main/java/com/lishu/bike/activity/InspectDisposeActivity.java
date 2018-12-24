@@ -1,6 +1,7 @@
 package com.lishu.bike.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,8 +11,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.GridView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lishu.bike.R;
@@ -21,14 +24,29 @@ import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.listener.TakePhotoListener;
 import com.lishu.bike.model.BaseModel;
+import com.lishu.bike.model.InspectImageModel;
+import com.lishu.bike.model.InspectTypeModel;
 import com.lishu.bike.utils.LogUtil;
+import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
+import com.lishu.bike.widget.AmountView;
 import com.lishu.bike.widget.NoScrollGridView;
+import com.lishu.bike.widget.SpinerPopWindow;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
-public class InspectDisposeActivity extends BaseActivity{
+public class InspectDisposeActivity extends BaseActivity implements View.OnClickListener, AmountView.OnAmountChangeListener {
+    //车辆数量
+    private AmountView mobikeNum, ofoNum, helloNum;
+    private int mobikeCount, ofoCount, helloCount;
+    //违规类型
+    private TextView violationType;
+    private SpinerPopWindow mSpinerPopWindow;
+    //private List<InspectTypeModel.InspectTypeBean> typeList;
+    private int violationTypeId = -1;
+    //处理内容
     private EditText disposeContent;
     //现场照片
     private NoScrollGridView mPictrueGridview;
@@ -37,6 +55,9 @@ public class InspectDisposeActivity extends BaseActivity{
     private int uploadedImageSize = 0;//当前已经成功上传的照片张数
     private LivePictureGridAdapter mGridviewAdapter;
     private File cameraFile;
+    private String uploadedFileNames;//已上传的图片名称，由服务器返回
+    //定位
+    private String locationAddress;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,10 +66,28 @@ public class InspectDisposeActivity extends BaseActivity{
 
         initView();
         initEvent();
+
+        getViolationTypes();
     }
 
     private void initView() {
         setTopTitle("巡检上报");
+        //车辆数量
+        mobikeNum = findViewById(R.id.mobikeNum);
+        ofoNum = findViewById(R.id.ofoNum);
+        helloNum = findViewById(R.id.helloNum);
+        //违规类型
+        violationType = findViewById(R.id.violationType);
+        mSpinerPopWindow = new SpinerPopWindow(this, new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InspectTypeModel.InspectTypeBean inspectTypeBean = (InspectTypeModel.InspectTypeBean) parent.getItemAtPosition(position);
+                violationType.setText(inspectTypeBean.getParamName());
+                violationTypeId = inspectTypeBean.getId();
+                mSpinerPopWindow.dismiss();
+            }
+        });
+        //处理内容
         disposeContent = findViewById(R.id.disposeContent);
         //现场照片
         mPictrueGridview = findViewById(R.id.picture_gridview);
@@ -59,15 +98,52 @@ public class InspectDisposeActivity extends BaseActivity{
     }
 
     private void initEvent() {
+        mobikeNum.setOnAmountChangeListener(this);
+        ofoNum.setOnAmountChangeListener(this);
+        helloNum.setOnAmountChangeListener(this);
+        violationType.setOnClickListener(this);
+        mSpinerPopWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                setTextImage(R.drawable.icon_down);
+            }
+        });
         mGridviewAdapter.setPhotoListener(new TakePhotoListener() {
             @Override
             public void takePhoto() {
                 selectPicFromCamera();
             }
         });
-        findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        findViewById(R.id.submit).setOnClickListener(this);
+    }
+
+    @Override
+    public void onAmountChange(View view, int amount) {
+        switch (view.getId()) {
+            case R.id.mobikeNum:
+                mobikeCount = amount;
+                LogUtil.d("mobikeNum = " + mobikeCount);
+                break;
+            case R.id.ofoNum:
+                ofoCount = amount;
+                LogUtil.d("ofoNum = " + ofoCount);
+                break;
+            case R.id.helloNum:
+                helloCount = amount;
+                LogUtil.d("helloNum = " + helloCount);
+                break;
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.violationType:
+                mSpinerPopWindow.setWidth(violationType.getWidth());
+                mSpinerPopWindow.showAsDropDown(violationType);
+                setTextImage(R.drawable.icon_up);
+                break;
+            case R.id.submit:
                 if (TextUtils.isEmpty(disposeContent.getText().toString())) {
                     ToastUtil.showShort("请填写处理内容");
                 } else {
@@ -83,8 +159,8 @@ public class InspectDisposeActivity extends BaseActivity{
                         }
                     }
                 }
-            }
-        });
+                break;
+        }
     }
 
     private void sendPicture(String imgPath) {
@@ -101,8 +177,13 @@ public class InspectDisposeActivity extends BaseActivity{
                     ToastUtil.showShort(getString(R.string.get_data_fail) + model.getResMsg());
                     return;
                 }
+
+                InspectImageModel inspectImageModel = (InspectImageModel) model;
+                if (inspectImageModel != null) {
+                    uploadedFileNames = inspectImageModel.getInspectImageName() + ",";
+                }
                 uploadedImageSize++;
-                if(uploadedImageSize == imageListSize){//说明所有图片都已成功上传到服务器
+                if (uploadedImageSize == imageListSize) {//说明所有图片都已成功上传到服务器
                     hide();
                     submitInspectReport();
                 }
@@ -111,21 +192,46 @@ public class InspectDisposeActivity extends BaseActivity{
     }
 
     private void submitInspectReport() {
-        /*HttpLoader.addInspect(taskId, disposeContent.getText().toString(), new HttpBase.IResponseListener() {
+        HttpLoader.addInspect(mobikeCount, ofoCount, helloCount, violationTypeId,
+                disposeContent.getText().toString(), locationAddress, TimeUtil.getCurDatetime(),
+                uploadedFileNames.substring(0, uploadedFileNames.length() - 2), new HttpBase.IResponseListener() {
+                    @Override
+                    public void onResponse(BaseModel model) {
+                        if (model == null) {
+                            ToastUtil.showShort(R.string.please_check_network);
+                            return;
+                        }
+                        if (!model.success()) {
+                            ToastUtil.showShort(getString(R.string.get_data_fail) + model.getResMsg());
+                            return;
+                        }
+
+                        ToastUtil.showShort("提交成功！");
+                    }
+                });
+    }
+
+    private void getViolationTypes() {
+        HttpLoader.getDictionaryTypes(new HttpBase.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
                 if (model == null) {
+                    hide();
                     ToastUtil.showShort(R.string.please_check_network);
                     return;
                 }
                 if (!model.success()) {
+                    hide();
                     ToastUtil.showShort(getString(R.string.get_data_fail) + model.getResMsg());
                     return;
                 }
 
-                ToastUtil.showShort("提交成功！");
+                List<InspectTypeModel.InspectTypeBean> inspectTypeList = ((InspectTypeModel) model).getDataList();
+                if (inspectTypeList != null) {
+                    mSpinerPopWindow.setData(inspectTypeList);
+                }
             }
-        });*/
+        });
     }
 
     private void initGridViewData() {
@@ -138,12 +244,12 @@ public class InspectDisposeActivity extends BaseActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == 99){
-            if (cameraFile != null && cameraFile.exists()){
+        if (resultCode == RESULT_OK && requestCode == 99) {
+            if (cameraFile != null && cameraFile.exists()) {
                 try {
                     //1、得到新拍的照片
                     String sendFileLocalPath = cameraFile.getAbsolutePath();
-                    LogUtil.d("sendFileLocalPath="+sendFileLocalPath);
+                    LogUtil.d("sendFileLocalPath=" + sendFileLocalPath);
                     //2.1、压缩图片
                     //2.2、加入List
                     LivePictureEntity livePictureEntity = new LivePictureEntity();
@@ -171,20 +277,29 @@ public class InspectDisposeActivity extends BaseActivity{
         }
 
         File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/bike");
-        if(!dir.exists()){
+        if (!dir.exists()) {
             dir.mkdir();
         }
         cameraFile = new File(dir, System.currentTimeMillis() + ".jpg");
         LogUtil.d("CleanReportActivity cameraFile1 = " + cameraFile);
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(Build.VERSION.SDK_INT >= 24) { //判读版本是否在7.0以上
+        if (Build.VERSION.SDK_INT >= 24) { //判读版本是否在7.0以上
             //参数1 上下文, 参数2 Provider主机地址 和配置文件中保持一致   参数3  共享的文件
             Uri apkUri = FileProvider.getUriForFile(this, "com.lishu.bike.fileprovider", cameraFile);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, apkUri);
-        }else {
+        } else {
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(cameraFile));
         }
         startActivityForResult(intent, 99);
+    }
+
+    /**
+     * 给TextView右边设置图片
+     */
+    private void setTextImage(int resId) {
+        Drawable drawable = getResources().getDrawable(resId);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());// 必须设置图片大小，否则不显示
+        violationType.setCompoundDrawables(null, null, drawable, null);
     }
 }

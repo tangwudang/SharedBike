@@ -19,4 +19,8 @@
     <!-- 详情页的行间距  -->
     <dimen name="detail_line_margin">20mm</dimen>
     <dimen name="detail_first_line_margin">50mm</dimen>
+
+    <!-- 详情对话框的行间距  -->
+    <dimen name="dialog_detail_line">10mm</dimen>
+    <dimen name="dialog_detail_margin_left">60mm</dimen>
 </resources>

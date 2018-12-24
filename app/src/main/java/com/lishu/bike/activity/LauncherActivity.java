@@ -32,7 +32,7 @@ public class LauncherActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_launcher);
 
-        handler.sendEmptyMessageDelayed(0, 2000);
+        handler.sendEmptyMessageDelayed(0, 1000);
     }
 
 

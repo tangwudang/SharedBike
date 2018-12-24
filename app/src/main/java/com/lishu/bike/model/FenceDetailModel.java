@@ -1,14 +1,50 @@
 package com.lishu.bike.model;
 
-
 public class FenceDetailModel extends BaseModel {
+    private int id; //id,
+    private String fenceName; //围栏名,
+    private String longitude; //经度
+    private String latitude; //纬度
     private String no;// 编号,
     private String name;// 名称,
     private String installTime ;// yyyyMMddHHmmss,
     private String installAddress;// 安装位置,
-    private String dutyPersonId;//责任人id,
-    private String dutyPersonName;//责任人,
     private String remark;//围栏描述
+    private String streetName; //所属街道
+    private int amount; //容量
+    private String version; //固件版本号
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFenceName() {
+        return fenceName;
+    }
+
+    public void setFenceName(String fenceName) {
+        this.fenceName = fenceName;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
     public String getNo() {
         return no;
@@ -42,22 +78,6 @@ public class FenceDetailModel extends BaseModel {
         this.installAddress = installAddress;
     }
 
-    public String getDutyPersonId() {
-        return dutyPersonId;
-    }
-
-    public void setDutyPersonId(String dutyPersonId) {
-        this.dutyPersonId = dutyPersonId;
-    }
-
-    public String getDutyPersonName() {
-        return dutyPersonName;
-    }
-
-    public void setDutyPersonName(String dutyPersonName) {
-        this.dutyPersonName = dutyPersonName;
-    }
-
     public String getRemark() {
         return remark;
     }
@@ -66,4 +86,27 @@ public class FenceDetailModel extends BaseModel {
         this.remark = remark;
     }
 
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }

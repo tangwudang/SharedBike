@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white"
     android:layout_width="match_parent"
@@ -36,73 +37,96 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/detail_line_margin"
-                android:gravity="center">
+                android:gravity="center_vertical">
 
                 <ImageView
                     android:layout_width="100mm"
                     android:layout_height="101mm"
+                    android:layout_marginLeft="32mm"
                     android:src="@drawable/img_mobike" />
 
-                <TextView
+                <com.lishu.bike.widget.AmountView
                     android:id="@+id/mobikeNum"
-                    style="@style/GrayDetailTextView"
                     android:layout_width="wrap_content"
-                    android:layout_marginLeft="50mm"
-                    android:text="12辆" />
+                    android:layout_height="80mm"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="70mm"
+                    app:btnTextSize="32mm"
+                    app:btnWidth="80mm"
+                    app:tvWidth="100mm"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ofo_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center_vertical">
 
                 <ImageView
                     android:layout_width="102mm"
                     android:layout_height="100mm"
+                    android:layout_marginLeft="30mm"
                     android:src="@drawable/img_ofo" />
 
-                <TextView
+                <com.lishu.bike.widget.AmountView
                     android:id="@+id/ofoNum"
-                    style="@style/GrayDetailTextView"
                     android:layout_width="wrap_content"
-                    android:layout_marginLeft="50mm"
-                    android:text="35辆" />
+                    android:layout_height="80mm"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="70mm"
+                    app:btnTextSize="32mm"
+                    app:btnWidth="80mm"
+                    app:tvWidth="100mm"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/hello_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center_vertical">
 
                 <ImageView
                     android:layout_width="102mm"
                     android:layout_height="124mm"
+                    android:layout_marginLeft="30mm"
                     android:src="@drawable/img_hellobike" />
 
-                <TextView
-                    android:id="@+id/hellobikeNum"
-                    style="@style/GrayDetailTextView"
+                <com.lishu.bike.widget.AmountView
+                    android:id="@+id/helloNum"
                     android:layout_width="wrap_content"
-                    android:layout_marginLeft="50mm"
-                    android:text="21辆" />
+                    android:layout_height="80mm"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="70mm"
+                    app:btnTextSize="32mm"
+                    app:btnWidth="80mm"
+                    app:tvWidth="100mm"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/type_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80mm"
                 android:layout_marginTop="@dimen/detail_line_margin">
 
                 <TextView
                     style="@style/BlackDetailTextView"
-                    android:text="违规类型：" />
+                    android:text="违规类型："
+                    android:layout_gravity="top"/>
 
                 <TextView
                     android:id="@+id/violationType"
-                    style="@style/GrayDetailTextView"
-                    android:text="张晓峰" />
+                    android:layout_width="262mm"
+                    android:layout_height="80mm"
+                    android:background="@drawable/spinner_text_bgd"
+                    android:drawableRight="@drawable/icon_down"
+                    android:padding="20mm"
+                    android:textColor="@color/gray_text_color"
+                    android:gravity="center_vertical"
+                    android:text="请您选择"
+                    android:textSize="30mm"/>
             </LinearLayout>
 
             <LinearLayout

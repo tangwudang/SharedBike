@@ -17,6 +17,7 @@ public class InspectTypeModel extends BaseModel {
 
     public class InspectTypeBean{
         private int id;
+        private String paramName;
 
         public int getId() {
             return id;
@@ -26,6 +27,12 @@ public class InspectTypeModel extends BaseModel {
             this.id = id;
         }
 
+        public String getParamName() {
+            return paramName;
+        }
 
+        public void setParamName(String paramName) {
+            this.paramName = paramName;
+        }
     }
 }

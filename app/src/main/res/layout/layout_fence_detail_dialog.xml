@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_background">
+
+    <ImageView
+        android:id="@+id/close"
+        android:clickable="true"
+        android:padding="25mm"
+        android:focusableInTouchMode="true"
+        android:src="@drawable/image_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_detail_margin_left"
+        android:layout_marginRight="@dimen/dialog_detail_margin_left"
+        android:layout_marginBottom="@dimen/detail_line_margin">
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="站点名称：" />
+        <TextView
+            android:id="@+id/fenceName"
+            style="@style/GrayDetailTextView"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_detail_margin_left"
+        android:layout_marginRight="@dimen/dialog_detail_margin_left"
+        android:layout_marginBottom="@dimen/detail_line_margin">
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="站点地址：" />
+        <TextView
+            android:id="@+id/installAddress"
+            style="@style/GrayDetailTextView"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_detail_margin_left"
+        android:layout_marginRight="@dimen/dialog_detail_margin_left"
+        android:layout_marginBottom="@dimen/detail_line_margin">
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="站点描述：" />
+        <TextView
+            android:id="@+id/remark"
+            style="@style/GrayDetailTextView"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_detail_margin_left"
+        android:layout_marginRight="@dimen/dialog_detail_margin_left"
+        android:layout_marginBottom="@dimen/detail_line_margin">
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="站点坐标：" />
+        <TextView
+            android:id="@+id/longitude"
+            style="@style/GrayDetailTextView"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_detail_margin_left"
+        android:layout_marginRight="@dimen/dialog_detail_margin_left"
+        android:layout_marginBottom="@dimen/detail_line_margin">
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="建设时间：" />
+        <TextView
+            android:id="@+id/installTime"
+            style="@style/GrayDetailTextView"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_detail_margin_left"
+        android:layout_marginRight="@dimen/dialog_detail_margin_left"
+        android:layout_marginBottom="@dimen/detail_line_margin">
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="所属区域：" />
+        <TextView
+            android:id="@+id/streetName"
+            style="@style/GrayDetailTextView"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_detail_margin_left"
+        android:layout_marginRight="@dimen/dialog_detail_margin_left"
+        android:layout_marginBottom="@dimen/detail_line_margin">
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="站点容量：" />
+        <TextView
+            android:id="@+id/amount"
+            style="@style/GrayDetailTextView"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_detail_margin_left"
+        android:layout_marginRight="@dimen/dialog_detail_margin_left"
+        android:layout_marginBottom="@dimen/detail_line_margin">
+        <TextView
+            style="@style/BlackDetailTextView"
+            android:text="固件版本：" />
+        <TextView
+            android:id="@+id/version"
+            style="@style/GrayDetailTextView"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/gis_map_button"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="50mm"
+        android:layout_marginBottom="40mm"
+        android:layout_width="300mm"
+        android:text="详情地图"/>
+
+</LinearLayout>

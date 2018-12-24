@@ -12,6 +12,7 @@ import com.lishu.bike.model.FenceDetailModel;
 import com.lishu.bike.model.FenceModel;
 import com.lishu.bike.model.InspectDetailModel;
 import com.lishu.bike.model.InspectIdModel;
+import com.lishu.bike.model.InspectImageModel;
 import com.lishu.bike.model.InspectModel;
 import com.lishu.bike.model.InspectTypeModel;
 import com.lishu.bike.model.StationDetailModel;
@@ -19,6 +20,7 @@ import com.lishu.bike.model.StationModel;
 import com.lishu.bike.model.StreetModel;
 import com.lishu.bike.model.TaskDetailModel;
 import com.lishu.bike.model.TaskIdModel;
+import com.lishu.bike.model.TaskImageModel;
 import com.lishu.bike.model.TaskModel;
 import com.lishu.bike.model.UserModel;
 import com.lishu.bike.model.VersionModel;
@@ -163,7 +165,8 @@ public class HttpLoader extends HttpBase {
     }
     //巡检上报
     public static void addInspect(int mobike, int ofobike, int hellobike, int dictionaryTypeId,
-                                  String remark, String inspectAddress, String inspectTime, IResponseListener listener) {
+                                  String remark, String inspectAddress, String inspectTime,
+                                  String inspectImageName, IResponseListener listener) {
         JSONObject request = new JSONObject();
         request.put("mobike", mobike);
         request.put("ofobike", ofobike);
@@ -172,6 +175,7 @@ public class HttpLoader extends HttpBase {
         request.put("remark", remark);
         request.put("inspectAddress", inspectAddress);
         request.put("inspectTime", inspectTime);
+        request.put("inspectImageName", inspectImageName);
         RequestParams params = getParams(request, HttpAddress.ADD_INSPECT);
 
         doPost(params, InspectIdModel.class, listener);
@@ -192,7 +196,7 @@ public class HttpLoader extends HttpBase {
         MultipartBody body = new MultipartBody(list, "UTF-8");
         params.setRequestBody(body);
 
-        doPost(params, BaseModel.class, listener);
+        doPost(params, InspectImageModel.class, listener);
     }
 
     //---------------------------------- 任务单接口 ----------------------------------------------
@@ -217,10 +221,11 @@ public class HttpLoader extends HttpBase {
         doPost(params, TaskDetailModel.class, listener);
     }
     //任务处理反馈
-    public static void addTaskResponse(int taskId, String taskContent, IResponseListener listener) {
+    public static void addTaskResponse(int taskId, String taskContent, String taskImageName, IResponseListener listener) {
         JSONObject request = new JSONObject();
         request.put("taskId", taskId);
-        request.put("taskContent", taskContent);
+        request.put("taskResponseContent", taskContent);
+        request.put("taskResponseImageName", taskImageName);
         RequestParams params = getParams(request, HttpAddress.ADD_TASK_RESPONSE);
 
         doPost(params, TaskIdModel.class, listener);
@@ -241,7 +246,7 @@ public class HttpLoader extends HttpBase {
         MultipartBody body = new MultipartBody(list, "UTF-8");
         params.setRequestBody(body);
 
-        doPost(params, BaseModel.class, listener);
+        doPost(params, TaskImageModel.class, listener);
     }
 
     //---------------------------------- 工作动态接口 ----------------------------------------------
