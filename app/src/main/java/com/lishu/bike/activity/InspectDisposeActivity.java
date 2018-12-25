@@ -1,5 +1,6 @@
 package com.lishu.bike.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.view.View;
@@ -31,6 +33,7 @@ import com.lishu.bike.model.InspectImageModel;
 import com.lishu.bike.model.InspectTypeModel;
 import com.lishu.bike.utils.LocationService;
 import com.lishu.bike.utils.LogUtil;
+import com.lishu.bike.utils.SystemUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 import com.lishu.bike.widget.AmountView;
@@ -282,7 +285,20 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
     /**
      * 通过照相得到照片
      */
+    protected void onRequestPermissionsDenied(int requestCode) {
+        if (requestCode == 22) {
+
+        }
+    }
+
     public void selectPicFromCamera() {
+        if (!(SystemUtil.selfPermissionGranted(mContext, Manifest.permission.CAMERA)
+                && SystemUtil.selfPermissionGranted(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE))) {
+            ActivityCompat.requestPermissions(InspectDisposeActivity.this,
+                    new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 22);
+            return;
+        }
+
         if (!(android.os.Environment.getExternalStorageState()
                 .equals(android.os.Environment.MEDIA_MOUNTED))) {
             Toast.makeText(getApplicationContext(), "SD卡不存在，不能拍照",

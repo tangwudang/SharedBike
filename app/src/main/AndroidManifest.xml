@@ -53,6 +53,10 @@
             android:name=".activity.FenceListActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".activity.FenceDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <!-- ================ 站点查询 ================ -->
         <activity
             android:name=".activity.StationListActivity"

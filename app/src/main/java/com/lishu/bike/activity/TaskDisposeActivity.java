@@ -1,5 +1,6 @@
 package com.lishu.bike.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,6 +25,7 @@ import com.lishu.bike.listener.TakePhotoListener;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.TaskImageModel;
 import com.lishu.bike.utils.LogUtil;
+import com.lishu.bike.utils.SystemUtil;
 import com.lishu.bike.utils.ToastUtil;
 
 import java.io.File;
@@ -126,6 +129,13 @@ public class TaskDisposeActivity extends BaseActivity {
      * 通过照相得到照片
      */
     public void selectPicFromCamera() {
+        if (!(SystemUtil.selfPermissionGranted(mContext, Manifest.permission.CAMERA)
+                && SystemUtil.selfPermissionGranted(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE))) {
+            ActivityCompat.requestPermissions(TaskDisposeActivity.this,
+                    new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 22);
+            return;
+        }
+
         if (!(android.os.Environment.getExternalStorageState()
                 .equals(android.os.Environment.MEDIA_MOUNTED))) {
             Toast.makeText(getApplicationContext(), "SD卡不存在，不能拍照",

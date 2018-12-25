@@ -38,6 +38,8 @@ public class HttpAddress {
     public static String GET_FENCES = ROOT + "/getFences" + USER_ID;
     //电子围栏详情
     public static String GET_FENCE_DETAIL = ROOT + "/getFenceDetail" + USER_ID;
+    //GIS地图
+    public static String GET_GIS_MAP = ROOT + "/getGisMap" + USER_ID;
 
     /**
      * 通讯录接口

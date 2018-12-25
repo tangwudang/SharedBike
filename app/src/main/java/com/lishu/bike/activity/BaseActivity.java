@@ -19,7 +19,7 @@ import com.lishu.bike.utils.ToastUtil;
 
 public abstract class BaseActivity extends AppCompatActivity{
     private ProgressDialog progressDialog;
-    private Context mContext;
+    protected Context mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

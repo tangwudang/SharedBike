@@ -9,6 +9,7 @@ import com.lishu.bike.model.AppInfoDetailModel;
 import com.lishu.bike.model.AppInfoModel;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.FenceDetailModel;
+import com.lishu.bike.model.FenceGISModel;
 import com.lishu.bike.model.FenceModel;
 import com.lishu.bike.model.InspectDetailModel;
 import com.lishu.bike.model.InspectIdModel;
@@ -92,6 +93,14 @@ public class HttpLoader extends HttpBase {
         RequestParams params = getParams(request, HttpAddress.GET_FENCE_DETAIL);
 
         doPost(params, FenceDetailModel.class, listener);
+    }
+    //GIS地图详情
+    public static void getGisMap(int fenceId, IResponseListener listener) {
+        JSONObject request = new JSONObject();
+        request.put("fenceId", fenceId);
+        RequestParams params = getParams(request, HttpAddress.GET_GIS_MAP);
+
+        doPost(params, FenceGISModel.class, listener);
     }
 
     //---------------------------------- 通讯录接口 ------------------------------------------------
