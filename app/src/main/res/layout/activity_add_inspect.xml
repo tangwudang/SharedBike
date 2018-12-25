@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="@dimen/margin_left_right"
         android:layout_marginRight="@dimen/margin_left_right"
-        android:layout_marginBottom="@dimen/margin_left_right"
+        android:layout_marginBottom="20mm"
         android:layout_marginTop="15mm"/>
 
     <ScrollView
@@ -220,12 +220,12 @@
                     android:layout_alignParentLeft="true" >
                     <TextView
                         android:id="@+id/location_addr"
-                        android:text="南京江宁东山街道121号"
+                        android:text="正在获取当前位置信息..."
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10mm"
                         android:textColor="@color/gray_text_color"
-                        android:textSize="30mm"/>
+                        android:textSize="28mm"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

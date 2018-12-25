@@ -17,8 +17,11 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
 import com.lishu.bike.R;
 import com.lishu.bike.adapter.LivePictureGridAdapter;
+import com.lishu.bike.app.BaseApplication;
 import com.lishu.bike.entity.LivePictureEntity;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
@@ -26,6 +29,7 @@ import com.lishu.bike.listener.TakePhotoListener;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.InspectImageModel;
 import com.lishu.bike.model.InspectTypeModel;
+import com.lishu.bike.utils.LocationService;
 import com.lishu.bike.utils.LogUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
@@ -57,7 +61,9 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
     private File cameraFile;
     private String uploadedFileNames;//已上传的图片名称，由服务器返回
     //定位
+    private TextView location_addr;
     private String locationAddress;
+    private LocationService locationService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,6 +74,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
         initEvent();
 
         getViolationTypes();
+        startBaiduLocation();
     }
 
     private void initView() {
@@ -95,6 +102,8 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
         mGridviewAdapter = new LivePictureGridAdapter(this);
         mPictrueGridview.setAdapter(mGridviewAdapter);
         mGridviewAdapter.setData(imageList);
+        //定位
+        location_addr = findViewById(R.id.location_addr);
     }
 
     private void initEvent() {
@@ -115,6 +124,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
             }
         });
         findViewById(R.id.submit).setOnClickListener(this);
+        findViewById(R.id.location_button_layout).setOnClickListener(this);
     }
 
     @Override
@@ -159,6 +169,10 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
                         }
                     }
                 }
+                break;
+            case R.id.location_button_layout:
+                //开始定位
+                startBaiduLocation();
                 break;
         }
     }
@@ -293,6 +307,47 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
         }
         startActivityForResult(intent, 99);
     }
+
+    @Override
+    protected void onStop() {
+        stopBaiduLocation();
+        super.onStop();
+    }
+
+    private void startBaiduLocation(){
+        locationService = ((BaseApplication) getApplication()).locationService;
+        //获取locationservice实例，建议应用中只初始化1个location实例，然后使用，可以参考其他示例的activity，都是通过此种方式获取locationservice实例的
+        locationService.registerListener(mListener);
+        //注册监听
+        locationService.setLocationOption(locationService.getDefaultLocationClientOption());
+        locationService.start();
+    }
+
+    private void stopBaiduLocation(){
+        locationService.unregisterListener(mListener); //注销掉监听
+        locationService.stop(); //停止定位服务
+    }
+
+    private BDAbstractLocationListener mListener = new BDAbstractLocationListener() {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (null != location && location.getLocType() != BDLocation.TypeServerError) {
+                int errorCode = location.getLocType();
+                locationAddress = location.getAddrStr();
+                if(locationAddress != null) {
+                    location_addr.setText(locationAddress);
+                }else{
+                    location_addr.setText("定位失败，请保持网络畅通，重新定位！");
+                }
+
+                //LogUtil.d( "getAddrStr = " + locationAddress);
+                //LogUtil.d("getAddress = " +location.getAddress().address);
+                LogUtil.d("定位返回码：" +  errorCode);
+            }
+
+            stopBaiduLocation();
+        }
+    };
 
     /**
      * 给TextView右边设置图片

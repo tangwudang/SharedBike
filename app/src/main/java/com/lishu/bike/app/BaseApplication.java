@@ -3,10 +3,10 @@ package com.lishu.bike.app;
 import android.app.Application;
 import android.content.Context;
 
-import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.lishu.bike.constant.AppConfig;
 import com.lishu.bike.constant.UserPreferences;
+import com.lishu.bike.utils.LocationService;
 
 import org.xutils.x;
 
@@ -15,6 +15,7 @@ import me.jessyan.autosize.unit.Subunits;
 
 public class BaseApplication extends Application {
     private static Context applicationContext;
+    public LocationService locationService;
 
     @Override
     public void onCreate() {
@@ -32,10 +33,11 @@ public class BaseApplication extends Application {
             x.Ext.setDebug(true);
         }
         // 百度地图初始化
+        locationService = new LocationService(getApplicationContext());
         SDKInitializer.initialize(this);
         // 百度地图支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.
         // 包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。
-        SDKInitializer.setCoordType(CoordType.BD09LL);
+        //SDKInitializer.setCoordType(CoordType.BD09LL);
     }
 
     public static Context getAppContext() {
