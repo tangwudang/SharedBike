@@ -21,6 +21,10 @@ public class StreetModel extends BaseModel implements Serializable{
         private double latitude;//纬度
         private double longitude;//经度
 
+        public StreetBean(){
+
+        }
+
         public StreetBean(int id, String streetName, double latitude, double longitude) {
             this.id = id;
             this.streetName = streetName;

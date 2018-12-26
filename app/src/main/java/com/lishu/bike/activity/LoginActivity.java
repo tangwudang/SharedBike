@@ -88,23 +88,24 @@ public class LoginActivity extends BaseActivity {
                 }
 
                 if (!model.success()) {
-                    ToastUtil.showShort("登录失败：" + model.getResMsg() + "," + model.toString());
+                    ToastUtil.showShort("登录失败：" + model.getResMsg());
                     return;
                 }
 
-                List<UserModel.UserBean> userBean = ((UserModel)model).getDataList();
-                if (userBean == null) {
+                List<UserModel.UserBean> userBeanList = ((UserModel)model).getDataList();
+                if (userBeanList == null) {
                     ToastUtil.showShort("登录失败：无效的登录信息");
                     return;
                 }
-
+                UserModel.UserBean userBean = userBeanList.get(0);
                 //保存返回的用户信息
-                UserPreferences.getInstance().setUserId(userBean.get(0).getId());
-                UserPreferences.getInstance().setUserName(userBean.get(0).getName());
-                UserPreferences.getInstance().setUserPhone(userBean.get(0).getPhone());
-                UserPreferences.getInstance().setUserAddress(userBean.get(0).getAddress());
-                UserPreferences.getInstance().setUserUrl(userBean.get(0).getUrl());
-                UserPreferences.getInstance().setUserOrganization(userBean.get(0).getOrganizationName());
+                UserPreferences.getInstance().setUserId(userBean.getId());
+                UserPreferences.getInstance().setUserName(userBean.getName());
+                UserPreferences.getInstance().setUserAge(userBean.getAge());
+                UserPreferences.getInstance().setUserPhone(userBean.getPhone());
+                UserPreferences.getInstance().setUserAddress(userBean.getAddress());
+                UserPreferences.getInstance().setUserUrl(userBean.getUrl());
+                UserPreferences.getInstance().setUserOrganization(userBean.getOrganizationName());
                 UserPreferences.getInstance().setAlreadyLoginFlag(true);
 
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));

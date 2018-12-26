@@ -16,18 +16,18 @@ public class AddressBookModel extends BaseModel implements Serializable {
     }
 
     public class AddressBook implements Serializable {
-        private int id;
+        private String id;
         private String name;//姓名
         private String url;//头像URL
         private String organizationName;//机构名
         private String PinYin;//这个属性不存入数据库
         private String FirstPinYin;//这个属性不存入数据库
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 

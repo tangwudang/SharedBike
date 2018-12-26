@@ -48,6 +48,10 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
 
         initView();
         initEvent();
+
+        getTaskList(TimeUtil.getCurDatetime() + "000000",
+                TimeUtil.getCurDatetime() + "235959",
+                1, COUNT_PER_PAGE);
     }
 
     private void initView() {

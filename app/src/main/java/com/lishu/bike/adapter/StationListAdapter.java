@@ -56,7 +56,7 @@ public class StationListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
       
-        viewHolder.stationName.setText(stationList.get(position).getStationName());
+        viewHolder.stationName.setText(stationList.get(position).getFenceName());
 
         return view;
     }

@@ -13,7 +13,7 @@ public class UserPreferences {
     private final String USER_ID = "user_id";
     //private final String USER_NO = "user_no";
     private final String USER_NAME = "user_name";
-    //private final String USER_AGE = "user_age";
+    private final String USER_AGE = "user_age";
     private final String USER_PHONE = "user_phone";
     private final String USER_ADDRESS = "user_address";
     private final String USER_URL = "user_url";
@@ -38,17 +38,17 @@ public class UserPreferences {
     /**
      * 用户Id
      */
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         if (sharePreferences != null) {
-            sharePreferences.edit().putInt(USER_ID, userId).commit();
+            sharePreferences.edit().putString(USER_ID, userId).commit();
         }
     }
 
-    public int getUserId() {
+    public String getUserId() {
         if (sharePreferences != null) {
-            return sharePreferences.getInt(USER_ID, -1);
+            return sharePreferences.getString(USER_ID, "-1");
         }
-        return -1;
+        return "";
     }
 
     /**
@@ -63,6 +63,22 @@ public class UserPreferences {
     public String getUserName() {
         if (sharePreferences != null) {
             return sharePreferences.getString(USER_NAME, "");
+        }
+        return "";
+    }
+
+    /**
+     * 年龄
+     */
+    public void setUserAge(String userAge) {
+        if (sharePreferences != null) {
+            sharePreferences.edit().putString(USER_AGE, userAge).commit();
+        }
+    }
+
+    public String getUserAge() {
+        if (sharePreferences != null) {
+            return sharePreferences.getString(USER_AGE, "");
         }
         return "";
     }
@@ -171,6 +187,7 @@ public class UserPreferences {
         if (sharePreferences != null) {
             SharedPreferences.Editor editor = sharePreferences.edit();
             editor.remove(USER_ID);
+            editor.remove(USER_AGE);
             editor.remove(USER_NAME);
             editor.remove(USER_PHONE);
             editor.remove(USER_ADDRESS);

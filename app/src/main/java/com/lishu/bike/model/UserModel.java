@@ -24,20 +24,20 @@ public class UserModel extends BaseModel {
     }
 
     public class UserBean{
-        private int id;
+        private String id;
         private String no;//编号
         private String name;//姓名
-        private int age;//年龄
+        private String age;//年龄
         private String phone;//手机号
         private String address;//住址
         private String url;//头像URL
         private String organizationName;//机构名
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -57,11 +57,11 @@ public class UserModel extends BaseModel {
             this.name = name;
         }
 
-        public int getAge() {
+        public String getAge() {
             return age;
         }
 
-        public void setAge(int age) {
+        public void setAge(String age) {
             this.age = age;
         }
 

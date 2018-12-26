@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.lishu.bike.R;
 import com.lishu.bike.constant.UserPreferences;
+import com.lishu.bike.utils.ImageUtil;
 
 public class SettingActivity extends BaseActivity{
-    private Button modifyPassword, logout;
+    private ImageView user_avatar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,10 +22,16 @@ public class SettingActivity extends BaseActivity{
 
         initView();
         initEvent();
+        setData();
     }
 
     private void initView() {
         setTopTitle(R.string.settings);
+        ((TextView)findViewById(R.id.user_name)).setText(UserPreferences.getInstance().getUserName());
+        ((TextView)findViewById(R.id.user_age)).setText(UserPreferences.getInstance().getUserAge());
+        ((TextView)findViewById(R.id.user_organization)).setText(UserPreferences.getInstance().getUserOrganization());
+        ((TextView)findViewById(R.id.user_phone)).setText(UserPreferences.getInstance().getUserPhone());
+        user_avatar = findViewById(R.id.user_avatar);
     }
 
     private void initEvent() {
@@ -42,5 +51,9 @@ public class SettingActivity extends BaseActivity{
                 startActivity(intent);
             }
         });
+    }
+
+    private void setData() {
+        ImageUtil.setUserAvatar(user_avatar, UserPreferences.getInstance().getUserUrl(), R.drawable.person_default);
     }
 }

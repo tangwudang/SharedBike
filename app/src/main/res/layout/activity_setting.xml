@@ -15,11 +15,11 @@
         android:layout_marginLeft="@dimen/margin_left_right"
         android:layout_marginRight="@dimen/margin_left_right">
         <TextView
-            android:id="@+id/user_avatar"
             android:text="头像"
             style="@style/MiddleBoldTextView"
             android:layout_centerVertical="true" />
         <ImageView
+            android:id="@+id/user_avatar"
             android:layout_width="84mm"
             android:layout_height="84mm"
             android:layout_centerVertical="true"
@@ -57,11 +57,11 @@
 
         <TextView
             style="@style/MiddleBoldTextView"
-            android:text="用户性别" />
+            android:text="年龄" />
         <TextView
-            android:id="@+id/user_sex"
+            android:id="@+id/user_age"
             style="@style/SmallTextViewStyle"
-            android:text="男"
+            android:text="未知"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
@@ -80,7 +80,7 @@
         <TextView
             android:id="@+id/user_organization"
             style="@style/SmallTextViewStyle"
-            android:text="江宁街道"
+            android:text="未知"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
@@ -99,7 +99,7 @@
         <TextView
             android:id="@+id/user_phone"
             style="@style/SmallTextViewStyle"
-            android:text="15811858688"
+            android:text="未知"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 

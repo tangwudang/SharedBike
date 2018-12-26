@@ -25,7 +25,7 @@ public class AddressBookDetailActivity extends BaseActivity{
 
         initView();
 
-        int contactId = getIntent().getIntExtra("contactId", -1);
+        String contactId = getIntent().getStringExtra("contactId");
         getAddressBookDetail(contactId);
     }
 
@@ -41,7 +41,7 @@ public class AddressBookDetailActivity extends BaseActivity{
         address = findViewById(R.id.address);
     }
 
-    private void getAddressBookDetail(int contactId) {
+    private void getAddressBookDetail(String contactId) {
         HttpLoader.addressBookDetail(contactId, new HttpBase.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
@@ -57,7 +57,12 @@ public class AddressBookDetailActivity extends BaseActivity{
                 AddressBookDetailModel bookDetail = (AddressBookDetailModel) model;
                 if (bookDetail != null) {
                     name.setText(bookDetail.getName());
-                    sex.setText(bookDetail.getSex());
+                    String pSex = bookDetail.getSex();
+                    if("1".equals(pSex)){
+                        sex.setText("女");
+                    }else{
+                        sex.setText("男");
+                    }
                     age.setText(bookDetail.getAge());
                     no.setText(bookDetail.getNo());
                     phone.setText(bookDetail.getPhone());

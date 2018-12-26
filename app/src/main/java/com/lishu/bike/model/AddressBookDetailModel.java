@@ -6,7 +6,7 @@ public class AddressBookDetailModel extends BaseModel {
     private String no;// 编号,
     private String sex;// 性别（0：男，1女）,
     private String name;// 名称,
-    private int age;//年龄
+    private String age;//年龄
     private String phone;//手机号
     private String address;//住址
     private String url;//头像URL
@@ -43,11 +43,11 @@ public class AddressBookDetailModel extends BaseModel {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

@@ -16,11 +16,15 @@ public class StationModel extends BaseModel {
 
     public class StationBean{
         private int id;
-        private String stationName;//站点名
+        private String fenceName;//站点名
 
-        public StationBean(int id, String stationName) {
+        public StationBean(){
+
+        }
+
+        public StationBean(int id, String fenceName) {
             this.id = id;
-            this.stationName = stationName;
+            this.fenceName = fenceName;
         }
 
         public int getId() {
@@ -31,12 +35,12 @@ public class StationModel extends BaseModel {
             this.id = id;
         }
 
-        public String getStationName() {
-            return stationName;
+        public String getFenceName() {
+            return fenceName;
         }
 
-        public void setStationName(String stationName) {
-            this.stationName = stationName;
+        public void setFenceName(String fenceName) {
+            this.fenceName = fenceName;
         }
     }
 }

@@ -48,27 +48,44 @@ public class AddressBookActivity extends BaseActivity{
 
         getAddressBook();
 
-        testData();
+        //testData();
     }
 
     private void getAddressBook() {
         HttpLoader.addressBooks(new HttpBase.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
-                if (model == null) {
-                    ToastUtil.showShort(R.string.please_check_network);
-                    return;
-                }
-                if (!model.success()) {
-                    ToastUtil.showShort(getString(R.string.get_data_fail) + model.getResMsg());
-                    return;
-                }
+            if (model == null) {
+                ToastUtil.showShort(R.string.please_check_network);
+                return;
+            }
+            if (!model.success()) {
+                ToastUtil.showShort(getString(R.string.get_data_fail) + model.getResMsg());
+                return;
+            }
 
-                List<AddressBookModel.AddressBook> bookList = ((AddressBookModel) model).getDataList();
-                if (bookList != null) {
-                    mShowContactList = bookList;
-                    contactsListAdapter.setData(mShowContactList);
+            List<AddressBookModel.AddressBook> bookList = ((AddressBookModel) model).getDataList();
+            if (bookList != null) {
+                for(int i = 0; i < bookList.size(); i++){
+                    AddressBookModel.AddressBook contactBean = bookList.get(i);
+                    try {
+                        String pinyin = PinyinUtils.getPingYin(contactBean.getName());
+                        String Fpinyin = pinyin.substring(0, 1).toUpperCase();
+                        contactBean.setPinYin(pinyin);
+                        if (Fpinyin.matches("[A-Z]")) {
+                            contactBean.setFirstPinYin(Fpinyin);
+                        } else {
+                            contactBean.setFirstPinYin("#");
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        contactBean.setFirstPinYin("#");
+                    }
+
+                    mShowContactList.add(contactBean);
                 }
+                contactsListAdapter.setData(mShowContactList);
+            }
             }
         });
     }
@@ -79,7 +96,7 @@ public class AddressBookActivity extends BaseActivity{
             AddressBookModel.AddressBook contactBean = new AddressBookModel().new AddressBook();
             contactBean.setName("刘中华");
             contactBean.setOrganizationName("江宁街道管理局副局长兼执行队长");
-            contactBean.setId(1);
+            contactBean.setId("1");
 
             try {
                 String pinyin = PinyinUtils.getPingYin(contactBean.getName());
@@ -101,7 +118,7 @@ public class AddressBookActivity extends BaseActivity{
             AddressBookModel.AddressBook contactBean = new AddressBookModel().new AddressBook();
             contactBean.setName("张小爱");
             contactBean.setOrganizationName("江宁街道管理局副局长兼执行队长江宁街道管理局副局长兼执行队长");
-            contactBean.setId(2);
+            contactBean.setId("3");
 
             try {
                 String pinyin = PinyinUtils.getPingYin(contactBean.getName());
@@ -123,7 +140,7 @@ public class AddressBookActivity extends BaseActivity{
             AddressBookModel.AddressBook contactBean = new AddressBookModel().new AddressBook();
             contactBean.setName("司马光");
             contactBean.setOrganizationName("江宁街道管理局副局长兼执行队长江宁街道管理局副局长兼执行队长");
-            contactBean.setId(3);
+            contactBean.setId("2");
 
             try {
                 String pinyin = PinyinUtils.getPingYin(contactBean.getName());
