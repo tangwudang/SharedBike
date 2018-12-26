@@ -19,6 +19,8 @@ import com.lishu.bike.model.UserModel;
 import com.lishu.bike.utils.StringUtil;
 import com.lishu.bike.utils.ToastUtil;
 
+import java.util.List;
+
 public class LoginActivity extends BaseActivity {
     private EditText mLoginName, mLoginPassword;
     private Button mLoginButton;
@@ -37,8 +39,8 @@ public class LoginActivity extends BaseActivity {
         initEvent();
 
         // just for testing, begin =======================
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        finish();
+        //startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        //finish();
         // just for testing, end =======================
     }
 
@@ -70,7 +72,7 @@ public class LoginActivity extends BaseActivity {
         } else if (StringUtil.isEmpty(pwd)) {
             ToastUtil.showShort(R.string.please_input_password);
             return;
-        } else if (pwd.length() < 6 || pwd.length() > 20) {
+        } else if (pwd.length() < 4 || pwd.length() > 20) {
             ToastUtil.showShort(R.string.password_length_wrong);
             return;
         }
@@ -86,23 +88,23 @@ public class LoginActivity extends BaseActivity {
                 }
 
                 if (!model.success()) {
-                    ToastUtil.showShort("登录失败：" + model.getResMsg());
+                    ToastUtil.showShort("登录失败：" + model.getResMsg() + "," + model.toString());
                     return;
                 }
 
-                UserModel.UserBean userBean = ((UserModel)model).getDataList();
+                List<UserModel.UserBean> userBean = ((UserModel)model).getDataList();
                 if (userBean == null) {
                     ToastUtil.showShort("登录失败：无效的登录信息");
                     return;
                 }
 
                 //保存返回的用户信息
-                UserPreferences.getInstance().setUserId(userBean.getId());
-                UserPreferences.getInstance().setUserName(userBean.getName());
-                UserPreferences.getInstance().setUserPhone(userBean.getPhone());
-                UserPreferences.getInstance().setUserAddress(userBean.getAddress());
-                UserPreferences.getInstance().setUserUrl(userBean.getUrl());
-                UserPreferences.getInstance().setUserOrganization(userBean.getOrganizationName());
+                UserPreferences.getInstance().setUserId(userBean.get(0).getId());
+                UserPreferences.getInstance().setUserName(userBean.get(0).getName());
+                UserPreferences.getInstance().setUserPhone(userBean.get(0).getPhone());
+                UserPreferences.getInstance().setUserAddress(userBean.get(0).getAddress());
+                UserPreferences.getInstance().setUserUrl(userBean.get(0).getUrl());
+                UserPreferences.getInstance().setUserOrganization(userBean.get(0).getOrganizationName());
                 UserPreferences.getInstance().setAlreadyLoginFlag(true);
 
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));

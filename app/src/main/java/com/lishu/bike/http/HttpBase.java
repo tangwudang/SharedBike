@@ -3,17 +3,11 @@ package com.lishu.bike.http;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.lishu.bike.model.BaseModel;
 
 import org.xutils.common.Callback;
-import org.xutils.common.util.KeyValue;
 import org.xutils.http.RequestParams;
-import org.xutils.http.body.MultipartBody;
 import org.xutils.x;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class HttpBase {
 
@@ -52,7 +46,7 @@ public class HttpBase {
         });
     }
 
-    protected static void doGet(RequestParams params, final Class<?> cls, final IResponseListener listener) {
+    /*protected static void doGet(RequestParams params, final Class<?> cls, final IResponseListener listener) {
         Log.v("tag", "request url : " + params.getUri() + ", request params : " + params.getQueryStringParams());
 
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -83,13 +77,13 @@ public class HttpBase {
             public void onFinished() {
             }
         });
-    }
+    }*/
 
     private static BaseModel parseObject(String response, Class<?> cls){
         return (BaseModel) JSON.parseObject(response, cls);
     }
 
-    protected static RequestParams getParams(JSONObject request, String address){
+    /*protected static RequestParams getParams(JSONObject request, String address){
         RequestParams params = new RequestParams(address);
         params.setAsJsonContent(true);
         List<KeyValue> list = new ArrayList<>();
@@ -98,5 +92,5 @@ public class HttpBase {
         params.setRequestBody(body);
 
         return params;
-    }
+    }*/
 }

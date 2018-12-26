@@ -56,7 +56,7 @@ public class ChangePwdActivity extends BaseActivity{
             return;
         }
 
-        if (newPwd.length() < 6 || newPwd.length() > 20) {
+        if (newPwd.length() < 4 || newPwd.length() > 20) {
             ToastUtil.showShort(R.string.password_length_wrong);
             return;
         }

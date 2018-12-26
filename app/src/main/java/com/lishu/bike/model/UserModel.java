@@ -1,9 +1,11 @@
 package com.lishu.bike.model;
 
 
+import java.util.List;
+
 public class UserModel extends BaseModel {
     private String userId;
-    private UserBean dataList;
+    private List<UserBean> dataList;
 
     public String getUserId() {
         return userId;
@@ -13,11 +15,11 @@ public class UserModel extends BaseModel {
         this.userId = userId;
     }
 
-    public UserBean getDataList() {
+    public List<UserBean> getDataList() {
         return dataList;
     }
 
-    public void setDataList(UserBean dataList) {
+    public void setDataList(List<UserBean> dataList) {
         this.dataList = dataList;
     }
 

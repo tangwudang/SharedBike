@@ -10,7 +10,7 @@ public class HttpAddress {
     static{
         if(AppConfig.IS_DEBUG){
             //测试地址
-            //ROOT = "http://127.0.0.1:8080/cloudNotice";
+            ROOT = "http://153.37.97.170:9002/bicycle-jn";
         }else{
             //现网地址
             //ROOT = "http://127.0.0.1:8080/cloudNotice";
@@ -21,89 +21,108 @@ public class HttpAddress {
      * 登录与设置接口
      */
     //用户登录
-    public static String LOGIN = ROOT + "/login";
+    public static String LOGIN = ROOT + "/personInfoApp!login.action";
     //个人信息（同：通讯录详情）
-    //public static String ADDRESS_BOOK_DETAIL = ROOT + "/xxx";
+    //public static String ADDRESS_BOOK_DETAIL = ROOT + "!xxx";
     //修改密码
-    public static String CHANGE_PASSWORD = ROOT + "/changePassword" + USER_ID;
+    public static String CHANGE_PASSWORD = ROOT + "/personInfoApp!changePassword.action" + USER_ID;
     //获取APP最新版本
-    public static String LATEST_VERSION = ROOT + "/latestVersion" + USER_ID;
+    public static String LATEST_VERSION = ROOT + "/softApp!latestVersion.action" + USER_ID;
 
     /**
      * 电子围栏接口
      */
     //电子围栏街道信息(同：街道信息列表)
-    //public static String GET_STREETS = ROOT + "/XXX";
+    //public static String GET_STREETS = ROOT + "!XXX";
     //电子围栏列表
-    public static String GET_FENCES = ROOT + "/getFences" + USER_ID;
+    public static String GET_FENCES = ROOT + "/deviceStationApp!getFences.action" + USER_ID;
     //电子围栏详情
-    public static String GET_FENCE_DETAIL = ROOT + "/getFenceDetail" + USER_ID;
+    public static String GET_FENCE_DETAIL = ROOT + "/deviceStationApp!getFenceDetail.action" + USER_ID;
     //GIS地图
-    public static String GET_GIS_MAP = ROOT + "/getGisMap" + USER_ID;
+    public static String GET_GIS_MAP = ROOT + "!getGisMap.action" + USER_ID;
 
     /**
      * 通讯录接口
      */
     //通讯录
-    public static String ADDRESS_BOOKS = ROOT + "/addressBooks" + USER_ID;
+    public static String ADDRESS_BOOKS = ROOT + "/personInfoApp!addressBooks.action" + USER_ID;
     //通讯录详情
-    public static String ADDRESS_BOOK_DETAIL = ROOT + "/addressBookDetail";
+    public static String ADDRESS_BOOK_DETAIL = ROOT + "/personInfoApp!addressBookDetail.action";
 
     /**
      * 站点查询接口
      */
     //街道信息列表
-    public static String GET_STREETS = ROOT + "/getStreets" + USER_ID;
+    public static String GET_STREETS = ROOT + "/deviceStationApp!getStreets.action" + USER_ID;
     //停车站点列表
-    public static String GET_STATIONS = ROOT + "/getStations" + USER_ID;
+    public static String GET_STATIONS = ROOT + "/deviceStationApp!getStations.action" + USER_ID;
     //停车站点信息
-    public static String GET_STATION_DETAIL = ROOT + "/getStationDetail" + USER_ID;
+    public static String GET_STATION_DETAIL = ROOT + "/deviceStationApp!getStationDetail.action" + USER_ID;
 
     /**
      * 巡检信息接口
      */
     //巡检信息列表
-    public static String GET_INSPECTIONS = ROOT + "/getInspections" + USER_ID;
+    public static String GET_INSPECTIONS = ROOT + "!getInspections.action" + USER_ID;
     //巡检历史详情
-    public static String GET_INSPECTIONS_DETAIL = ROOT + "/getInspectDetail" + USER_ID;
+    public static String GET_INSPECTIONS_DETAIL = ROOT + "!getInspectDetail.action" + USER_ID;
     //巡检上报违规类型
-    public static String GET_INSPECTIONS_TYPES = ROOT + "/getDictionaryTypes" + USER_ID;
+    public static String GET_INSPECTIONS_TYPES = ROOT + "!getDictionaryTypes.action" + USER_ID;
     //巡检上报
-    public static String ADD_INSPECT = ROOT + "/addInspect" + USER_ID;
+    public static String ADD_INSPECT = ROOT + "!addInspect.action" + USER_ID;
     //巡检图片上传
-    public static String ADD_INSPECT_IMAGE = ROOT + "/addInspectImage" + USER_ID;
+    public static String ADD_INSPECT_IMAGE = ROOT + "!addInspectImage.action" + USER_ID;
 
     /**
      * 任务单接口
      */
     //任务单列表
-    public static String GET_TASKS = ROOT + "/getTasks" + USER_ID;
+    public static String GET_TASKS = ROOT + "!getTasks.action" + USER_ID;
     //任务单详情
-    public static String GET_TASK_DETAIL = ROOT + "/getTaskDetail" + USER_ID;
+    public static String GET_TASK_DETAIL = ROOT + "/taskInfoApp!getTaskDetail.action" + USER_ID;
     //任务处理反馈
-    public static String ADD_TASK_RESPONSE = ROOT + "/addTaskResponse" + USER_ID;
+    public static String ADD_TASK_RESPONSE = ROOT + "!addTaskResponse.action" + USER_ID;
     //任务处理图片上传
-    public static String ADD_TASK_DISPOSE_IMAGE = ROOT + "/addTaskDisposeImage" + USER_ID;
+    public static String ADD_TASK_DISPOSE_IMAGE = ROOT + "/taskInfoApp!addTaskDisposeImage.action" + USER_ID;
 
     /**
      * 工作动态接口
      */
     //工作动态列表
-    public static String GET_APP_INFOS = ROOT + "/getAppInfos" + USER_ID;
+    public static String GET_APP_INFOS = ROOT + "/appInfoApp!getAppInfos.action" + USER_ID;
     //工作动态详情
-    public static String GET_APP_INFO_DETAIL = ROOT + "/getAppInfoDetail" + USER_ID;
+    public static String GET_APP_INFO_DETAIL = ROOT + "/appInfoApp!getAppInfoDetail.action" + USER_ID;
 
     /**
      * 营运分析接口
      */
     //营运分析
-    public static String GET_ANALYZES = ROOT + "/getAnalyzes" + USER_ID;
+    public static String GET_ANALYZES = ROOT + "/operationAnalysisApp!getAnalyzes.action" + USER_ID;
 
     /**
      * 告警信息接口
      */
     //告警信息列表
-    public static String GET_WARNINGS = ROOT + "/getWarnings" + USER_ID;
+    public static String GET_WARNINGS = ROOT + "!getWarnings.action" + USER_ID;
     //告警信息详情
-    public static String GET_WARN_DETAIL = ROOT + "/getWarnDetail" + USER_ID;
+    public static String GET_WARN_DETAIL = ROOT + "!getWarnDetail.action" + USER_ID;
+
+
+     /*securityList.add("/personInfoApp!login.action");
+    	securityList.add("/personInfoApp!addressBooks.action");
+    	securityList.add("/personInfoApp!addressBookDetail.action");
+    	securityList.add("/personInfoApp!changePassword.action");
+    	securityList.add("/deviceStationApp!getStreets.action");
+    	securityList.add("/deviceStationApp!getFences.action");
+    	securityList.add("/deviceStationApp!getFenceDetail.action");
+    	securityList.add("/deviceStationApp!getStations.action");
+    	securityList.add("/deviceStationApp!getStationDetail.action");
+    	securityList.add("/softApp!latestVersion.action");
+    	securityList.add("/taskInfoApp!TaskInfoList.action");----------
+    	securityList.add("/taskInfoApp!taskDetail.action");--------------
+    	securityList.add("/taskInfoApp!taskDisposeImage.action");-------------
+    	securityList.add("/operationAnalysisApp!getAnalyzes.action");
+    	securityList.add("/appInfoApp!appInfoList.action");------------
+    	securityList.add("/appInfoApp!appInfoDetail.action");----------------
+     */
 }

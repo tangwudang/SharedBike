@@ -19,7 +19,7 @@
     <string name="please_input_login_name">请输入用户名</string>
     <string name="please_input_password">请输入密码</string>
     <string name="password_is_empty">密码不能为空</string>
-    <string name="password_length_wrong">请输入6-20位的密码</string>
+    <string name="password_length_wrong">请输入4-20位的密码</string>
     <string name="input_old_password">请输入旧密码</string>
     <string name="input_new_password">请输入新密码</string>
 </resources>
