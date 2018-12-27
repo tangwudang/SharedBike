@@ -185,11 +185,10 @@ public class HttpLoader extends HttpBase {
         doPost(params, InspectIdModel.class, listener);
     }
     //巡检图片上传
-    public static void addInspectImage(int inspectId, String filePath, IResponseListener listener) {
+    public static void addInspectImage(String filePath, IResponseListener listener) {
         RequestParams params = new RequestParams(HttpAddress.ADD_INSPECT_IMAGE);
         params.addQueryStringParameter("userId", UserPreferences.getInstance().getUserId());
-        params.addBodyParameter("inspectId", String.valueOf(inspectId));
-        params.addBodyParameter("file", new File(filePath));
+        params.addBodyParameter("inspectImage", new File(filePath));
 
         doPost(params, InspectImageModel.class, listener);
     }
@@ -226,11 +225,10 @@ public class HttpLoader extends HttpBase {
         doPost(params, TaskIdModel.class, listener);
     }
     //任务处理图片上传
-    public static void addTaskDisposeImage(int taskResponseId, String filePath, IResponseListener listener) {
+    public static void addTaskDisposeImage(String filePath, IResponseListener listener) {
         RequestParams params = new RequestParams(HttpAddress.ADD_TASK_DISPOSE_IMAGE);
         params.addQueryStringParameter("userId", UserPreferences.getInstance().getUserId());
-        params.addBodyParameter("taskResponseId", String.valueOf(taskResponseId));
-        params.addBodyParameter("file", new File(filePath));
+        params.addBodyParameter("taskResponseImage", new File(filePath));
 
         doPost(params, TaskImageModel.class, listener);
     }

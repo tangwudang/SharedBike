@@ -77,21 +77,21 @@ public class HttpAddress {
      * 任务单接口
      */
     //任务单列表--------
-    public static String GET_TASKS = ROOT + "/taskInfoApp!TaskInfoList.action";//"!getTasks.action";
+    public static String GET_TASKS = ROOT + "/taskInfoApp!getTasks.action";
     //任务单详情--------
-    public static String GET_TASK_DETAIL = ROOT + "/taskInfoApp!taskDetail.action";//"/taskInfoApp!getTaskDetail.action";
+    public static String GET_TASK_DETAIL = ROOT + "/taskInfoApp!getTaskDetail.action";
     //任务处理反馈
     public static String ADD_TASK_RESPONSE = ROOT + "!addTaskResponse.action";
     //任务处理图片上传
-    public static String ADD_TASK_DISPOSE_IMAGE = ROOT + "/taskInfoApp!taskDisposeImage.action";//"/taskInfoApp!addTaskDisposeImage.action";
+    public static String ADD_TASK_DISPOSE_IMAGE = ROOT + "/taskInfoApp!addTaskDisposeImage.action";
 
     /**
      * 工作动态接口
      */
-    //工作动态列表
+    //工作动态列表-----------
     public static String GET_APP_INFOS = ROOT + "/appInfoApp!getAppInfos.action";
     //工作动态详情------------
-    public static String GET_APP_INFO_DETAIL = ROOT + "/appInfoApp!appInfoDetail.action";//"/appInfoApp!getAppInfoDetail.action";
+    public static String GET_APP_INFO_DETAIL = ROOT + "/appInfoApp!getAppInfoDetail.action";
 
     /**
      * 营运分析接口

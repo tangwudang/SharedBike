@@ -61,7 +61,7 @@ public class AppInfoListAdapter extends BaseAdapter {
 
         AppInfoModel.AppInfoBean appInfoBean = appInfoList.get(position);
         viewHolder.content.setText(appInfoBean.getInfoTitle());
-        viewHolder.type.setText(appInfoBean.getAppInfoType());
+        viewHolder.type.setText(appInfoBean.getAppInfoTypeName());
         String infoTime = TimeUtil.getMessageTime(appInfoBean.getPublishTime());
         if(infoTime != null) {
             viewHolder.time.setText(infoTime);

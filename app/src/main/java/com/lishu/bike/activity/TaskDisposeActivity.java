@@ -162,7 +162,7 @@ public class TaskDisposeActivity extends BaseActivity {
     }
 
     private void sendPicture(String imgPath) {
-        HttpLoader.addTaskDisposeImage(taskId, imgPath, new HttpBase.IResponseListener() {
+        HttpLoader.addTaskDisposeImage(imgPath, new HttpBase.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
                 if (model == null) {

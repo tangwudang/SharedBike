@@ -46,7 +46,7 @@ public class UserPreferences {
 
     public String getUserId() {
         if (sharePreferences != null) {
-            return sharePreferences.getString(USER_ID, "-1");
+            return sharePreferences.getString(USER_ID, "0");
         }
         return "";
     }

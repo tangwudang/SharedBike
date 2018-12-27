@@ -20,12 +20,17 @@ public class AppInfoModel extends BaseModel {
         private String infoTitle;//标题,
         private String publishTime;//发布时间，yyyyMMddHHmmss,
         private String imageUrl;//标题图片,
-        private String appInfoType;//类型（员工风采、会议通知）
+        private int appInfoTypeId;//类型id
+        private String appInfoTypeName;//类型名（员工风采、会议通知）
 
-        public AppInfoBean(String infoTitle, String publishTime, String appInfoType) {
+        public AppInfoBean(){
+
+        }
+
+        public AppInfoBean(String infoTitle, String publishTime, String appInfoTypeName) {
             this.infoTitle = infoTitle;
             this.publishTime = publishTime;
-            this.appInfoType = appInfoType;
+            this.appInfoTypeName = appInfoTypeName;
         }
 
         public int getId() {
@@ -60,12 +65,20 @@ public class AppInfoModel extends BaseModel {
             this.imageUrl = imageUrl;
         }
 
-        public String getAppInfoType() {
-            return appInfoType;
+        public int getAppInfoTypeId() {
+            return appInfoTypeId;
         }
 
-        public void setAppInfoType(String appInfoType) {
-            this.appInfoType = appInfoType;
+        public void setAppInfoTypeId(int appInfoTypeId) {
+            this.appInfoTypeId = appInfoTypeId;
+        }
+
+        public String getAppInfoTypeName() {
+            return appInfoTypeName;
+        }
+
+        public void setAppInfoTypeName(String appInfoTypeName) {
+            this.appInfoTypeName = appInfoTypeName;
         }
     }
 }

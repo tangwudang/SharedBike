@@ -181,7 +181,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
     }
 
     private void sendPicture(String imgPath) {
-        HttpLoader.addInspectImage(-1, imgPath, new HttpBase.IResponseListener() {
+        HttpLoader.addInspectImage(imgPath, new HttpBase.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
                 if (model == null) {
