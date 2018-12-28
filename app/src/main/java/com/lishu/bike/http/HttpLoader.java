@@ -29,9 +29,13 @@ import com.lishu.bike.model.WarnDetailModel;
 import com.lishu.bike.model.WarnModel;
 import com.lishu.bike.utils.MD5;
 
+import org.xutils.common.util.KeyValue;
 import org.xutils.http.RequestParams;
+import org.xutils.http.body.MultipartBody;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * http普通接口
@@ -188,7 +192,15 @@ public class HttpLoader extends HttpBase {
     public static void addInspectImage(String filePath, IResponseListener listener) {
         RequestParams params = new RequestParams(HttpAddress.ADD_INSPECT_IMAGE);
         params.addQueryStringParameter("userId", UserPreferences.getInstance().getUserId());
-        params.addBodyParameter("inspectImage", new File(filePath));
+        //params.addBodyParameter("inspectImage", new File(filePath));
+
+        List<KeyValue> list = new ArrayList<>();
+        File imageFile = new File(filePath);
+        if (imageFile.exists()) {
+            list.add(new KeyValue("inspectImage", imageFile));
+        }
+        MultipartBody body = new MultipartBody(list, "UTF-8");
+        params.setRequestBody(body);
 
         doPost(params, InspectImageModel.class, listener);
     }
@@ -228,7 +240,15 @@ public class HttpLoader extends HttpBase {
     public static void addTaskDisposeImage(String filePath, IResponseListener listener) {
         RequestParams params = new RequestParams(HttpAddress.ADD_TASK_DISPOSE_IMAGE);
         params.addQueryStringParameter("userId", UserPreferences.getInstance().getUserId());
-        params.addBodyParameter("taskResponseImage", new File(filePath));
+        //params.addBodyParameter("taskResponseImage", new File(filePath));
+
+        List<KeyValue> list = new ArrayList<>();
+        File imageFile = new File(filePath);
+        if (imageFile.exists()) {
+            list.add(new KeyValue("taskResponseImage", imageFile));
+        }
+        MultipartBody body = new MultipartBody(list, "UTF-8");
+        params.setRequestBody(body);
 
         doPost(params, TaskImageModel.class, listener);
     }

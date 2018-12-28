@@ -161,6 +161,7 @@ public class TaskDisposeActivity extends BaseActivity {
         startActivityForResult(intent, 99);
     }
 
+    //{"resCode":"000000","resMsg":"操作处理成功","taskResponseImageName":"/uploadfiles/taskResponse/1/1545963059913.jpg"}
     private void sendPicture(String imgPath) {
         HttpLoader.addTaskDisposeImage(imgPath, new HttpBase.IResponseListener() {
             @Override
