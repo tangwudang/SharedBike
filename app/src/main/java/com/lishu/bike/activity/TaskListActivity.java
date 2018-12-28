@@ -150,7 +150,7 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
             }
 
             @Override
-            public void searchByChooseDate() {
+            public void searchByChooseDate(String beginDate, String endDate) {
                 getTaskList(beginDate + "000000",
                         endDate + "235959",
                         1, COUNT_PER_PAGE);

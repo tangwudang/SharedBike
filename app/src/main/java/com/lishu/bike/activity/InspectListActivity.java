@@ -108,7 +108,7 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
             }
 
             @Override
-            public void searchByChooseDate() {
+            public void searchByChooseDate(String beginDate, String endDate) {
                 getInspectionList(beginDate + "000000",
                         endDate + "235959",
                         1, COUNT_PER_PAGE);

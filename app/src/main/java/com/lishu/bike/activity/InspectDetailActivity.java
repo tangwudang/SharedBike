@@ -16,6 +16,7 @@ import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.InspectDetailModel;
+import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -95,7 +96,7 @@ public class InspectDetailActivity extends BaseActivity{
                     dutyName.setText(inspectDetail.getName());
                     String time = inspectDetail.getInspectTime();
                     if(!TextUtils.isEmpty(time)) {
-                        inspectTime.setText(inspectDetail.getInspectTime());
+                        inspectTime.setText(TimeUtil.getMessageTime(time));
                     }
                     inspectAddress.setText(inspectDetail.getInspectAddress());
                     inspectType.setText(inspectDetail.getTypeName());
