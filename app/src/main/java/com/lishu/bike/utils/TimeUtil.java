@@ -31,7 +31,7 @@ public class TimeUtil {
         try {
             Date dt = df.parse(datetime);
             //SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日   HH:mm:ss");
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             return formatter.format(dt);
         } catch (Exception exception) {
             exception.printStackTrace();

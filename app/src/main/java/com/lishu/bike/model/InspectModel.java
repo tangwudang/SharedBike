@@ -21,6 +21,10 @@ public class InspectModel extends BaseModel {
         private String inspectContent;
         private String inspectTypeName;
 
+        public InspectBean(){
+
+        }
+
         public InspectBean(int id, String inspectContent, String inspectTime,  String typeName) {
             this.id = id;
             this.inspectContent = inspectContent;

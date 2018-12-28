@@ -37,6 +37,10 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
 
         initView();
         initEvent();
+
+        getInspectionList(TimeUtil.getCurDatetime() + "000000",
+                TimeUtil.getCurDatetime() + "235959",
+                1, COUNT_PER_PAGE);
     }
 
     private void initView() {
@@ -49,12 +53,12 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         mInspectionListAdapter = new InspectionListAdapter(this);
         inspection_list.setAdapter(mInspectionListAdapter);
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
-        List<InspectModel.InspectBean> testList = new ArrayList<>();
+       /* List<InspectModel.InspectBean> testList = new ArrayList<>();
         testList.add(new InspectModel().new InspectBean(1,"我公司在今天下午进行员工总结大会", "20181209121514", "通知"));
         testList.add(new InspectModel().new InspectBean(2,"城管局如何做好巡检工作", "20181209101510", "会议"));
         testList.add(new InspectModel().new InspectBean(3,"冬季如何做好防护工作", "20181209111836", "员工风采"));
         testList.add(new InspectModel().new InspectBean(4,"我公司在今天下午进行员工总结大会，请全体人员准时参加", "20181216091842", "员工风采"));
-        mInspectionListAdapter.setData(testList);
+        mInspectionListAdapter.setData(testList);*/
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
 

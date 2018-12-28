@@ -2,6 +2,7 @@ package com.lishu.bike.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.lishu.bike.R;
@@ -9,6 +10,7 @@ import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.WarnDetailModel;
+import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 
 public class WarnDetailActivity extends BaseActivity{
@@ -52,7 +54,10 @@ public class WarnDetailActivity extends BaseActivity{
                 WarnDetailModel warnDetail = (WarnDetailModel) model;
                 if(warnDetail != null){
                     warnTitle.setText(warnDetail.getName());
-                    warnTime.setText(warnDetail.getWarnTime());
+                    String time = warnDetail.getWarnTime();
+                    if(!TextUtils.isEmpty(time)) {
+                        warnTime.setText(TimeUtil.getMessageTime(warnDetail.getWarnTime()));
+                    }
                     warnContent.setText(warnDetail.getWarnContent());
                 }
             }

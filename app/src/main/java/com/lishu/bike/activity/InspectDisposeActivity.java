@@ -76,6 +76,9 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
         initView();
         initEvent();
 
+        //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
+        locationAddress = "南京市江宁区秣周东路12号";
+        //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
         getViolationTypes();
         startBaiduLocation();
     }
@@ -200,7 +203,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
                     uploadedFileNames = inspectImageModel.getInspectImageName() + ",";
                 }
                 uploadedImageSize++;
-                if (uploadedImageSize == imageListSize) {//说明所有图片都已成功上传到服务器
+                if (uploadedImageSize == (imageListSize - 1)) {//说明所有图片都已成功上传到服务器
                     hide();
                     submitInspectReport();
                 }
@@ -210,7 +213,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
 
     private void submitInspectReport() {
         HttpLoader.addInspect(mobikeCount, ofoCount, helloCount, violationTypeId,
-                disposeContent.getText().toString(), locationAddress, TimeUtil.getCurDatetime(),
+                disposeContent.getText().toString(), locationAddress, TimeUtil.getCurDatetimeByPattern("yyyyMMddHHmmss"),
                 uploadedFileNames.substring(0, uploadedFileNames.length() - 2), new HttpBase.IResponseListener() {
                     @Override
                     public void onResponse(BaseModel model) {
@@ -224,6 +227,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
                         }
 
                         ToastUtil.showShort("提交成功！");
+                        finish();
                     }
                 });
     }

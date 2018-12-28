@@ -61,12 +61,7 @@ public class WarnListAdapter extends BaseAdapter {
       
         WarnModel.WarnBean warnBean = warnList.get(position);
         viewHolder.content.setText(warnBean.getWarnTitle());
-        String warnType = warnBean.getAskType();
-        if("1".equals(warnType)){
-            viewHolder.type.setText("员工风采");
-        }else if("2".equals(warnType)){
-            viewHolder.type.setText("会议通知");
-        }
+        viewHolder.type.setText(warnBean.getWarnType());
         String warnTime = TimeUtil.getMessageTime(warnBean.getWarnTime());
         if(warnTime != null) {
             viewHolder.time.setText(warnTime);

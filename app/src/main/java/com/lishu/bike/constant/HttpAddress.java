@@ -63,15 +63,15 @@ public class HttpAddress {
      * 巡检信息接口
      */
     //巡检信息列表
-    public static String GET_INSPECTIONS = ROOT + "!getInspections.action";
+    public static String GET_INSPECTIONS = ROOT + "/inspectionApp!getInspections.action";
     //巡检历史详情
-    public static String GET_INSPECTIONS_DETAIL = ROOT + "!getInspectDetail.action";
+    public static String GET_INSPECTIONS_DETAIL = ROOT + "/inspectionApp!getInspectDetail.action";
     //巡检上报违规类型
-    public static String GET_INSPECTIONS_TYPES = ROOT + "!getDictionaryTypes.action";
+    public static String GET_INSPECTIONS_TYPES = ROOT + "/inspectionApp!getDictionaryTypes.action";
     //巡检上报
-    public static String ADD_INSPECT = ROOT + "!addInspect.action";
+    public static String ADD_INSPECT = ROOT + "/inspectionApp!addInspect.action";
     //巡检图片上传
-    public static String ADD_INSPECT_IMAGE = ROOT + "!addInspectImage.action";
+    public static String ADD_INSPECT_IMAGE = ROOT + "/inspectionApp!addInspectImage.action";
 
     /**
      * 任务单接口
@@ -103,9 +103,9 @@ public class HttpAddress {
      * 告警信息接口
      */
     //告警信息列表
-    public static String GET_WARNINGS = ROOT + "!getWarnings.action";
+    public static String GET_WARNINGS = ROOT + "/wsarnHistoryApp!getWarnings.action";
     //告警信息详情
-    public static String GET_WARN_DETAIL = ROOT + "!getWarnDetail.action";
+    public static String GET_WARN_DETAIL = ROOT + "/wsarnHistoryApp!getWarnDetail.action";
 
 
      /*securityList.add("/personInfoApp!login.action");

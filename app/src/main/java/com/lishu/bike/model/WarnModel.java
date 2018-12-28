@@ -19,13 +19,17 @@ public class WarnModel extends BaseModel {
         private int id;
         private String warnTitle;//任务标题，
         private String warnTime;//告警时间 ，yyyyMMddHHmmss,
-        private String askType;//告警类型
+        private String warnType;//告警类型
 
-        public WarnBean(int id, String warnTitle, String warnTime, String askType) {
+        public WarnBean(){
+
+        }
+
+        public WarnBean(int id, String warnTitle, String warnTime, String warnType) {
             this.id = id;
             this.warnTitle = warnTitle;
             this.warnTime = warnTime;
-            this.askType = askType;
+            this.warnType = warnType;
         }
 
         public int getId() {
@@ -52,12 +56,12 @@ public class WarnModel extends BaseModel {
             this.warnTitle = warnTitle;
         }
 
-        public String getAskType() {
-            return askType;
+        public String getWarnType() {
+            return warnType;
         }
 
-        public void setAskType(String askType) {
-            this.askType = askType;
+        public void setWarnType(String warnType) {
+            this.warnType = warnType;
         }
     }
 }
