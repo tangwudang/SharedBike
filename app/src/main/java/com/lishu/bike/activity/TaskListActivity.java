@@ -21,19 +21,28 @@ import com.lishu.bike.model.TaskModel;
 import com.lishu.bike.utils.DateSearchUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+
 public class TaskListActivity extends BaseSearchActivity implements View.OnClickListener {
     private EditText begin_time_ev, end_time_ev;
+    private String chooseBeginTime, chooseEndTime;
     private ImageView search_icon;
     private ListView task_list;
     private TaskListAdapter mTaskListAdapter;
-    private int curPage = 1;
+    private int curPage;
+    private SmartRefreshLayout refreshLayout;
+    private List<TaskModel.TaskBean> mTaskList;
     //任务tab栏
     private final int PRESSED_TEXT_COLOR = 0xff000000;
     private final int NORMAL_TEXT_COLOR = 0xff666666;
+    private int curTab;
     private LinearLayout processedLayout;
     private LinearLayout unprocessedLayout;
     private TextView processedTaskTV;
@@ -49,9 +58,10 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         initView();
         initEvent();
 
-        getTaskList(TimeUtil.getCurDatetime() + "000000",
-                TimeUtil.getCurDatetime() + "235959",
-                1, COUNT_PER_PAGE);
+        curTab = 0;
+        curPage = 1;
+        mTaskList = new ArrayList<>();
+        getTaskListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
     }
 
     private void initView() {
@@ -68,6 +78,9 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
 
         mTaskListAdapter = new TaskListAdapter(this);
         task_list.setAdapter(mTaskListAdapter);
+
+        refreshLayout = findViewById(R.id.refreshLayout);
+        refreshLayout.setEnableRefresh(false);
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
         List<TaskModel.TaskBean> testList = new ArrayList<>();
@@ -94,6 +107,16 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
                 startActivity(intent);
             }
         });
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                curPage++;
+                getTaskList(chooseBeginTime + "000000",
+                        chooseEndTime + "235959",
+                        curPage, COUNT_PER_PAGE);
+                refreshLayout.finishLoadMore();
+            }
+        });
     }
 
     @Override
@@ -106,10 +129,12 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
                 showDatePickerDialog(1);
                 break;
             case R.id.unprocessed_layout:
+                curTab = 0;
                 setTab(0);
                 search();
                 break;
             case R.id.processed_layout:
+                curTab = 1;
                 setTab(1);
                 search();
                 break;
@@ -144,21 +169,29 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         DateSearchUtil.searchByDate(beginDate, endDate, new DateSearchListener() {
             @Override
             public void searchByDefaultDate() {
-                getTaskList(TimeUtil.getCurDatetime() + "000000",
-                        TimeUtil.getCurDatetime() + "235959",
-                        1, COUNT_PER_PAGE);
+                curPage = 1;
+                mTaskList.clear();
+                getTaskListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
             }
 
             @Override
             public void searchByChooseDate(String beginDate, String endDate) {
-                getTaskList(beginDate + "000000",
-                        endDate + "235959",
-                        1, COUNT_PER_PAGE);
+                curPage = 1;
+                mTaskList.clear();
+                getTaskListByTime(beginDate, endDate);
             }
         });
     }
 
-    private void getTaskList(String beginTime, String endTime, int curPage, int count){
+    private void getTaskListByTime(String beginDate, String endDate){
+        chooseBeginTime = beginDate;
+        chooseEndTime = endDate;
+        getTaskList(beginDate + "000000",
+                endDate + "235959",
+                curPage, COUNT_PER_PAGE);
+    }
+
+    private void getTaskList(String beginTime, String endTime, int curPage, final int count){
         HttpLoader.getTasks(beginTime, endTime, curPage, count, new HttpBase.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
@@ -173,7 +206,22 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
 
                 List<TaskModel.TaskBean> taskList = ((TaskModel) model).getDataList();
                 if (taskList != null) {
-                    mTaskListAdapter.setData(taskList);
+                    //处理状态(0:未处理，1;已处理)
+                    if(curTab == 1){
+                        for(int i = 0; i < taskList.size(); i++){
+                            if("1".equals(taskList.get(i).getResultStatus())){
+                                mTaskList.add(taskList.get(i));
+                            }
+                        }
+                    }else{
+                        for(int i = 0; i < taskList.size(); i++){
+                            if("0".equals(taskList.get(i).getResultStatus())){
+                                mTaskList.add(taskList.get(i));
+                            }
+                        }
+                    }
+
+                    mTaskListAdapter.setData(mTaskList);
                 }
             }
         });

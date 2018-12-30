@@ -14,13 +14,23 @@ import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.AppInfoModel;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.utils.ToastUtil;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+
 public class AppInfoListActivity extends BaseActivity{
     private ListView app_info_list;
     private AppInfoListAdapter mAppInfoListAdapter;
+    private SmartRefreshLayout refreshLayout;
+    private List<AppInfoModel.AppInfoBean> mAppInfoList;
 
     private int curPage = 1;
     private final int COUNT_PER_PAGE = 10;//每页条数
@@ -33,6 +43,7 @@ public class AppInfoListActivity extends BaseActivity{
         initView();
         initEvent();
 
+        mAppInfoList = new ArrayList<>();
         getAppInfoList(curPage, COUNT_PER_PAGE);
     }
 
@@ -41,6 +52,8 @@ public class AppInfoListActivity extends BaseActivity{
         app_info_list = findViewById(R.id.app_info_list);
         mAppInfoListAdapter = new AppInfoListAdapter(this);
         app_info_list.setAdapter(mAppInfoListAdapter);
+        refreshLayout = findViewById(R.id.refreshLayout);
+        refreshLayout.setEnableRefresh(false);
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
         List<AppInfoModel.AppInfoBean> appInfoList = new ArrayList<>();
@@ -62,6 +75,14 @@ public class AppInfoListActivity extends BaseActivity{
                 startActivity(intent);
             }
         });
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                curPage++;
+                getAppInfoList(curPage, COUNT_PER_PAGE);
+                refreshLayout.finishLoadMore();
+            }
+        });
     }
 
     private void getAppInfoList(int curPage, int count){
@@ -79,7 +100,8 @@ public class AppInfoListActivity extends BaseActivity{
 
                 List<AppInfoModel.AppInfoBean> appInfoList = ((AppInfoModel) model).getDataList();
                 if (appInfoList != null) {
-                    mAppInfoListAdapter.setData(appInfoList);
+                    mAppInfoList.addAll(appInfoList);
+                    mAppInfoListAdapter.setData(mAppInfoList);
                 }
             }
         });

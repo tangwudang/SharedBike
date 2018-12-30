@@ -19,16 +19,24 @@ import com.lishu.bike.model.WarnModel;
 import com.lishu.bike.utils.DateSearchUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+
 public class WarnListActivity extends BaseSearchActivity implements View.OnClickListener {
     private EditText begin_time_ev, end_time_ev;
+    private String chooseBeginTime, chooseEndTime;
     private ImageView search_icon;
     private ListView warn_list;
     private WarnListAdapter mWarnListAdapter;
-    private int curPage = 1;
+    private int curPage;
+    private SmartRefreshLayout refreshLayout;
+    private List<WarnModel.WarnBean> mWarnList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,9 +46,9 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         initView();
         initEvent();
 
-        getWarnList(TimeUtil.getCurDatetime() + "000000",
-                TimeUtil.getCurDatetime() + "235959",
-                1, COUNT_PER_PAGE);
+        curPage = 1;
+        mWarnList = new ArrayList<>();
+        getWarnListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
     }
 
     private void initView() {
@@ -50,6 +58,8 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         warn_list = findViewById(R.id.warn_list);
         mWarnListAdapter = new WarnListAdapter(this);
         warn_list.setAdapter(mWarnListAdapter);
+        refreshLayout = findViewById(R.id.refreshLayout);
+        refreshLayout.setEnableRefresh(false);
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
        /* List<WarnModel.WarnBean> testList = new ArrayList<>();
         testList.add(new WarnModel().new WarnBean(1,"我公司在今天下午进行员工总结大会", "20181209121514", "1"));
@@ -71,6 +81,16 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
                 Intent intent = new Intent(WarnListActivity.this, WarnDetailActivity.class);
                 intent.putExtra("warnId", warnId);
                 startActivity(intent);
+            }
+        });
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                curPage++;
+                getWarnList(chooseBeginTime + "000000",
+                        chooseEndTime + "235959",
+                        curPage, COUNT_PER_PAGE);
+                refreshLayout.finishLoadMore();
             }
         });
     }
@@ -96,18 +116,26 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         DateSearchUtil.searchByDate(beginDate, endDate, new DateSearchListener() {
             @Override
             public void searchByDefaultDate() {
-                getWarnList(TimeUtil.getCurDatetime() + "000000",
-                        TimeUtil.getCurDatetime() + "235959",
-                        1, COUNT_PER_PAGE);
+                curPage = 1;
+                mWarnList.clear();
+                getWarnListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
             }
 
             @Override
             public void searchByChooseDate(String beginDate, String endDate) {
-                getWarnList(beginDate + "000000",
-                        endDate + "235959",
-                        1, COUNT_PER_PAGE);
+                curPage = 1;
+                mWarnList.clear();
+                getWarnListByTime(beginDate, endDate);
             }
         });
+    }
+
+    private void getWarnListByTime(String beginDate, String endDate){
+        chooseBeginTime = beginDate;
+        chooseEndTime = endDate;
+        getWarnList(beginDate + "000000",
+                endDate + "235959",
+                curPage, COUNT_PER_PAGE);
     }
 
     private void getWarnList(String beginTime, String endTime, int curPage, int count){
@@ -125,7 +153,8 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
 
                 List<WarnModel.WarnBean> warnList = ((WarnModel) model).getDataList();
                 if (warnList != null) {
-                    mWarnListAdapter.setData(warnList);
+                    mWarnList.addAll(warnList);
+                    mWarnListAdapter.setData(mWarnList);
                 }
             }
         });

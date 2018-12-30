@@ -14,21 +14,30 @@ import com.lishu.bike.adapter.InspectionListAdapter;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.listener.DateSearchListener;
+import com.lishu.bike.model.AppInfoModel;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.InspectModel;
 import com.lishu.bike.utils.DateSearchUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+
 public class InspectListActivity extends BaseSearchActivity implements View.OnClickListener {
     private EditText begin_time_ev, end_time_ev;
+    private String chooseBeginTime, chooseEndTime;
     private ImageView search_icon;
     private ListView inspection_list;
     private InspectionListAdapter mInspectionListAdapter;
-    private int curPage = 1;
+    private int curPage;
+    private SmartRefreshLayout refreshLayout;
+    private List<InspectModel.InspectBean> mInspectList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,9 +47,9 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         initView();
         initEvent();
 
-        getInspectionList(TimeUtil.getCurDatetime() + "000000",
-                TimeUtil.getCurDatetime() + "235959",
-                1, COUNT_PER_PAGE);
+        curPage = 1;
+        mInspectList = new ArrayList<>();
+        getInspectionListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
     }
 
     private void initView() {
@@ -52,6 +61,8 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         inspection_list = findViewById(R.id.inspection_list);
         mInspectionListAdapter = new InspectionListAdapter(this);
         inspection_list.setAdapter(mInspectionListAdapter);
+        refreshLayout = findViewById(R.id.refreshLayout);
+        refreshLayout.setEnableRefresh(false);
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
        /* List<InspectModel.InspectBean> testList = new ArrayList<>();
         testList.add(new InspectModel().new InspectBean(1,"我公司在今天下午进行员工总结大会", "20181209121514", "通知"));
@@ -74,6 +85,16 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
                 Intent intent = new Intent(InspectListActivity.this, InspectDetailActivity.class);
                 intent.putExtra("inspectId", inspectId);
                 startActivity(intent);
+            }
+        });
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                curPage++;
+                getInspectionList(chooseBeginTime + "000000",
+                        chooseEndTime + "235959",
+                        curPage, COUNT_PER_PAGE);
+                refreshLayout.finishLoadMore();
             }
         });
     }
@@ -102,18 +123,26 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         DateSearchUtil.searchByDate(beginDate, endDate, new DateSearchListener() {
             @Override
             public void searchByDefaultDate() {
-                getInspectionList(TimeUtil.getCurDatetime() + "000000",
-                        TimeUtil.getCurDatetime() + "235959",
-                        1, COUNT_PER_PAGE);
+                curPage = 1;
+                mInspectList.clear();
+                getInspectionListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
             }
 
             @Override
             public void searchByChooseDate(String beginDate, String endDate) {
-                getInspectionList(beginDate + "000000",
-                        endDate + "235959",
-                        1, COUNT_PER_PAGE);
+                curPage = 1;
+                mInspectList.clear();
+                getInspectionListByTime(beginDate, endDate);
             }
         });
+    }
+
+    private void getInspectionListByTime(String beginDate, String endDate){
+        chooseBeginTime = beginDate;
+        chooseEndTime = endDate;
+        getInspectionList(beginDate + "000000",
+                endDate + "235959",
+                curPage, COUNT_PER_PAGE);
     }
 
     private void getInspectionList(String beginTime, String endTime, int curPage, int count){
@@ -131,7 +160,8 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
 
                 List<InspectModel.InspectBean> inspectList = ((InspectModel) model).getDataList();
                 if (inspectList != null) {
-                    mInspectionListAdapter.setData(inspectList);
+                    mInspectList.addAll(inspectList);
+                    mInspectionListAdapter.setData(mInspectList);
                 }
             }
         });
