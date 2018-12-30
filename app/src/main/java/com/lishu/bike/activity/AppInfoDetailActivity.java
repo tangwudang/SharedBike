@@ -2,6 +2,7 @@ package com.lishu.bike.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.webkit.WebView;
 import android.widget.TextView;
@@ -11,10 +12,11 @@ import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.AppInfoDetailModel;
 import com.lishu.bike.model.BaseModel;
+import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 
 public class AppInfoDetailActivity extends BaseActivity{
-    private TextView title, author, time;
+    private TextView info_title, author, time;
     private WebView webView;
     private String testData;
 
@@ -34,7 +36,7 @@ public class AppInfoDetailActivity extends BaseActivity{
     private void initView() {
         setTopTitle("工作动态详情");
 
-        title = findViewById(R.id.title);
+        info_title = findViewById(R.id.info_title);
         author = findViewById(R.id.author);
         time = findViewById(R.id.time);
         webView  = findViewById(R.id.webView);
@@ -58,9 +60,12 @@ public class AppInfoDetailActivity extends BaseActivity{
 
                 AppInfoDetailModel appInfoDetail = (AppInfoDetailModel) model;
                 if(appInfoDetail != null){
-                    title.setText(appInfoDetail.getInfoTitle());
+                    info_title.setText(appInfoDetail.getInfoTitle());
                     author.setText(appInfoDetail.getPublishUserName());
-                    time.setText(appInfoDetail.getPublishTime());
+                    String publishTime = appInfoDetail.getPublishTime();
+                    if(!TextUtils.isEmpty(publishTime)) {
+                        time.setText(TimeUtil.getMessageTime(publishTime));
+                    }
                     //String htmlData = appInfoDetail.getInfoContent();
                     webView.loadData(appInfoDetail.getInfoContent(), "text/html; charset=UTF-8", null);
                 }

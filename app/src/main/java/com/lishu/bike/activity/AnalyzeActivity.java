@@ -128,13 +128,13 @@ public class AnalyzeActivity extends BaseActivity implements View.OnClickListene
                     float helloIllegal = aModel.getHellobikeIllegalCount();
                     float ofoIllegal = aModel.getOfoIllegalCount();
                     float moIllegal = aModel.getMobikeIllegalCount();
-                    float illegalTotal = helloIllegal + ofoIllegal + moIllegal;
+                    float illegalTotal = (helloIllegal + ofoIllegal + moIllegal) / 100;
                     setPieData(illegal_chart, helloIllegal / illegalTotal, ofoIllegal / illegalTotal, moIllegal / illegalTotal);
 
                     float helloComplain = aModel.getHellobikeComplainCount();
                     float ofoComplain = aModel.getOfoComplainCount();
                     float moComplain = aModel.getMobikeComplainCount();
-                    float complainTotal = helloIllegal + ofoIllegal + moIllegal;
+                    float complainTotal = (helloComplain + ofoComplain + moComplain) / 100;
                     setPieData(complaint_chart, helloComplain / complainTotal, ofoComplain / complainTotal, moComplain / complainTotal);
                 }
             }
@@ -255,12 +255,12 @@ public class AnalyzeActivity extends BaseActivity implements View.OnClickListene
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);
         BarData data = new BarData(dataSets);
-        data.setValueTextSize(12f);
+        data.setValueTextSize(11f);
         data.setValueTextColor(0xff666666);
         data.setValueFormatter(new IValueFormatter() {
             @Override
             public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-                return ((int) value + "辆");
+                return ((int) value + "");//((int) value + "辆");
             }
         });
         data.setBarWidth(barWidth);

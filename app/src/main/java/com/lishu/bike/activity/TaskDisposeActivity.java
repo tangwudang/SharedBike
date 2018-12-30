@@ -182,7 +182,7 @@ public class TaskDisposeActivity extends BaseActivity {
                 }
 
                 uploadedImageSize++;
-                if(uploadedImageSize == imageListSize){//说明所有图片都已成功上传到服务器
+                if(uploadedImageSize == (imageListSize - 1)){//说明所有图片都已成功上传到服务器
                     hide();
                     submitTaskDispose();
                 }
@@ -192,7 +192,7 @@ public class TaskDisposeActivity extends BaseActivity {
 
     private void submitTaskDispose() {
         HttpLoader.addTaskResponse(taskId, disposeContent.getText().toString(),
-                uploadedFileNames.substring(0, uploadedFileNames.length() - 2), new HttpBase.IResponseListener() {
+                uploadedFileNames.substring(0, uploadedFileNames.length() - 1), new HttpBase.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
                 if (model == null) {

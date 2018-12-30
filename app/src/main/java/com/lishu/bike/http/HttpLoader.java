@@ -173,8 +173,8 @@ public class HttpLoader extends HttpBase {
     }
     //巡检上报
     public static void addInspect(int mobike, int ofobike, int hellobike, int dictionaryTypeId,
-                                  String remark, String inspectAddress, String inspectTime,
-                                  String inspectImageName, IResponseListener listener) {
+                                  String remark, String inspectAddress, String longitude, String latitude,
+                                  String inspectTime, String inspectImageName, IResponseListener listener) {
         RequestParams params = new RequestParams(HttpAddress.ADD_INSPECT);
         params.addQueryStringParameter("userId", UserPreferences.getInstance().getUserId());
         params.addBodyParameter("mobike", String.valueOf(mobike));
@@ -183,6 +183,8 @@ public class HttpLoader extends HttpBase {
         params.addBodyParameter("dictionaryTypeId", String.valueOf(dictionaryTypeId));
         params.addBodyParameter("remark", remark);
         params.addBodyParameter("inspectAddress", inspectAddress);
+        params.addBodyParameter("longitude", longitude);
+        params.addBodyParameter("latitude", latitude);
         params.addBodyParameter("inspectTime", inspectTime);
         params.addBodyParameter("inspectImageName", inspectImageName);
 

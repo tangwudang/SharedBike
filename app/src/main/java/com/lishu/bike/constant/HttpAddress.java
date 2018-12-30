@@ -5,7 +5,6 @@ package com.lishu.bike.constant;
  */
 public class HttpAddress {
     public static String ROOT;
-    //public static String USER_ID = "?userId=" + "userId";
 
     static{
         if(AppConfig.IS_DEBUG){
@@ -13,20 +12,20 @@ public class HttpAddress {
             ROOT = "http://153.37.97.170:9002/bicycle-jn";
         }else{
             //现网地址
-            //ROOT = "http://127.0.0.1:8080/cloudNotice";
+            ROOT = "http://153.37.97.170:9002/bicycle-jn";
         }
     }
 
     /**
      * 登录与设置接口
      */
-    //用户登录============
+    //用户登录
     public static String LOGIN = ROOT + "/personInfoApp!login.action";
     //个人信息（同：通讯录详情）
     //public static String ADDRESS_BOOK_DETAIL = ROOT + "!xxx";
-    //修改密码=============
+    //修改密码
     public static String CHANGE_PASSWORD = ROOT + "/personInfoApp!changePassword.action";
-    //获取APP最新版本=============
+    //获取APP最新版本
     public static String LATEST_VERSION = ROOT + "/softApp!latestVersion.action";
 
     /**
@@ -34,29 +33,29 @@ public class HttpAddress {
      */
     //电子围栏街道信息(同：街道信息列表)
     //public static String GET_STREETS = ROOT + "!XXX";
-    //电子围栏列表------------
+    //电子围栏列表
     public static String GET_FENCES = ROOT + "/deviceStationApp!getFences.action";
-    //电子围栏详情--------------
+    //电子围栏详情
     public static String GET_FENCE_DETAIL = ROOT + "/deviceStationApp!getFenceDetail.action";
-    //GIS地图
-    public static String GET_GIS_MAP = ROOT + "!getGisMap.action";
+    //GIS地图 $$$$$$$$$$$$$$$$$
+    public static String GET_GIS_MAP = ROOT + "/deviceStationApp!getGisMap.action";
 
     /**
      * 通讯录接口
      */
-    //通讯录------------
+    //通讯录
     public static String ADDRESS_BOOKS = ROOT + "/personInfoApp!addressBooks.action";
-    //通讯录详情-----------
+    //通讯录详情
     public static String ADDRESS_BOOK_DETAIL = ROOT + "/personInfoApp!addressBookDetail.action";
 
     /**
      * 站点查询接口
      */
-    //街道信息列表---------
+    //街道信息列表
     public static String GET_STREETS = ROOT + "/deviceStationApp!getStreets.action";
-    //停车站点列表----------
+    //停车站点列表
     public static String GET_STATIONS = ROOT + "/deviceStationApp!getStations.action";
-    //停车站点信息------------
+    //停车站点信息
     public static String GET_STATION_DETAIL = ROOT + "/deviceStationApp!getStationDetail.action";
 
     /**
@@ -76,27 +75,27 @@ public class HttpAddress {
     /**
      * 任务单接口
      */
-    //任务单列表--------
+    //任务单列表
     public static String GET_TASKS = ROOT + "/taskInfoApp!getTasks.action";
-    //任务单详情--------
+    //任务单详情
     public static String GET_TASK_DETAIL = ROOT + "/taskInfoApp!getTaskDetail.action";
-    //任务处理反馈
-    public static String ADD_TASK_RESPONSE = ROOT + "!addTaskResponse.action";
+    //任务处理反馈 $$$$$$$$$$$$$$$$$
+    public static String ADD_TASK_RESPONSE = ROOT + "/taskInfoApp!addTaskResponse.action";
     //任务处理图片上传
     public static String ADD_TASK_DISPOSE_IMAGE = ROOT + "/taskInfoApp!addTaskDisposeImage.action";
 
     /**
      * 工作动态接口
      */
-    //工作动态列表-----------
+    //工作动态列表
     public static String GET_APP_INFOS = ROOT + "/appInfoApp!getAppInfos.action";
-    //工作动态详情------------
+    //工作动态详情
     public static String GET_APP_INFO_DETAIL = ROOT + "/appInfoApp!getAppInfoDetail.action";
 
     /**
      * 营运分析接口
      */
-    //营运分析---------
+    //营运分析
     public static String GET_ANALYZES = ROOT + "/operationAnalysisApp!getAnalyzes.action";
 
     /**
@@ -107,22 +106,4 @@ public class HttpAddress {
     //告警信息详情
     public static String GET_WARN_DETAIL = ROOT + "/wsarnHistoryApp!getWarnDetail.action";
 
-
-     /*securityList.add("/personInfoApp!login.action");
-    	securityList.add("/personInfoApp!addressBooks.action");
-    	securityList.add("/personInfoApp!addressBookDetail.action");
-    	securityList.add("/personInfoApp!changePassword.action");
-    	securityList.add("/deviceStationApp!getStreets.action");
-    	securityList.add("/deviceStationApp!getFences.action");
-    	securityList.add("/deviceStationApp!getFenceDetail.action");
-    	securityList.add("/deviceStationApp!getStations.action");
-    	securityList.add("/deviceStationApp!getStationDetail.action");
-    	securityList.add("/softApp!latestVersion.action");
-    	securityList.add("/taskInfoApp!TaskInfoList.action");----------
-    	securityList.add("/taskInfoApp!taskDetail.action");--------------
-    	securityList.add("/taskInfoApp!taskDisposeImage.action");-------------
-    	securityList.add("/operationAnalysisApp!getAnalyzes.action");
-    	securityList.add("/appInfoApp!appInfoList.action");------------
-    	securityList.add("/appInfoApp!appInfoDetail.action");----------------
-     */
 }

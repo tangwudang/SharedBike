@@ -66,6 +66,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
     //定位
     private TextView location_addr;
     private String locationAddress;
+    private double longitude, latitude;
     private LocationService locationService;
 
     @Override
@@ -213,8 +214,8 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
 
     private void submitInspectReport() {
         HttpLoader.addInspect(mobikeCount, ofoCount, helloCount, violationTypeId,
-                disposeContent.getText().toString(), locationAddress, TimeUtil.getCurDatetimeByPattern("yyyyMMddHHmmss"),
-                uploadedFileNames.substring(0, uploadedFileNames.length() - 2), new HttpBase.IResponseListener() {
+                disposeContent.getText().toString(), locationAddress, String.valueOf(longitude), String.valueOf(latitude), TimeUtil.getCurDatetimeByPattern("yyyyMMddHHmmss"),
+                uploadedFileNames.substring(0, uploadedFileNames.length() - 1), new HttpBase.IResponseListener() {
                     @Override
                     public void onResponse(BaseModel model) {
                         if (model == null) {
@@ -353,6 +354,8 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
         public void onReceiveLocation(BDLocation location) {
             if (null != location && location.getLocType() != BDLocation.TypeServerError) {
                 int errorCode = location.getLocType();
+                longitude = location.getLongitude();
+                latitude = location.getLatitude();
                 locationAddress = location.getAddrStr();
                 if(locationAddress != null) {
                     location_addr.setText(locationAddress);
