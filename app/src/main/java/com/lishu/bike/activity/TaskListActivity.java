@@ -38,7 +38,8 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
     private TaskListAdapter mTaskListAdapter;
     private int curPage;
     private SmartRefreshLayout refreshLayout;
-    private List<TaskModel.TaskBean> mTaskList;
+    private List<TaskModel.TaskBean> mProcessedTaskList;
+    private List<TaskModel.TaskBean> mUnprocessedTaskList;
     //任务tab栏
     private final int PRESSED_TEXT_COLOR = 0xff000000;
     private final int NORMAL_TEXT_COLOR = 0xff666666;
@@ -59,9 +60,9 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         initEvent();
 
         curTab = 0;
-        curPage = 1;
-        mTaskList = new ArrayList<>();
-        getTaskListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+        mProcessedTaskList = new ArrayList<>();
+        mUnprocessedTaskList = new ArrayList<>();
+        getTaskListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
     }
 
     private void initView() {
@@ -131,12 +132,12 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
             case R.id.unprocessed_layout:
                 curTab = 0;
                 setTab(0);
-                search();
+                showTaskList();
                 break;
             case R.id.processed_layout:
                 curTab = 1;
                 setTab(1);
-                search();
+                showTaskList();
                 break;
             case R.id.search_button:
                 search();
@@ -169,21 +170,30 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         DateSearchUtil.searchByDate(beginDate, endDate, new DateSearchListener() {
             @Override
             public void searchByDefaultDate() {
-                curPage = 1;
-                mTaskList.clear();
-                getTaskListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+                getTaskListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
             }
 
             @Override
             public void searchByChooseDate(String beginDate, String endDate) {
-                curPage = 1;
-                mTaskList.clear();
-                getTaskListByTime(beginDate, endDate);
+                getTaskListByTime(1, beginDate, endDate);
             }
         });
     }
 
-    private void getTaskListByTime(String beginDate, String endDate){
+    private void showTaskList(){
+        if(curTab == 0){
+            mTaskListAdapter.setData(mUnprocessedTaskList);
+        }else{
+            mTaskListAdapter.setData(mProcessedTaskList);
+        }
+    }
+
+    private void getTaskListByTime(int page, String beginDate, String endDate){
+        if(page == 1){
+            curPage = 1;
+            mProcessedTaskList.clear();
+            mUnprocessedTaskList.clear();
+        }
         chooseBeginTime = beginDate;
         chooseEndTime = endDate;
         getTaskList(beginDate + "000000",
@@ -207,22 +217,15 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
                 List<TaskModel.TaskBean> taskList = ((TaskModel) model).getDataList();
                 if (taskList != null) {
                     //处理状态(0:未处理，1;已处理)
-                    if(curTab == 1){
-                        for(int i = 0; i < taskList.size(); i++){
-                            if("1".equals(taskList.get(i).getResultStatus())){
-                                mTaskList.add(taskList.get(i));
-                            }
-                        }
-                    }else{
-                        for(int i = 0; i < taskList.size(); i++){
-                            if("0".equals(taskList.get(i).getResultStatus())){
-                                mTaskList.add(taskList.get(i));
-                            }
+                    for(int i = 0; i < taskList.size(); i++){
+                        if("1".equals(taskList.get(i).getResultStatus())){
+                            mProcessedTaskList.add(taskList.get(i));
+                        }else{
+                            mUnprocessedTaskList.add(taskList.get(i));
                         }
                     }
-
-                    mTaskListAdapter.setData(mTaskList);
                 }
+                showTaskList();
             }
         });
     }

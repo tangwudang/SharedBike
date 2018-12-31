@@ -62,12 +62,8 @@ public class TaskListAdapter extends BaseAdapter {
         viewHolder.content.setText(taskList.get(position).getTaskTitle());
         TaskModel.TaskBean taskBean = taskList.get(position);
         viewHolder.content.setText(taskBean.getTaskTitle());
-        String taskType = taskBean.getTaskType();
-        if("1".equals(taskType)){
-            viewHolder.type.setText("员工风采");
-        }else if("2".equals(taskType)){
-            viewHolder.type.setText("会议通知");
-        }
+        viewHolder.type.setText(taskBean.getTaskType());
+
         String taskTime = TimeUtil.getMessageTime(taskBean.getTaskTime());
         if(taskTime != null) {
             viewHolder.time.setText(taskTime);

@@ -46,9 +46,8 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         initView();
         initEvent();
 
-        curPage = 1;
         mWarnList = new ArrayList<>();
-        getWarnListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+        getWarnListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
     }
 
     private void initView() {
@@ -116,21 +115,21 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         DateSearchUtil.searchByDate(beginDate, endDate, new DateSearchListener() {
             @Override
             public void searchByDefaultDate() {
-                curPage = 1;
-                mWarnList.clear();
-                getWarnListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+                getWarnListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
             }
 
             @Override
             public void searchByChooseDate(String beginDate, String endDate) {
-                curPage = 1;
-                mWarnList.clear();
-                getWarnListByTime(beginDate, endDate);
+                getWarnListByTime(1, beginDate, endDate);
             }
         });
     }
 
-    private void getWarnListByTime(String beginDate, String endDate){
+    private void getWarnListByTime(int page, String beginDate, String endDate){
+        if(page == 1){
+            curPage = 1;
+            mWarnList.clear();
+        }
         chooseBeginTime = beginDate;
         chooseEndTime = endDate;
         getWarnList(beginDate + "000000",

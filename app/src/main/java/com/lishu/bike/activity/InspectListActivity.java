@@ -47,9 +47,8 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         initView();
         initEvent();
 
-        curPage = 1;
         mInspectList = new ArrayList<>();
-        getInspectionListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+        getInspectionListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
     }
 
     private void initView() {
@@ -123,21 +122,21 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         DateSearchUtil.searchByDate(beginDate, endDate, new DateSearchListener() {
             @Override
             public void searchByDefaultDate() {
-                curPage = 1;
-                mInspectList.clear();
-                getInspectionListByTime(TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+                getInspectionListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
             }
 
             @Override
             public void searchByChooseDate(String beginDate, String endDate) {
-                curPage = 1;
-                mInspectList.clear();
-                getInspectionListByTime(beginDate, endDate);
+                getInspectionListByTime(1, beginDate, endDate);
             }
         });
     }
 
-    private void getInspectionListByTime(String beginDate, String endDate){
+    private void getInspectionListByTime(int page, String beginDate, String endDate){
+        if(page == 1){
+            curPage = 1;
+            mInspectList.clear();
+        }
         chooseBeginTime = beginDate;
         chooseEndTime = endDate;
         getInspectionList(beginDate + "000000",

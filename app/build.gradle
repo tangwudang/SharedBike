@@ -33,7 +33,7 @@ dependencies {
     implementation files('libs/pinyin4j-2.5.0.jar')
     implementation 'com.oginotihiro:cropview:1.0.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
-    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
     //compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-18'//没有使用特殊Header，可以不加这行
 }
 
