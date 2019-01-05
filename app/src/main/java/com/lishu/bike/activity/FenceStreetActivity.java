@@ -87,11 +87,11 @@ public class FenceStreetActivity extends BaseActivity {
         });
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
-        List<StreetModel.StreetBean> streetList = new ArrayList<>();
+        /*List<StreetModel.StreetBean> streetList = new ArrayList<>();
         streetList.add(new StreetModel().new StreetBean(1, "东南大学", 31.89493,118.828256));
         streetList.add(new StreetModel().new StreetBean(2, "小龙湾", 31.935572,118.839467));
         streetList.add(new StreetModel().new StreetBean(3, "南京航空航天大学", 31.94458,118.799079));
-        addMapMarkers(streetList);
+        addMapMarkers(streetList);*/
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
 
@@ -105,7 +105,7 @@ public class FenceStreetActivity extends BaseActivity {
 
         for(StreetModel.StreetBean street : streetList){
             //设置坐标点
-            LatLng point = new LatLng(street.getLatitude(),street.getLongitude());
+            LatLng point = new LatLng(street.getLatitude(), street.getLongitude());
             //将View转化为Bitmap
             title.setText(street.getStreetName());
             BitmapDescriptor markerIcon = BitmapDescriptorFactory.fromView(view);

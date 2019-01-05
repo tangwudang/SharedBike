@@ -47,21 +47,11 @@ public class StationListActivity extends BaseActivity {
         mStationListView.setAdapter(mStationListAdapter);
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
-        List<StreetModel.StreetBean> streetList = new ArrayList<>();
-        streetList.add(new StreetModel().new StreetBean(1, "东山街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(2, "禄口街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(3, "秣陵街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(1, "谷里街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(2, "江宁街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(3, "汤山街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(1, "东山街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(2, "禄口街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(3, "秣陵街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(1, "谷里街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(2, "江宁街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(3, "汤山街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(2, "江宁街道", 1,1));
-        streetList.add(new StreetModel().new StreetBean(3, "汤山街道", 1,1));
+       /* List<StreetModel.StreetBean> streetList = new ArrayList<>();
+        streetList.add(new StreetModel().new StreetBean(1, "东山街道", "1","1"));
+        streetList.add(new StreetModel().new StreetBean(2, "禄口街道", "1","1"));
+        streetList.add(new StreetModel().new StreetBean(3, "秣陵街道", "1","1"));
+        streetList.add(new StreetModel().new StreetBean(1, "谷里街道", "1","1"));
         mStreetListAdapter.setData(streetList);
 
         List<StationModel.StationBean> stationList = new ArrayList<>();
@@ -69,7 +59,7 @@ public class StationListActivity extends BaseActivity {
         stationList.add(new StationModel().new StationBean(2, "百家湖"));
         stationList.add(new StationModel().new StationBean(3, "秣陵"));
         stationList.add(new StationModel().new StationBean(1, "将军山"));
-        mStationListAdapter.setData(stationList);
+        mStationListAdapter.setData(stationList);*/
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
 

@@ -62,7 +62,14 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         curTab = 0;
         mProcessedTaskList = new ArrayList<>();
         mUnprocessedTaskList = new ArrayList<>();
-        getTaskListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+        chooseBeginTime = TimeUtil.getCurDatetime();
+        chooseEndTime = TimeUtil.getCurDatetime();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getTaskListByTime(1, chooseBeginTime, chooseEndTime);
     }
 
     private void initView() {
@@ -84,12 +91,12 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         refreshLayout.setEnableRefresh(false);
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
-        List<TaskModel.TaskBean> testList = new ArrayList<>();
+        /*List<TaskModel.TaskBean> testList = new ArrayList<>();
         testList.add(new TaskModel().new TaskBean(1,"我公司在今天下午进行员工总结大会", "20181209121514", "1", "0"));
         testList.add(new TaskModel().new TaskBean(2,"城管局如何做好巡检工作", "20181209101510", "2", "0"));
         testList.add(new TaskModel().new TaskBean(3,"冬季如何做好防护工作", "20181209111836", "1", "1"));
         testList.add(new TaskModel().new TaskBean(4,"我公司在今天下午进行员工总结大会，请全体人员准时参加", "20181216091842", "2", "1"));
-        mTaskListAdapter.setData(testList);
+        mTaskListAdapter.setData(testList);*/
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
 

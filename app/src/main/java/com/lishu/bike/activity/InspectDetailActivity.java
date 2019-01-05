@@ -55,12 +55,12 @@ public class InspectDetailActivity extends BaseActivity{
         mPictureGridView.setAdapter(mPictureGridViewAdapter);
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
-        List<String> testList = new ArrayList<>();
+        /*List<String> testList = new ArrayList<>();
         testList.add("1");
         testList.add("2");
         testList.add("3");
         testList.add("4");
-        mPictureGridViewAdapter.setData(testList);
+        mPictureGridViewAdapter.setData(testList);*/
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@
     }
 

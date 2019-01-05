@@ -48,7 +48,14 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         initEvent();
 
         mInspectList = new ArrayList<>();
-        getInspectionListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+        chooseBeginTime = TimeUtil.getCurDatetime();
+        chooseEndTime = TimeUtil.getCurDatetime();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getInspectionListByTime(1, chooseBeginTime, chooseEndTime);
     }
 
     private void initView() {

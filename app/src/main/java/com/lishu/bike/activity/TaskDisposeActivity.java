@@ -205,6 +205,8 @@ public class TaskDisposeActivity extends BaseActivity {
                 }
 
                 ToastUtil.showShort("提交成功！");
+                startActivity(new Intent(TaskDisposeActivity.this, TaskListActivity.class));
+                //finish();
             }
         });
     }

@@ -105,18 +105,20 @@ public class AnalyzeActivity extends BaseActivity implements View.OnClickListene
      */
     private void getData(int type, String time) {
         // just for testing, begin =======================
-        setBarData(4, 2*type, 0);
+        /*setBarData(4, 2*type, 0);
         setPieData(illegal_chart, 10f, 30f*type, 30f);
-        setPieData(complaint_chart, 0, 0, 0);
+        setPieData(complaint_chart, 0, 0, 0);*/
         // just for testing, end ==========================
         HttpLoader.getAnalyzes(type, time, new HttpBase.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
                 if (model == null) {
+                    resetBarAndPieData();
                     ToastUtil.showShort(R.string.please_check_network);
                     return;
                 }
                 if (!model.success()) {
+                    resetBarAndPieData();
                     ToastUtil.showShort(getString(R.string.get_data_fail) + model.getResMsg());
                     return;
                 }
@@ -128,14 +130,14 @@ public class AnalyzeActivity extends BaseActivity implements View.OnClickListene
                     float helloIllegal = aModel.getHellobikeIllegalCount();
                     float ofoIllegal = aModel.getOfoIllegalCount();
                     float moIllegal = aModel.getMobikeIllegalCount();
-                    float illegalTotal = (helloIllegal + ofoIllegal + moIllegal) / 100;
-                    setPieData(illegal_chart, helloIllegal / illegalTotal, ofoIllegal / illegalTotal, moIllegal / illegalTotal);
+                    //float illegalTotal = (helloIllegal + ofoIllegal + moIllegal) / 100;
+                    setPieData(illegal_chart, helloIllegal, ofoIllegal, moIllegal);
 
                     float helloComplain = aModel.getHellobikeComplainCount();
                     float ofoComplain = aModel.getOfoComplainCount();
                     float moComplain = aModel.getMobikeComplainCount();
-                    float complainTotal = (helloComplain + ofoComplain + moComplain) / 100;
-                    setPieData(complaint_chart, helloComplain / complainTotal, ofoComplain / complainTotal, moComplain / complainTotal);
+                    //float complainTotal = (helloComplain + ofoComplain + moComplain) / 100;
+                    setPieData(complaint_chart, helloComplain, ofoComplain, moComplain);
                 }
             }
         });
@@ -283,17 +285,25 @@ public class AnalyzeActivity extends BaseActivity implements View.OnClickListene
         chart.animateY(ANIMATE_TIME, Easing.EaseInOutQuad);
     }
 
+    private void resetBarAndPieData(){
+        setBarData(0, 0, 0);
+        setPieData(illegal_chart, 0, 0, 0);
+        setPieData(complaint_chart, 0, 0, 0);
+    }
+
     private void setPieData(PieChart chart, float helloNum, float ofoNum, float moNum) {
         if((helloNum + ofoNum + moNum) < 1) {
+            chart.clear();
             chart.setNoDataText("暂无数据");
             return;
         }
         initPieChart(chart);
 
+        float total = (helloNum + ofoNum + moNum) / 100;
         List<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(helloNum, "hello"));
-        entries.add(new PieEntry(ofoNum, "ofo"));
-        entries.add(new PieEntry(moNum, "mobike"));
+        entries.add(new PieEntry(helloNum / total, "hello"));
+        entries.add(new PieEntry(ofoNum / total, "ofo"));
+        entries.add(new PieEntry(moNum / total, "mobike"));
 
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(getResources().getColor(R.color.chart_hellobike));

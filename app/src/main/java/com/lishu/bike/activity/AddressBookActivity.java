@@ -20,11 +20,13 @@ import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.AddressBookModel;
 import com.lishu.bike.model.BaseModel;
+import com.lishu.bike.utils.PinyinComparator;
 import com.lishu.bike.utils.PinyinUtils;
 import com.lishu.bike.utils.ToastUtil;
 import com.lishu.bike.widget.SideBar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AddressBookActivity extends BaseActivity{
@@ -84,17 +86,17 @@ public class AddressBookActivity extends BaseActivity{
 
                     mShowContactList.add(contactBean);
                 }
-                contactsListAdapter.setData(mShowContactList);
+                updateContacts(mShowContactList);
             }
             }
         });
     }
 
     //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
-    private void testData(){
+    /*private void testData(){
         for(int i = 0; i < 10; i++) {
             AddressBookModel.AddressBook contactBean = new AddressBookModel().new AddressBook();
-            contactBean.setName("刘中华");
+            contactBean.setName("张中华");
             contactBean.setOrganizationName("江宁街道管理局副局长兼执行队长");
             contactBean.setId("1");
 
@@ -116,7 +118,7 @@ public class AddressBookActivity extends BaseActivity{
         }
         for(int i = 0; i < 10; i++) {
             AddressBookModel.AddressBook contactBean = new AddressBookModel().new AddressBook();
-            contactBean.setName("张小爱");
+            contactBean.setName("aaa");
             contactBean.setOrganizationName("江宁街道管理局副局长兼执行队长江宁街道管理局副局长兼执行队长");
             contactBean.setId("3");
 
@@ -158,8 +160,8 @@ public class AddressBookActivity extends BaseActivity{
 
             mShowContactList.add(contactBean);
         }
-        contactsListAdapter.setData(mShowContactList);
-    }
+        updateContacts(mShowContactList);
+    }*/
     //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@
 
     @Override
@@ -201,10 +203,10 @@ public class AddressBookActivity extends BaseActivity{
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (TextUtils.isEmpty(s)) {
                     mSearchHintLayout.setVisibility(View.VISIBLE);
-                    contactsListAdapter.setData(mShowContactList);
+                    updateContacts(mShowContactList);
                 } else {
                     mSearchHintLayout.setVisibility(View.GONE);
-                    contactsListAdapter.setData(getMatch(mShowContactList, mSearchKeyword.getText().toString()));
+                    updateContacts(getMatch(mShowContactList, mSearchKeyword.getText().toString()));
                 }
             }
 
@@ -227,6 +229,12 @@ public class AddressBookActivity extends BaseActivity{
         });
     }
 
+    private void updateContacts(List<AddressBookModel.AddressBook> contactList){
+        Collections.sort(contactList, new PinyinComparator());
+        if (contactList != null) {
+            contactsListAdapter.setData(contactList);
+        }
+    }
 
     private static List<AddressBookModel.AddressBook> getMatch(List<AddressBookModel.AddressBook> beanList, String input) {
         List<AddressBookModel.AddressBook> resultList = new ArrayList();

@@ -90,6 +90,7 @@
         <!-- ================ 任务单 ================ -->
         <activity
             android:name=".activity.TaskListActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
         <activity

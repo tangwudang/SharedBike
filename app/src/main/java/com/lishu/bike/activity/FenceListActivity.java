@@ -91,11 +91,11 @@ public class FenceListActivity extends BaseActivity {
         });
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
-        List<FenceModel.FenceBean> fenceList = new ArrayList<>();
+        /*List<FenceModel.FenceBean> fenceList = new ArrayList<>();
         fenceList.add(new FenceModel().new FenceBean(1, "东南大学围栏", 31.89493,118.828256));
         fenceList.add(new FenceModel().new FenceBean(2, "小龙湾地铁站小龙湾围栏", 31.935572,118.839467));
         fenceList.add(new FenceModel().new FenceBean(3, "南京航空航天大学航空航天围栏", 31.94458,118.799079));
-        addMapMarkers(fenceList);
+        addMapMarkers(fenceList);*/
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
 
@@ -153,10 +153,10 @@ public class FenceListActivity extends BaseActivity {
     private void getFenceDetail(int fenceId) {
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
         FenceDetailModel fenceDetailModel = new FenceDetailModel();
-        fenceDetailModel.setFenceName("沙利亚");
+        /*fenceDetailModel.setFenceName("沙利亚");
         fenceDetailModel.setInstallAddress("江宁区东山街道122号");
         fenceDetailModel.setStreetName("东山街道");
-        fenceDetailModel.setRemark("江宁区东山街道122号江宁区东山街道122号江宁区东山街道122号");
+        fenceDetailModel.setRemark("江宁区东山街道122号江宁区东山街道122号江宁区东山街道122号");*/
 
         if (fenceDetailModel != null) {
             FenceDetailDialog fenceDetailDialog = new FenceDetailDialog(FenceListActivity.this);

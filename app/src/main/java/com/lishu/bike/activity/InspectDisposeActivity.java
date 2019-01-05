@@ -78,7 +78,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
         initEvent();
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
-        locationAddress = "南京市江宁区秣周东路12号";
+        locationAddress = "南京市江宁区";
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
         getViolationTypes();
         startBaiduLocation();
