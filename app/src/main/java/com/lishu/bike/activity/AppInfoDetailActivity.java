@@ -84,7 +84,7 @@ public class AppInfoDetailActivity extends BaseActivity{
         return super.onKeyDown(keyCode, event);
     }
 
-    @Override
+   /* @Override
     protected void onResume() {
         super.onResume();
         testData = "\t\n" +
@@ -126,5 +126,5 @@ public class AppInfoDetailActivity extends BaseActivity{
                 "\t </body>\n" +
                 "\t </html>";
         webView.loadData(testData, "text/html; charset=UTF-8", null);
-    }
+    }*/
 }

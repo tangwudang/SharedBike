@@ -56,12 +56,12 @@ public class AppInfoListActivity extends BaseActivity{
         refreshLayout.setEnableRefresh(false);
 
         //@@@@@@@@@@@@@@@@@@ just for testing, begin @@@@@@@@@@@@@@@@@
-        List<AppInfoModel.AppInfoBean> appInfoList = new ArrayList<>();
+        /*List<AppInfoModel.AppInfoBean> appInfoList = new ArrayList<>();
         appInfoList.add(new AppInfoModel().new AppInfoBean("我公司在今天下午进行员工总结大会", "20181209121514", "通知"));
         appInfoList.add(new AppInfoModel().new AppInfoBean("城管局如何做好巡检工作", "20181209101510", "员工风采"));
         appInfoList.add(new AppInfoModel().new AppInfoBean("冬季如何做好防护工作", "20181209111836", "通知"));
         appInfoList.add(new AppInfoModel().new AppInfoBean("我公司在今天下午进行员工总结大会，请全体人员准时参加", "20181216091842", "通知"));
-        mAppInfoListAdapter.setData(appInfoList);
+        mAppInfoListAdapter.setData(appInfoList);*/
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@@
     }
 

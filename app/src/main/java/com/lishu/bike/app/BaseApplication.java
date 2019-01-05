@@ -28,10 +28,10 @@ public class BaseApplication extends Application {
         UserPreferences.getInstance().init(this);
         // 初始化xUtils
         x.Ext.init(this);
-        if (AppConfig.IS_DEBUG) {
+        //if (AppConfig.IS_DEBUG) {
             // 是否输出debug日志, 开启debug会影响性能.
-            x.Ext.setDebug(true);
-        }
+            x.Ext.setDebug(false);
+        //}
         // 百度地图初始化
         locationService = new LocationService(getApplicationContext());
         SDKInitializer.initialize(this);
