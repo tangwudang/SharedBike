@@ -112,6 +112,11 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
                 int taskId = ((TaskModel.TaskBean)parent.getItemAtPosition(position)).getId();
                 Intent intent = new Intent(TaskListActivity.this, TaskDetailActivity.class);
                 intent.putExtra("taskId", taskId);
+                if(curTab == 0) {
+                    intent.putExtra("processed", "no");
+                }else{
+                    intent.putExtra("processed", "yes");
+                }
                 startActivity(intent);
             }
         });

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -21,7 +22,9 @@ import java.util.List;
 
 public class TaskDetailActivity extends BaseActivity{
     private TextView taskName, taskAddress, taskContent, sendTime, resultStatus;
+    private Button processButton;
     private int taskId;
+    private String processState;
     //现场图片
     private GridView mPictureGridView;
     private PictureGridViewAdapter mPictureGridViewAdapter;
@@ -31,10 +34,12 @@ public class TaskDetailActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_detail);
 
+        taskId = getIntent().getIntExtra("taskId", -1);
+        processState = getIntent().getStringExtra("processed");
+
         initView();
         initEvent();
 
-        taskId = getIntent().getIntExtra("taskId", -1);
         getTaskDetail(taskId);
     }
 
@@ -46,6 +51,13 @@ public class TaskDetailActivity extends BaseActivity{
         taskContent = findViewById(R.id.taskContent);
         sendTime = findViewById(R.id.sendTime);
         resultStatus = findViewById(R.id.resultStatus);
+        processButton = findViewById(R.id.process_button);
+        if("yes".equals(processState)){
+            processButton.setVisibility(View.INVISIBLE);
+        }else{
+            processButton.setVisibility(View.VISIBLE);
+        }
+
         //现场照片
         mPictureGridView = findViewById(R.id.picture_gridview);
         mPictureGridViewAdapter = new PictureGridViewAdapter(this);
@@ -62,7 +74,7 @@ public class TaskDetailActivity extends BaseActivity{
     }
 
     private void initEvent() {
-        findViewById(R.id.process_button).setOnClickListener(new View.OnClickListener() {
+        processButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TaskDetailActivity.this, TaskDisposeActivity.class);

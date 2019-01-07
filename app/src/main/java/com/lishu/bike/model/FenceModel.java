@@ -22,6 +22,9 @@ public class FenceModel extends BaseModel {
         private double latitude;//纬度
         private double longitude;//经度
 
+        public FenceBean() {
+        }
+
         public FenceBean(int id, String streetName, double latitude, double longitude) {
             this.id = id;
             this.fenceName = streetName;

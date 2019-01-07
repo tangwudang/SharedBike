@@ -59,7 +59,7 @@ public class FenceStreetActivity extends BaseActivity {
         //地图状态创建者
         MapStatus.Builder builder = new MapStatus.Builder();
         //设定中心
-        builder.target(centerPos).zoom(14.0f);
+        builder.target(centerPos).zoom(12.0f);
         //改变地图状态
         mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
         mBaiduMap.setIndoorEnable(true);
