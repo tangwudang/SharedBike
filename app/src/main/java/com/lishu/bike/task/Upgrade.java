@@ -60,8 +60,8 @@ public class Upgrade {
             show("正在检查版本...");
         }
         final int localVersionCode = SystemUtil.getVersionCode(context);
-        HttpLoader.latestVersion(String.valueOf(localVersionCode),
-                SystemUtil.getVersionName(context), new HttpLoader.IResponseListener() {
+        HttpLoader.latestVersion(/*SystemUtil.getVersionName(context)*/"app", String.valueOf(localVersionCode),
+                 new HttpLoader.IResponseListener() {
                     @Override
                     public void onResponse(BaseModel model) {
                         hide();
