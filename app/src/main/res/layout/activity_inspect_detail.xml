@@ -23,7 +23,7 @@
         <TextView
             android:id="@+id/dutyName"
             style="@style/GrayDetailTextView"
-            android:text="王晓明" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,7 +40,7 @@
         <TextView
             android:id="@+id/inspectTime"
             style="@style/GrayDetailTextView"
-            android:text="2018-12-17 10:22:58" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,7 +57,7 @@
         <TextView
             android:id="@+id/inspectAddress"
             style="@style/GrayDetailTextView"
-            android:text="江宁区秣周东路12号" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,7 +74,7 @@
         <TextView
             android:id="@+id/inspectType"
             style="@style/GrayDetailTextView"
-            android:text="车辆违停" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,7 +93,7 @@
             style="@style/GrayDetailTextView"
             android:maxLines="4"
             android:ellipsize="end"
-            android:text="违停占用人行通道" />
+            android:text="" />
     </LinearLayout>
 
     <RelativeLayout

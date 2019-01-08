@@ -12,7 +12,9 @@
     <string name="settings">设置</string>
 
     <string name="please_check_network">请检查网络是否正常</string>
-    <string name="get_data_fail">获取数据失败：</string>
+    <string name="get_data_fail"></string>
+    <string name="get_data_fail2">获取数据失败：</string>
+
     <string name="button_ok">确定</string>
     <string name="button_submit">提交</string>
 

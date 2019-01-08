@@ -25,7 +25,7 @@
         <TextView
             android:id="@+id/taskName"
             style="@style/GrayDetailTextView"
-            android:text="违停处理" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,7 +44,7 @@
         <TextView
             android:id="@+id/taskAddress"
             style="@style/GrayDetailTextView"
-            android:text="江宁区秣周东路12号" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -65,7 +65,7 @@
             style="@style/GrayDetailTextView"
             android:maxLines="5"
             android:ellipsize="end"
-            android:text="有多辆违停占用人行通道，请相关人员尽快处理" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -84,7 +84,7 @@
         <TextView
             android:id="@+id/sendTime"
             style="@style/GrayDetailTextView"
-            android:text="2018-12-17 10:22:58" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -103,7 +103,7 @@
         <TextView
             android:id="@+id/resultStatus"
             style="@style/GrayDetailTextView"
-            android:text="已处理" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout

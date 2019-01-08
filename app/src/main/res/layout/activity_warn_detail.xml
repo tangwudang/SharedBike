@@ -23,7 +23,7 @@
         <TextView
             android:id="@+id/warnTitle"
             style="@style/GrayDetailTextView"
-            android:text="违停告警" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,7 +40,7 @@
         <TextView
             android:id="@+id/warnTime"
             style="@style/GrayDetailTextView"
-            android:text="2018-12-17 10:22:58" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,6 +59,6 @@
             style="@style/GrayDetailTextView"
             android:maxLines="4"
             android:ellipsize="end"
-            android:text="江宁东三街道旅游违停占用人行通道" />
+            android:text="" />
     </LinearLayout>
 </LinearLayout>
