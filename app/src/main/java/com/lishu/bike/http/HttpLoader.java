@@ -67,7 +67,8 @@ public class HttpLoader extends HttpBase {
     public static void latestVersion(String versionName, String versionCode, IResponseListener listener) {
         RequestParams params = new RequestParams(HttpAddress.LATEST_VERSION);
         params.addQueryStringParameter("userId", UserPreferences.getInstance().getUserId());
-        params.addBodyParameter("versionName", versionName);
+        params.addBodyParameter("versionName", "app");
+        //params.addBodyParameter("versionNo", versionName);
         params.addBodyParameter("versionCode", versionCode);
 
         doPost(params, VersionModel.class, listener);

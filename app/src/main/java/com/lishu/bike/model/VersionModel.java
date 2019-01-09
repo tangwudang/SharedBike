@@ -3,6 +3,7 @@ package com.lishu.bike.model;
 
 public class VersionModel extends BaseModel {
     private String versionName;// 版本名称, V1.0.0,
+    private String versionNo;
     private String versionCode;// 版本号,从1开始, 每次改一下代码递增1，
     private String downUrl ;// 版本下载地址,
     private String versionDesc;// 版本说明
@@ -37,5 +38,13 @@ public class VersionModel extends BaseModel {
 
     public void setVersionDesc(String versionDesc) {
         this.versionDesc = versionDesc;
+    }
+
+    public String getVersionNo() {
+        return versionNo;
+    }
+
+    public void setVersionNo(String versionNo) {
+        this.versionNo = versionNo;
     }
 }

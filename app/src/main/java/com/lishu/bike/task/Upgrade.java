@@ -60,7 +60,7 @@ public class Upgrade {
             show("正在检查版本...");
         }
         final int localVersionCode = SystemUtil.getVersionCode(context);
-        HttpLoader.latestVersion(/*SystemUtil.getVersionName(context)*/"app", String.valueOf(localVersionCode),
+        HttpLoader.latestVersion(SystemUtil.getVersionName(context), String.valueOf(localVersionCode),
                  new HttpLoader.IResponseListener() {
                     @Override
                     public void onResponse(BaseModel model) {
@@ -104,7 +104,8 @@ public class Upgrade {
         TextView tvDesc = window.findViewById(R.id.tv_desc);
 
         present_version.setText(SystemUtil.getVersionName(context));
-        latest_version.setText("V" + versionModel.getVersionName());
+        //latest_version.setText("V" + versionModel.getVersionName());
+        latest_version.setText("V" + versionModel.getVersionNo());
         tvDesc.setText(versionModel.getVersionDesc());
 
         window.findViewById(R.id.btn_not_update).setOnClickListener(new View.OnClickListener() {

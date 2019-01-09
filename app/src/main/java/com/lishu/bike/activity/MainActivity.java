@@ -23,6 +23,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         initView();
+        checkPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
+        checkPermissions(new String[]{
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.CHANGE_WIFI_STATE,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_PHONE_STATE,
+                "com.android.launcher.permission.READ_SETTINGS",
+                "com.android.launcher.permission.WRITE_SETTINGS"}, 99);
     }
 
     private void initView() {
@@ -38,21 +49,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         analyze_tv = findViewById(R.id.analyze_tv);
         warn_tv = findViewById(R.id.warn_tv);
         setting_tv = findViewById(R.id.setting_tv);*/
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        checkPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.ACCESS_WIFI_STATE,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.CHANGE_WIFI_STATE,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.CAMERA,
-                Manifest.permission.READ_PHONE_STATE,
-                "com.android.launcher.permission.READ_SETTINGS",
-                "com.android.launcher.permission.WRITE_SETTINGS"}, 100);
     }
 
     protected void onRequestPermissionsGranted(int requestCode) {
