@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.lishu.bike.R;
+import com.lishu.bike.constant.HttpAddress;
 import com.lishu.bike.constant.UserPreferences;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.BaseModel;
@@ -104,7 +105,7 @@ public class LoginActivity extends BaseActivity {
                 UserPreferences.getInstance().setUserAge(userBean.getAge());
                 UserPreferences.getInstance().setUserPhone(userBean.getPhone());
                 UserPreferences.getInstance().setUserAddress(userBean.getAddress());
-                UserPreferences.getInstance().setUserUrl(userBean.getUrl());
+                UserPreferences.getInstance().setUserUrl(HttpAddress.ROOT + userBean.getUrl());
                 UserPreferences.getInstance().setUserOrganization(userBean.getOrganizationName());
                 UserPreferences.getInstance().setAlreadyLoginFlag(true);
 

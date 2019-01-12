@@ -92,10 +92,14 @@
 
         <TextView
             style="@style/MiddleBoldTextView"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="手机号" />
         <TextView
             android:id="@+id/phone"
             style="@style/SmallTextViewStyle"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="未知"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>

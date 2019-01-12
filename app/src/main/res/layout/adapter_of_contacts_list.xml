@@ -29,6 +29,7 @@
             android:layout_height="80mm"
             android:layout_marginRight="30mm"
             android:layout_centerVertical="true"
+            android:scaleType="fitXY"
             android:src="@drawable/person_default" />
         <TextView
             android:id="@+id/name"

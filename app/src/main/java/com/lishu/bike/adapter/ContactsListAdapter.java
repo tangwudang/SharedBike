@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lishu.bike.R;
+import com.lishu.bike.constant.HttpAddress;
 import com.lishu.bike.model.AddressBookModel;
 import com.lishu.bike.utils.ImageUtil;
 
@@ -79,8 +80,8 @@ public class ContactsListAdapter extends BaseAdapter {
             //LogUtils.d("displayPhotoUri= "+photoUri);
             //LogUtils.d("displayPhotoUri= " + ContentUriUtil.uriToRealPath(photoUri));
             //LogUtils.d("displayPhotoUri= " + UriToPathUtil.getRealFilePath(mContext, photoUri));
-
-            ImageUtil.setUserAvatar(viewHolder.userAvatar, path, R.drawable.person_default);
+            String realPath = HttpAddress.ROOT + path;
+            ImageUtil.setUserAvatar(viewHolder.userAvatar, realPath, R.drawable.person_default);
 
             //viewHolder.userAvatar.setImageURI(Uri.parse(path));
             //InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(NoticeApplication.mContext.getContentResolver(), photoUri);

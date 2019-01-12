@@ -127,7 +127,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
         mGridviewAdapter.setPhotoListener(new TakePhotoListener() {
             @Override
             public void takePhoto() {
-                selectPicFromCamera();
+                checkPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
             }
         });
         findViewById(R.id.submit).setOnClickListener(this);
@@ -290,20 +290,15 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
     /**
      * 通过照相得到照片
      */
-    protected void onRequestPermissionsDenied(int requestCode) {
-        if (requestCode == 22) {
-
+    protected void onRequestPermissionsGranted(int requestCode) {
+        if (requestCode == 100) {
+            checkPermissions(new String[]{Manifest.permission.CAMERA}, 101);
+        }else if(requestCode == 101){
+            selectPicFromCamera();
         }
     }
 
     public void selectPicFromCamera() {
-        if (!(SystemUtil.selfPermissionGranted(mContext, Manifest.permission.CAMERA)
-                && SystemUtil.selfPermissionGranted(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE))) {
-            ActivityCompat.requestPermissions(InspectDisposeActivity.this,
-                    new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 22);
-            return;
-        }
-
         if (!(android.os.Environment.getExternalStorageState()
                 .equals(android.os.Environment.MEDIA_MOUNTED))) {
             Toast.makeText(getApplicationContext(), "SD卡不存在，不能拍照",

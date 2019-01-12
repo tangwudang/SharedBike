@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         initView();
         checkPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
-        checkPermissions(new String[]{
+        /*checkPermissions(new String[]{
                 Manifest.permission.ACCESS_NETWORK_STATE,
                 Manifest.permission.ACCESS_WIFI_STATE,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 Manifest.permission.CAMERA,
                 Manifest.permission.READ_PHONE_STATE,
                 "com.android.launcher.permission.READ_SETTINGS",
-                "com.android.launcher.permission.WRITE_SETTINGS"}, 99);
+                "com.android.launcher.permission.WRITE_SETTINGS"}, 99);*/
     }
 
     private void initView() {

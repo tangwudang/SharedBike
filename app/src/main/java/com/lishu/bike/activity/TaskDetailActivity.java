@@ -114,7 +114,12 @@ public class TaskDetailActivity extends BaseActivity{
                     taskAddress.setText(taskDetail.getTaskAddress());
                     taskContent.setText(taskDetail.getTaskContent());
                     sendTime.setText(taskDetail.getSendTime());
-                    resultStatus.setText(taskDetail.getResultStatus());
+                    String status = taskDetail.getResultStatus();
+                    if("0".equals(status)){
+                        resultStatus.setText("未处理");
+                    }else{
+                        resultStatus.setText("已处理");
+                    }
 
                     String []imgs = taskDetail.getTaskImages().split(",");
                     List<String> imageList = new ArrayList<>();

@@ -45,10 +45,10 @@ public class ImageUtil {
         ImageOptions imageOptions = new ImageOptions.Builder()
                 .setFailureDrawableId(defaultResId)
                 //.setLoadingDrawableId(defaultResId)
-                .setUseMemCache(true)
-                .setCrop(true)
-                .setImageScaleType(ImageView.ScaleType.FIT_CENTER)
-                .setCircular(true)
+                //.setUseMemCache(true)
+                //.setCrop(true)
+                .setImageScaleType(ImageView.ScaleType.FIT_XY)
+                //.setCircular(true)
                 .build();
 
         x.image().bind(imgView, path, imageOptions);

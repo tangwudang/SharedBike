@@ -62,8 +62,8 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         curTab = 0;
         mProcessedTaskList = new ArrayList<>();
         mUnprocessedTaskList = new ArrayList<>();
-        chooseBeginTime = TimeUtil.getCurDatetime();
-        chooseEndTime = TimeUtil.getCurDatetime();
+        chooseBeginTime = "";//TimeUtil.getCurDatetime();
+        chooseEndTime = "";//TimeUtil.getCurDatetime();
     }
 
     @Override
@@ -222,6 +222,10 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
                     return;
                 }
                 if (!model.success()) {
+                    mProcessedTaskList.clear();
+                    mUnprocessedTaskList.clear();
+                    mTaskListAdapter.setData(mUnprocessedTaskList);
+                    mTaskListAdapter.setData(mProcessedTaskList);
                     ToastUtil.showShort(getString(R.string.get_data_fail) + model.getResMsg());
                     return;
                 }

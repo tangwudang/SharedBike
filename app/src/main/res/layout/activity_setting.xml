@@ -22,6 +22,7 @@
             android:id="@+id/user_avatar"
             android:layout_width="84mm"
             android:layout_height="84mm"
+            android:scaleType="fitXY"
             android:layout_centerVertical="true"
             android:src="@drawable/person_default"
             android:layout_alignParentRight="true"/>

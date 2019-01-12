@@ -24,6 +24,7 @@ import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.listener.TakePhotoListener;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.TaskImageModel;
+import com.lishu.bike.task.Upgrade;
 import com.lishu.bike.utils.LogUtil;
 import com.lishu.bike.utils.SystemUtil;
 import com.lishu.bike.utils.ToastUtil;
@@ -69,7 +70,7 @@ public class TaskDisposeActivity extends BaseActivity {
         mGridviewAdapter.setPhotoListener(new TakePhotoListener() {
             @Override
             public void takePhoto() {
-                selectPicFromCamera();
+                checkPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
             }
         });
         findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
@@ -125,16 +126,22 @@ public class TaskDisposeActivity extends BaseActivity {
         }
     }
 
+    protected void onRequestPermissionsGranted(int requestCode) {
+        if (requestCode == 100) {
+            checkPermissions(new String[]{Manifest.permission.CAMERA}, 101);
+        }else if(requestCode == 101){
+            selectPicFromCamera();
+        }
+    }
+
     /**
      * 通过照相得到照片
      */
     public void selectPicFromCamera() {
-        if (!(SystemUtil.selfPermissionGranted(mContext, Manifest.permission.CAMERA)
+        /*if (!(SystemUtil.selfPermissionGranted(mContext, Manifest.permission.CAMERA)
                 && SystemUtil.selfPermissionGranted(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE))) {
-            ActivityCompat.requestPermissions(TaskDisposeActivity.this,
-                    new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 22);
             return;
-        }
+        }*/
 
         if (!(android.os.Environment.getExternalStorageState()
                 .equals(android.os.Environment.MEDIA_MOUNTED))) {

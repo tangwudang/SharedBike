@@ -51,10 +51,9 @@ public class FenceListActivity extends BaseActivity {
     }
 
     private void initView() {
-        setTopTitle("站点信息");
+        setTopTitle("电子围栏");
         mMapView = findViewById(R.id.mapView);
         mBaiduMap = mMapView.getMap();
-
     }
 
     private void setMapCenter(double latitude, double longitude) {
@@ -63,7 +62,7 @@ public class FenceListActivity extends BaseActivity {
         //地图状态创建者
         MapStatus.Builder builder = new MapStatus.Builder();
         //设定中心
-        builder.target(centerPos).zoom(16.0f);
+        builder.target(centerPos).zoom(13.0f);
         //改变地图状态
         mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
         mBaiduMap.setIndoorEnable(true);
@@ -156,12 +155,11 @@ public class FenceListActivity extends BaseActivity {
         /*fenceDetailModel.setFenceName("沙利亚");
         fenceDetailModel.setInstallAddress("江宁区东山街道122号");
         fenceDetailModel.setStreetName("东山街道");
-        fenceDetailModel.setRemark("江宁区东山街道122号江宁区东山街道122号江宁区东山街道122号");*/
-
+        fenceDetailModel.setRemark("江宁区东山街道122号江宁区东山街道122号江宁区东山街道122号");
         if (fenceDetailModel != null) {
             FenceDetailDialog fenceDetailDialog = new FenceDetailDialog(FenceListActivity.this);
             fenceDetailDialog.setDialogData(fenceDetailModel);
-        }
+        }*/
         //@@@@@@@@@@@@@@@@@@ just for testing, end @@@@@@@@@@@@@@@@@
         HttpLoader.getFenceDetail(fenceId, new HttpBase.IResponseListener() {
             @Override
