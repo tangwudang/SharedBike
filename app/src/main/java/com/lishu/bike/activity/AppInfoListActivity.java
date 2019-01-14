@@ -102,6 +102,8 @@ public class AppInfoListActivity extends BaseActivity{
                 if (appInfoList != null) {
                     mAppInfoList.addAll(appInfoList);
                     mAppInfoListAdapter.setData(mAppInfoList);
+                }else{
+                    ToastUtil.showShort(R.string.no_more_data);
                 }
             }
         });

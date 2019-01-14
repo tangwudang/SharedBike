@@ -17,6 +17,7 @@ import com.lishu.bike.listener.DateSearchListener;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.WarnModel;
 import com.lishu.bike.utils.DateSearchUtil;
+import com.lishu.bike.utils.StringUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -47,7 +48,7 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         initEvent();
 
         mWarnList = new ArrayList<>();
-        getWarnListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+        getWarnListByTime(1, "", "");
     }
 
     private void initView() {
@@ -132,9 +133,13 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         }
         chooseBeginTime = beginDate;
         chooseEndTime = endDate;
-        getWarnList(beginDate + "000000",
-                endDate + "235959",
-                curPage, COUNT_PER_PAGE);
+        if (StringUtil.isEmpty(beginDate) && StringUtil.isEmpty(endDate)){
+            getWarnList("", "", curPage, COUNT_PER_PAGE);
+        }else {
+            getWarnList(beginDate + "000000",
+                    endDate + "235959",
+                    curPage, COUNT_PER_PAGE);
+        }
     }
 
     private void getWarnList(String beginTime, String endTime, int curPage, int count){
@@ -154,6 +159,8 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
                 if (warnList != null) {
                     mWarnList.addAll(warnList);
                     mWarnListAdapter.setData(mWarnList);
+                }else{
+                    ToastUtil.showShort(R.string.no_more_data);
                 }
             }
         });

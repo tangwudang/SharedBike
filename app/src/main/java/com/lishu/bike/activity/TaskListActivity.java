@@ -19,6 +19,7 @@ import com.lishu.bike.listener.DateSearchListener;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.TaskModel;
 import com.lishu.bike.utils.DateSearchUtil;
+import com.lishu.bike.utils.StringUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -208,9 +209,14 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         }
         chooseBeginTime = beginDate;
         chooseEndTime = endDate;
-        getTaskList(beginDate + "000000",
-                endDate + "235959",
-                curPage, COUNT_PER_PAGE);
+
+        if (StringUtil.isEmpty(beginDate) && StringUtil.isEmpty(endDate)){
+            getTaskList("", "", curPage, COUNT_PER_PAGE);
+        }else {
+            getTaskList(beginDate + "000000",
+                    endDate + "235959",
+                    curPage, COUNT_PER_PAGE);
+        }
     }
 
     private void getTaskList(String beginTime, String endTime, int curPage, final int count){
@@ -240,6 +246,8 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
                             mUnprocessedTaskList.add(taskList.get(i));
                         }
                     }
+                }else{
+                    ToastUtil.showShort(R.string.no_more_data);
                 }
                 showTaskList();
             }

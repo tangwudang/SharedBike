@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/marker_title"
-        android:text="南京大学"
+        android:text=""
         android:textSize="24mm"
         android:textColor="@color/white"
         android:singleLine="true"

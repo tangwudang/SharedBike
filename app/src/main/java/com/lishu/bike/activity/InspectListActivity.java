@@ -18,6 +18,7 @@ import com.lishu.bike.model.AppInfoModel;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.InspectModel;
 import com.lishu.bike.utils.DateSearchUtil;
+import com.lishu.bike.utils.StringUtil;
 import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -48,8 +49,8 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         initEvent();
 
         mInspectList = new ArrayList<>();
-        chooseBeginTime = TimeUtil.getCurDatetime();
-        chooseEndTime = TimeUtil.getCurDatetime();
+        chooseBeginTime = "";//TimeUtil.getCurDatetime();
+        chooseEndTime = "";//TimeUtil.getCurDatetime();
     }
 
     @Override
@@ -146,9 +147,14 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         }
         chooseBeginTime = beginDate;
         chooseEndTime = endDate;
-        getInspectionList(beginDate + "000000",
-                endDate + "235959",
-                curPage, COUNT_PER_PAGE);
+
+        if (StringUtil.isEmpty(beginDate) && StringUtil.isEmpty(endDate)){
+            getInspectionList("", "", curPage, COUNT_PER_PAGE);
+        }else {
+            getInspectionList(beginDate + "000000",
+                    endDate + "235959",
+                    curPage, COUNT_PER_PAGE);
+        }
     }
 
     private void getInspectionList(String beginTime, String endTime, int curPage, int count){
@@ -168,6 +174,8 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
                 if (inspectList != null) {
                     mInspectList.addAll(inspectList);
                     mInspectionListAdapter.setData(mInspectList);
+                }else{
+                    ToastUtil.showShort(R.string.no_more_data);
                 }
             }
         });

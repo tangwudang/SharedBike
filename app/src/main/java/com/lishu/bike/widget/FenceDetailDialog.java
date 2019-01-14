@@ -20,7 +20,7 @@ public class FenceDetailDialog extends AlertDialog {
     private AlertDialog alertDialog;
     private Context mContext;
     private LinearLayout fenceNameLayout, installAddressLayout, remarkLayout, longitudeLayout, installTimeLayout, streetNameLayout, amountLayout, versionLayout;
-    private TextView fenceName, installAddress, remark, longitude, installTime, streetName, amount, version;
+    private TextView fenceName, installAddress, remark, latitude, longitude, installTime, streetName, amount, version;
     private Button detailMapButton;
 
     public FenceDetailDialog(Context context) {
@@ -45,6 +45,7 @@ public class FenceDetailDialog extends AlertDialog {
         fenceName = window.findViewById(R.id.fenceName);
         installAddress = window.findViewById(R.id.installAddress);
         remark = window.findViewById(R.id.remark);
+        latitude = window.findViewById(R.id.latitude);
         longitude = window.findViewById(R.id.longitude);
         installTime = window.findViewById(R.id.installTime);
         streetName = window.findViewById(R.id.streetName);
@@ -94,7 +95,8 @@ public class FenceDetailDialog extends AlertDialog {
             longitudeLayout.setVisibility(View.GONE);
         }else{
             longitudeLayout.setVisibility(View.VISIBLE);
-            longitude.setText("纬度" + latitudeV + "，经度" + longitudeV);
+            latitude.setText("纬度" + latitudeV);
+            longitude.setText("经度" + longitudeV);
         }
         if(TextUtils.isEmpty(installTimeV)){
             installTimeLayout.setVisibility(View.GONE);
