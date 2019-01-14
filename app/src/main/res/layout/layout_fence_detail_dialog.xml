@@ -16,6 +16,7 @@
         android:layout_gravity="top|right"/>
 
     <LinearLayout
+        android:id="@+id/fenceName_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dialog_detail_margin_left"
@@ -30,6 +31,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/installAddress_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dialog_detail_margin_left"
@@ -44,6 +46,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/remark_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dialog_detail_margin_left"
@@ -57,6 +60,7 @@
             style="@style/GrayDetailTextView"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/longitude_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dialog_detail_margin_left"
@@ -70,6 +74,7 @@
             style="@style/GrayDetailTextView"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/installTime_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dialog_detail_margin_left"
@@ -83,6 +88,7 @@
             style="@style/GrayDetailTextView"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/streetName_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dialog_detail_margin_left"
@@ -96,6 +102,7 @@
             style="@style/GrayDetailTextView"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/amount_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dialog_detail_margin_left"
@@ -109,6 +116,7 @@
             style="@style/GrayDetailTextView"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/version_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dialog_detail_margin_left"
