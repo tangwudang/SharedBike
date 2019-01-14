@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/image_launcher"
-    android:fitsSystemWindows="true"
-    android:clipToPadding="false">
+    android:background="@drawable/image_launcher">
 
 </LinearLayout>

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="452mm"
         android:scaleType="fitXY"
-        android:src="@drawable/banner3" />
+        android:src="@drawable/banner2" />
 
     <LinearLayout
         android:layout_width="match_parent"
