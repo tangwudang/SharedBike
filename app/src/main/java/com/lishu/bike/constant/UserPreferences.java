@@ -11,7 +11,9 @@ public class UserPreferences {
     private SharedPreferences sharePreferences;
 
     private final String USER_ID = "user_id";
-    //private final String USER_NO = "user_no";
+    private final String LOGIN_NAME = "login_name";
+    private final String LOGIN_PASSWORD = "login_password";
+
     private final String USER_NAME = "user_name";
     private final String USER_AGE = "user_age";
     private final String USER_PHONE = "user_phone";
@@ -19,7 +21,6 @@ public class UserPreferences {
     private final String USER_URL = "user_url";
     private final String USER_ORGANIZATION = "user_organization";
 
-    private final String IS_ALREADY_LOGIN = "is_already_login";
     private final String DB_VERSION = "db_version";
 
     public static UserPreferences getInstance() {
@@ -50,10 +51,38 @@ public class UserPreferences {
         }
         return "";
     }
-
     /**
-     * 用户名
+     * 登录账号
      */
+    public void setLoginName(String loginName) {
+        if (sharePreferences != null) {
+            sharePreferences.edit().putString(LOGIN_NAME, loginName).commit();
+        }
+    }
+
+    public String getLoginName() {
+        if (sharePreferences != null) {
+            return sharePreferences.getString(LOGIN_NAME, "");
+        }
+        return "";
+    }
+    /**
+     * 密码
+     */
+    public void setLoginPassword(String loginPassword) {
+        if (sharePreferences != null) {
+            sharePreferences.edit().putString(LOGIN_PASSWORD, loginPassword).commit();
+        }
+    }
+
+    public String getLoginPassword() {
+        if (sharePreferences != null) {
+            return sharePreferences.getString(LOGIN_PASSWORD, "");
+        }
+        return "";
+    }
+
+    //用户名
     public void setUserName(String userName) {
         if (sharePreferences != null) {
             sharePreferences.edit().putString(USER_NAME, userName).commit();
@@ -67,9 +96,7 @@ public class UserPreferences {
         return "";
     }
 
-    /**
-     * 年龄
-     */
+    //年龄
     public void setUserAge(String userAge) {
         if (sharePreferences != null) {
             sharePreferences.edit().putString(USER_AGE, userAge).commit();
@@ -83,9 +110,7 @@ public class UserPreferences {
         return "";
     }
 
-    /**
-     * 用户手机号
-     */
+    //用户手机号
     public void setUserPhone(String userPhone) {
         if (sharePreferences != null) {
             sharePreferences.edit().putString(USER_PHONE, userPhone).commit();
@@ -99,9 +124,7 @@ public class UserPreferences {
         return "";
     }
 
-    /**
-     * 用户地址
-     */
+    //用户地址
     public void setUserAddress(String userAddress) {
         if (sharePreferences != null) {
             sharePreferences.edit().putString(USER_ADDRESS, userAddress).commit();
@@ -115,9 +138,7 @@ public class UserPreferences {
         return "";
     }
 
-    /**
-     * 用户头像
-     */
+    //用户头像
     public void setUserUrl(String userUrl) {
         if (sharePreferences != null) {
             sharePreferences.edit().putString(USER_URL, userUrl).commit();
@@ -131,9 +152,7 @@ public class UserPreferences {
         return "";
     }
 
-    /**
-     * 用户所属机构
-     */
+    //用户所属机构
     public void setUserOrganization(String userOrganization) {
         if (sharePreferences != null) {
             sharePreferences.edit().putString(USER_ORGANIZATION, userOrganization).commit();
@@ -145,22 +164,6 @@ public class UserPreferences {
             return sharePreferences.getString(USER_ORGANIZATION, "");
         }
         return "";
-    }
-
-    /**
-     * 是否已经登录
-     */
-    public void setAlreadyLoginFlag(boolean is_already_login) {
-        if (sharePreferences != null) {
-            sharePreferences.edit().putBoolean(IS_ALREADY_LOGIN, is_already_login).commit();
-        }
-    }
-
-    public boolean getAlreadyLoginFlag() {
-        if (sharePreferences != null) {
-            return sharePreferences.getBoolean(IS_ALREADY_LOGIN, false);
-        }
-        return false;
     }
 
     /**
@@ -187,13 +190,13 @@ public class UserPreferences {
         if (sharePreferences != null) {
             SharedPreferences.Editor editor = sharePreferences.edit();
             editor.remove(USER_ID);
-            editor.remove(USER_AGE);
             editor.remove(USER_NAME);
-            editor.remove(USER_PHONE);
+            editor.remove(USER_AGE);
             editor.remove(USER_ADDRESS);
+            editor.remove(USER_PHONE);
             editor.remove(USER_URL);
             editor.remove(USER_ORGANIZATION);
-            editor.remove(IS_ALREADY_LOGIN);
+
             editor.commit();
         }
     }

@@ -38,7 +38,7 @@ public class LoginActivity extends BaseActivity {
 
         initView();
         initEvent();
-
+        initData();
         // just for testing, begin =======================
         //startActivity(new Intent(LoginActivity.this, MainActivity.class));
         //finish();
@@ -64,6 +64,12 @@ public class LoginActivity extends BaseActivity {
                 login(mLoginName.getText().toString(), mLoginPassword.getText().toString());
             }
         });
+    }
+
+    private void initData() {
+        //初始化
+        mLoginName.setText(UserPreferences.getInstance().getLoginName());
+        mLoginPassword.setText(UserPreferences.getInstance().getLoginPassword());
     }
 
     private void login(String name, String pwd) {
@@ -101,13 +107,14 @@ public class LoginActivity extends BaseActivity {
                 UserModel.UserBean userBean = userBeanList.get(0);
                 //保存返回的用户信息
                 UserPreferences.getInstance().setUserId(userBean.getId());
+                UserPreferences.getInstance().setLoginName(mLoginName.getText().toString());
+                UserPreferences.getInstance().setLoginPassword(mLoginPassword.getText().toString());
                 UserPreferences.getInstance().setUserName(userBean.getName());
                 UserPreferences.getInstance().setUserAge(userBean.getAge());
                 UserPreferences.getInstance().setUserPhone(userBean.getPhone());
                 UserPreferences.getInstance().setUserAddress(userBean.getAddress());
                 UserPreferences.getInstance().setUserUrl(HttpAddress.ROOT + userBean.getUrl());
                 UserPreferences.getInstance().setUserOrganization(userBean.getOrganizationName());
-                UserPreferences.getInstance().setAlreadyLoginFlag(true);
 
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();

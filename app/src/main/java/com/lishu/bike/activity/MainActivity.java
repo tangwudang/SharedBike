@@ -122,22 +122,4 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         return super.onKeyDown(keyCode, event);
     }
-
-    /**
-     * 暂时不启用数据库
-     */
-    /*private void initDB() {
-        //如果数据库有更新，则先删除原来的数据库
-        if (AppConfig.DB_VERSION > UserPreferences.getInstance().getDbVersion()) {
-            String dbPath = getDatabasePath(AppConfig.DB_NAME).getPath();
-            boolean isSuccess = FileUtil.deleteFile(new File(dbPath));
-            if (isSuccess) {
-                UserPreferences.getInstance().setDbVersion(AppConfig.DB_VERSION);
-            } else {
-                ToastUtil.showShort("数据库升级失败！");
-            }
-        }
-        //初始化数据库
-        DBHelper.instance().open(BaseApplication.getAppContext());
-    }*/
 }
