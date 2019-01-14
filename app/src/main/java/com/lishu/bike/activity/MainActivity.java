@@ -7,12 +7,12 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.lishu.bike.R;
+import com.lishu.bike.constant.UserPreferences;
 import com.lishu.bike.task.Upgrade;
 import com.lishu.bike.utils.ToastUtil;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private long exitTime = 0;
-
     /*private final int PRESSED_TEXT_COLOR = 0xff000000;
     private final int NORMAL_TEXT_COLOR = 0xff000000;
     private TextView fence_tv,station_tv,book_tv,inspect_tv,task_tv,appinfo_tv,analyze_tv,warn_tv,setting_tv;*/
@@ -115,6 +115,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 ToastUtil.showShort("再按一次退出");
                 exitTime = System.currentTimeMillis();
             } else {
+                UserPreferences.getInstance().logout();
                 finish();
             }
             return false;
