@@ -42,7 +42,7 @@ public class TaskDisposeActivity extends BaseActivity {
     private int uploadedImageSize = 0;//当前已经成功上传的照片张数
     private LivePictureGridAdapter mGridviewAdapter;
     private File cameraFile;
-    private String uploadedFileNames;//已上传的图片名称，由服务器返回
+    private String uploadedFileNames = "";//已上传的图片名称，由服务器返回
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -185,7 +185,7 @@ public class TaskDisposeActivity extends BaseActivity {
                 }
                 TaskImageModel taskImageModel = (TaskImageModel) model;
                 if (taskImageModel != null) {
-                    uploadedFileNames = taskImageModel.getTaskResponseImageName() + ",";
+                    uploadedFileNames += taskImageModel.getTaskResponseImageName() + ",";
                 }
 
                 uploadedImageSize++;

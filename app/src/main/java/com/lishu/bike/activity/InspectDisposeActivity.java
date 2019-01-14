@@ -62,7 +62,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
     private int uploadedImageSize = 0;//当前已经成功上传的照片张数
     private LivePictureGridAdapter mGridviewAdapter;
     private File cameraFile;
-    private String uploadedFileNames;//已上传的图片名称，由服务器返回
+    private String uploadedFileNames = "";//已上传的图片名称，由服务器返回
     //定位
     private TextView location_addr;
     private String locationAddress;
@@ -201,7 +201,7 @@ public class InspectDisposeActivity extends BaseActivity implements View.OnClick
 
                 InspectImageModel inspectImageModel = (InspectImageModel) model;
                 if (inspectImageModel != null) {
-                    uploadedFileNames = inspectImageModel.getInspectImageName() + ",";
+                    uploadedFileNames += inspectImageModel.getInspectImageName() + ",";
                 }
                 uploadedImageSize++;
                 if (uploadedImageSize == (imageListSize - 1)) {//说明所有图片都已成功上传到服务器
