@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lishu.bike.R;
 import com.lishu.bike.constant.UserPreferences;
 import com.lishu.bike.utils.ImageUtil;
+import com.lishu.bike.utils.SystemUtil;
 
 public class SettingActivity extends BaseActivity{
     private ImageView user_avatar;
@@ -32,6 +32,7 @@ public class SettingActivity extends BaseActivity{
         ((TextView)findViewById(R.id.user_age)).setText(UserPreferences.getInstance().getUserAge());
         ((TextView)findViewById(R.id.user_organization)).setText(UserPreferences.getInstance().getUserOrganization());
         ((TextView)findViewById(R.id.user_phone)).setText(UserPreferences.getInstance().getUserPhone());
+        ((TextView)findViewById(R.id.app_version)).setText(SystemUtil.getVersionName(mContext));
         user_avatar = findViewById(R.id.user_avatar);
     }
 

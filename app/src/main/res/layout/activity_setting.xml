@@ -104,18 +104,37 @@
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
+    <View style="@style/SplitLineMarginStyle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100mm"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_left_right"
+        android:layout_marginRight="@dimen/margin_left_right">
+
+        <TextView
+            style="@style/MiddleBoldTextView"
+            android:text="当前版本" />
+        <TextView
+            android:id="@+id/app_version"
+            style="@style/SmallTextViewStyle"
+            android:text="未知"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
     <View style="@style/SplitLineStyle"/>
 
     <Button
         android:id="@+id/change_password"
         android:text="修改密码"
         style="@style/ButtonStyle"
-        android:layout_marginTop="52mm" />
+        android:layout_marginTop="60mm" />
 
     <Button
         android:id="@+id/logout"
         android:text="退出登录"
         style="@style/ButtonStyle"
-        android:layout_marginTop="44mm" />
+        android:layout_marginTop="35mm" />
 
 </LinearLayout>
