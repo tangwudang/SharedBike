@@ -17,6 +17,7 @@ import com.lishu.bike.constant.UserPreferences;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.UserModel;
+import com.lishu.bike.utils.MD5;
 import com.lishu.bike.utils.StringUtil;
 import com.lishu.bike.utils.ToastUtil;
 
@@ -69,7 +70,6 @@ public class LoginActivity extends BaseActivity {
     private void initData() {
         //初始化
         mLoginName.setText(UserPreferences.getInstance().getLoginName());
-        mLoginPassword.setText(UserPreferences.getInstance().getLoginPassword());
     }
 
     private void login(String name, String pwd) {
@@ -85,7 +85,7 @@ public class LoginActivity extends BaseActivity {
         }
 
         show("登录中，请稍候...");
-        HttpLoader.login(name, pwd, new HttpLoader.IResponseListener() {
+        HttpLoader.login(name, new MD5().getMd5(pwd), new HttpLoader.IResponseListener() {
             @Override
             public void onResponse(BaseModel model) {
                 hide();
@@ -108,7 +108,7 @@ public class LoginActivity extends BaseActivity {
                 //保存返回的用户信息
                 UserPreferences.getInstance().setUserId(userBean.getId());
                 UserPreferences.getInstance().setLoginName(mLoginName.getText().toString());
-                UserPreferences.getInstance().setLoginPassword(mLoginPassword.getText().toString());
+                UserPreferences.getInstance().setLoginPassword(new MD5().getMd5(mLoginPassword.getText().toString()));
                 UserPreferences.getInstance().setUserName(userBean.getName());
                 UserPreferences.getInstance().setUserAge(userBean.getAge());
                 UserPreferences.getInstance().setUserPhone(userBean.getPhone());

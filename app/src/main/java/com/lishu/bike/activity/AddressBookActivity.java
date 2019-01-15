@@ -194,6 +194,7 @@ public class AddressBookActivity extends BaseActivity{
                 AddressBookModel.AddressBook entity = (AddressBookModel.AddressBook) parent.getItemAtPosition(position);
                 Intent intent = new Intent(AddressBookActivity.this, AddressBookDetailActivity.class);
                 intent.putExtra("contactId", entity.getId());
+                intent.putExtra("contact", entity);
                 startActivity(intent);
             }
         });

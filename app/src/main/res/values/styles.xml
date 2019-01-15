@@ -77,7 +77,7 @@
     </style>
 
     <style name="BlackDetailTextView">
-        <item name="android:layout_width">160mm</item>
+        <item name="android:layout_width">180mm</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">32mm</item>

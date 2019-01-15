@@ -190,6 +190,7 @@ public class UserPreferences {
         if (sharePreferences != null) {
             SharedPreferences.Editor editor = sharePreferences.edit();
             editor.remove(USER_ID);
+            editor.remove(LOGIN_PASSWORD);
             editor.remove(USER_NAME);
             editor.remove(USER_AGE);
             editor.remove(USER_ADDRESS);

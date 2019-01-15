@@ -20,7 +20,6 @@ import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.TaskModel;
 import com.lishu.bike.utils.DateSearchUtil;
 import com.lishu.bike.utils.StringUtil;
-import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -183,7 +182,7 @@ public class TaskListActivity extends BaseSearchActivity implements View.OnClick
         DateSearchUtil.searchByDate(beginDate, endDate, new DateSearchListener() {
             @Override
             public void searchByDefaultDate() {
-                getTaskListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+                getTaskListByTime(1, "", "");
             }
 
             @Override

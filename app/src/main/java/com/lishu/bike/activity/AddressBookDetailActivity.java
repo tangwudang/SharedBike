@@ -15,8 +15,8 @@ import com.lishu.bike.constant.HttpAddress;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.AddressBookDetailModel;
+import com.lishu.bike.model.AddressBookModel;
 import com.lishu.bike.model.BaseModel;
-import com.lishu.bike.task.Upgrade;
 import com.lishu.bike.utils.ImageUtil;
 import com.lishu.bike.utils.ToastUtil;
 
@@ -24,6 +24,7 @@ public class AddressBookDetailActivity extends BaseActivity implements View.OnCl
     private ImageView avatar;
     private TextView name, sex, age, no, phone, address;
     private String phoneNum;
+    private AddressBookModel.AddressBook contactEntity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class AddressBookDetailActivity extends BaseActivity implements View.OnCl
         initView();
 
         String contactId = getIntent().getStringExtra("contactId");
+        contactEntity = (AddressBookModel.AddressBook)getIntent().getSerializableExtra("contact");
+        setDefaultDetail();
         getAddressBookDetail(contactId);
     }
 
@@ -73,7 +76,6 @@ public class AddressBookDetailActivity extends BaseActivity implements View.OnCl
                     age.setText(bookDetail.getAge());
                     no.setText(bookDetail.getNo());
                     phoneNum = bookDetail.getPhone();
-                    phoneNum = "15952014212";
                     phone.setText(phoneNum);
                     address.setText(bookDetail.getAddress());
                     phone.setOnClickListener(AddressBookDetailActivity.this);
@@ -86,6 +88,12 @@ public class AddressBookDetailActivity extends BaseActivity implements View.OnCl
                 }
             }
         });
+    }
+
+    private void setDefaultDetail() {
+        if (contactEntity != null) {
+            name.setText(contactEntity.getName());
+        }
     }
 
     @Override

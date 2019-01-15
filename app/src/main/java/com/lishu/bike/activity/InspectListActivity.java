@@ -14,12 +14,10 @@ import com.lishu.bike.adapter.InspectionListAdapter;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.listener.DateSearchListener;
-import com.lishu.bike.model.AppInfoModel;
 import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.InspectModel;
 import com.lishu.bike.utils.DateSearchUtil;
 import com.lishu.bike.utils.StringUtil;
-import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -130,7 +128,7 @@ public class InspectListActivity extends BaseSearchActivity implements View.OnCl
         DateSearchUtil.searchByDate(beginDate, endDate, new DateSearchListener() {
             @Override
             public void searchByDefaultDate() {
-                getInspectionListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+                getInspectionListByTime(1, "", "");
             }
 
             @Override

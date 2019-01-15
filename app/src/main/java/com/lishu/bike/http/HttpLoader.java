@@ -47,7 +47,7 @@ public class HttpLoader extends HttpBase {
     public static void login(String username, String password, IResponseListener listener) {
         RequestParams params = new RequestParams(HttpAddress.LOGIN);
         params.addBodyParameter("username", username);
-        params.addBodyParameter("password", new MD5().getMd5(password)/*"21232f297a57a5a743894a0e4a801fc3"*/);
+        params.addBodyParameter("password", password);
 
         doPost(params, UserModel.class, listener);
     }

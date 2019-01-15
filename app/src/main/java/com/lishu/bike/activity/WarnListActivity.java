@@ -18,7 +18,6 @@ import com.lishu.bike.model.BaseModel;
 import com.lishu.bike.model.WarnModel;
 import com.lishu.bike.utils.DateSearchUtil;
 import com.lishu.bike.utils.StringUtil;
-import com.lishu.bike.utils.TimeUtil;
 import com.lishu.bike.utils.ToastUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -116,7 +115,7 @@ public class WarnListActivity extends BaseSearchActivity implements View.OnClick
         DateSearchUtil.searchByDate(beginDate, endDate, new DateSearchListener() {
             @Override
             public void searchByDefaultDate() {
-                getWarnListByTime(1, TimeUtil.getCurDatetime(), TimeUtil.getCurDatetime());
+                getWarnListByTime(1, "", "");
             }
 
             @Override
