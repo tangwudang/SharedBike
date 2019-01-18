@@ -4,17 +4,10 @@ package com.lishu.bike.constant;
  * 请求地址
  */
 public class HttpAddress {
-    public static String ROOT;
-
-    static{
-        if(AppConfig.IS_DEBUG){
-            //测试地址
-            ROOT = "http://153.37.97.170:9002/bicycle-jn";
-        }else{
-            //现网地址
-            ROOT = "http://153.37.97.170:9002/bicycle-jn";
-        }
-    }
+    //测试地址
+    //public static String ROOT = "http://153.37.97.170:9002/bicycle-jn";
+    //现网地址
+    public static String ROOT = "http://47.98.45.119:5888/bicycle-jn";
 
     /**
      * 登录与设置接口

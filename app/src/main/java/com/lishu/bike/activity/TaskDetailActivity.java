@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.lishu.bike.R;
 import com.lishu.bike.adapter.PictureGridViewAdapter;
+import com.lishu.bike.constant.HttpAddress;
 import com.lishu.bike.http.HttpBase;
 import com.lishu.bike.http.HttpLoader;
 import com.lishu.bike.model.BaseModel;
@@ -124,7 +125,8 @@ public class TaskDetailActivity extends BaseActivity{
                     String []imgs = taskDetail.getTaskImages().split(",");
                     List<String> imageList = new ArrayList<>();
                     for(int i = 0; i < imgs.length; i++){
-                        imageList.add(imgs[i]);
+                       // imageList.add(imgs[i]);
+                        imageList.add(HttpAddress.ROOT + imgs[i]);
                     }
                     mPictureGridViewAdapter.setData(imageList);
                 }
