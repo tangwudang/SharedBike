@@ -72,7 +72,7 @@ public class HttpAddress {
     public static String GET_TASKS = ROOT + "/taskInfoApp!getTasks.action";
     //任务单详情
     public static String GET_TASK_DETAIL = ROOT + "/taskInfoApp!getTaskDetail.action";
-    //任务处理反馈 $$$$$$$$$$$$$$$$$
+    //任务处理反馈
     public static String ADD_TASK_RESPONSE = ROOT + "/taskInfoApp!addTaskResponse.action";
     //任务处理图片上传
     public static String ADD_TASK_DISPOSE_IMAGE = ROOT + "/taskInfoApp!addTaskDisposeImage.action";

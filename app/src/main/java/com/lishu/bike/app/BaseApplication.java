@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 import com.baidu.mapapi.SDKInitializer;
-import com.lishu.bike.constant.AppConfig;
 import com.lishu.bike.constant.UserPreferences;
 import com.lishu.bike.utils.LocationService;
 
@@ -22,11 +21,8 @@ public class BaseApplication extends Application {
         super.onCreate();
 
         applicationContext = getApplicationContext();
-        // 初始化AutoSize
         configUnits();
-        // 初始化Preferences
         UserPreferences.getInstance().init(this);
-        // 初始化xUtils
         x.Ext.init(this);
         //if (AppConfig.IS_DEBUG) {
             // 是否输出debug日志, 开启debug会影响性能.

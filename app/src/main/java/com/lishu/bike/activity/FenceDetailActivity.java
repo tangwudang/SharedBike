@@ -56,7 +56,8 @@ public class FenceDetailActivity extends BaseActivity {
 
     private void setMapCenter() {
         //设定中心点坐标
-        LatLng centerPos = new LatLng(31.935572,118.839467);//小龙湾地铁站
+        //LatLng centerPos = new LatLng(31.935572,118.839467);//小龙湾地铁站
+        LatLng centerPos = new LatLng(latitude,longitude);
         //地图状态创建者
         MapStatus.Builder builder = new MapStatus.Builder();
         //设定中心
